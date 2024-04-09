@@ -1,0 +1,484 @@
++version:  10/31/2000
++switches:  
++nfas_version: 6.x-devel.Internal [nfas rev 35]
++nfas_date: Jan 10 2023 14:40:54
++current_date: Tue Jan 17 16:11:52 2023
+
+.chip_id nfp-7xxxc 0x00 0x10
+
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.LEGACY_INDIRECT_REF_MODE const 0
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.THIRD_PARTY_ADDRESS_MODE const 0
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+
+.%init_nn_mode --
+.%third_party_addressing 40bit
+.%indirect_ref_mode nfp6000
+.%neighbor_usage 0x00
+.%case_sensitivity 0
+
+.%resource CAM 0
+.%resource CRC 0
+.%resource T_INDEX 0
+.%resource BYTE_INDEX 0
+
+
+:continue_test# 19
+:delay_loop# 11
+:pop_loop# 78
+:pop_size32_ret# 56
+:put_loop# 57
+:put_size32_ret# 47
+:setup_event_filter# 14
+:size32# 27
+:test_failed# 108
+:test_passed# 107
+*-- no_destination 0
+*cl_num gpr_b_rel 00
+*ring2 gpr_b_rel 06
+*ring1 gpr_b_rel 05
+*offset2 gpr_b_rel 04
+*offset1 gpr_b_rel 03
+*size gpr_b_rel 02
+*data gpr_b_rel 01
+*base gpr_a_rel 07
+*ret_address gpr_a_rel 05
+*data2 gpr_a_rel 04
+*ringptr_base gpr_a_rel 02
+*ringbase_base gpr_a_rel 01
+*me_num gpr_a_rel 00
+*$xfer15 xfer_rel 0F 0 both 1 0x1F
+*$xfer14 xfer_rel 0E 0 both 2 0x1F
+*$xfer13 xfer_rel 0D 0 both 3 0x1F
+*$xfer12 xfer_rel 0C 0 both 4 0x1F
+*$xfer11 xfer_rel 0B 0 both 5 0x1F
+*$xfer10 xfer_rel 0A 0 both 6 0x1F
+*$xfer9 xfer_rel 09 0 both 7 0x1F
+*$xfer8 xfer_rel 08 0 both 8 0x1F
+*$xfer7 xfer_rel 07 0 both 9 0x1F
+*$xfer6 xfer_rel 06 0 both 10 0x1F
+*$xfer5 xfer_rel 05 0 both 11 0x1F
+*$xfer4 xfer_rel 04 0 both 12 0x1F
+*$xfer3 xfer_rel 03 0 both 13 0x1F
+*$xfer2 xfer_rel 02 0 both 14 0x1F
+*$xfer1 xfer_rel 01 0 both 15 0x1F
+*$xfer0 xfer_rel 00 0 both 16 0x1F
+*l0000!sig2 signal 02 0
+*l0000!sig1 signal 01 0
+.%type R
+.%type SI
+.%scope global
+.%var $xfer0 0 R
+.%liverange 0 $W0 16:18 33:110
+.%liverange 0 ~$W0 19:32
+.%liverange 0 $R0 48:56 78:110
+.%var $xfer1 0 R
+.%liverange 0 $W1 34:110
+.%liverange 0 $R1 56:56 79:107
+.%liverange 0 ~$R1 78:78 108:110
+.%var $xfer2 0 R
+.%liverange 0 $W2 47:56 66:110
+.%liverange 0 ~$W2 57:65
+.%liverange 0 $R2 56:56 79:107
+.%liverange 0 ~$R2 78:78 108:110
+.%var $xfer3 0 R
+.%liverange 0 $W3 47:56 70:110
+.%liverange 0 ~$W3 57:69
+.%liverange 0 $R3 56:56 79:107
+.%liverange 0 ~$R3 78:78 108:110
+.%var $xfer4 0 R
+.%liverange 0 $W4 47:56 59:110
+.%liverange 0 ~$W4 57:58
+.%liverange 0 $R4 56:56 80:107
+.%liverange 0 ~$R4 78:79 108:110
+.%var $xfer5 0 R
+.%liverange 0 $W5 47:56 63:110
+.%liverange 0 ~$W5 57:62
+.%liverange 0 $R5 56:56 80:107
+.%liverange 0 ~$R5 78:79 108:110
+.%var $xfer6 0 R
+.%liverange 0 $W6 47:56 67:110
+.%liverange 0 ~$W6 57:66
+.%liverange 0 $R6 56:56 80:107
+.%liverange 0 ~$R6 78:79 108:110
+.%var $xfer7 0 R
+.%liverange 0 $W7 47:56 71:110
+.%liverange 0 ~$W7 57:70
+.%liverange 0 $R7 56:56 80:107
+.%liverange 0 ~$R7 78:79 108:110
+.%var $xfer8 0 R
+.%liverange 0 $W8 111:111
+.%liverange 0 $R8 111:111
+.%var $xfer9 0 R
+.%liverange 0 $W9 111:111
+.%liverange 0 $R9 111:111
+.%var $xfer10 0 R
+.%liverange 0 $W10 111:111
+.%liverange 0 $R10 111:111
+.%var $xfer11 0 R
+.%liverange 0 $W11 111:111
+.%liverange 0 $R11 111:111
+.%var $xfer12 0 R
+.%liverange 0 $W12 111:111
+.%liverange 0 $R12 111:111
+.%var $xfer13 0 R
+.%liverange 0 $W13 111:111
+.%liverange 0 $R13 111:111
+.%var $xfer14 0 R
+.%liverange 0 $W14 111:111
+.%liverange 0 $R14 111:111
+.%var $xfer15 0 R
+.%liverange 0 $W15 111:111
+.%liverange 0 $R15 111:111
+.%var me_num 0 R
+.%liverange 0 A0 2:110
+.%var ringbase_base 0 R
+.%liverange 0 A1 20:110
+.%var ringptr_base 0 R
+.%liverange 0 A2 23:110
+.%var data2 0 R
+.%liverange 0 A4 44:110
+.%var ret_address 0 R
+.%liverange 0 A5 46:110
+.%var base 0 R
+.%liverange 0 A7 6:110
+.%var data 0 R
+.%liverange 0 B1 11:13 15:110
+.%var size 0 R
+.%liverange 0 B2 45:110
+.%var offset1 0 R
+.%liverange 0 B3 26:110
+.%var offset2 0 R
+.%liverange 0 B4 27:110
+.%var ring1 0 R
+.%liverange 0 B5 28:110
+.%var ring2 0 R
+.%liverange 0 B6 30:110
+.%var cl_num 0 R
+.%liverange 0 B0 3:110
+.%var l0000!sig2 1 R
+.%liverange 0 G2 40:41 72:73 79:80
+.%var l0000!sig1 1 R
+.%liverange 0 G1 17:17 19:19 35:35 38:38 48:48
+.%scope end
+.%import_expr common_code 105 <43:43:15,41:40:13,34:22:0> 78 &bp +
+.%import_expr common_code 101 <43:43:15,41:40:13,34:22:0> 108 &bp +
+.%import_expr common_code 99 <43:43:15,41:40:13,34:22:0> 108 &bp +
+.%import_expr common_code 95 <43:43:15,41:40:13,34:22:0> 108 &bp +
+.%import_expr common_code 93 <43:43:15,41:40:13,34:22:0> 108 &bp +
+.%import_expr common_code 89 <43:43:15,41:40:13,34:22:0> 108 &bp +
+.%import_expr common_code 87 <43:43:15,41:40:13,34:22:0> 108 &bp +
+.%import_expr common_code 83 <43:43:15,41:40:13,34:22:0> 108 &bp +
+.%import_expr common_code 81 <43:43:15,41:40:13,34:22:0> 108 &bp +
+.%import_expr common_code 74 <43:43:15,41:40:13,34:22:0> 57 &bp +
+.%import_expr common_code 56 <43:43:15,41:40:13,34:22:0> 107 &bp +
+.%import_expr common_code 55 <43:43:15,41:40:13,34:22:0> 78 &bp +
+.%import_expr common_code 54 <27:20:8,17:10:0> 56 &bp +
+.%import_expr common_code 49 <43:43:15,41:40:13,34:22:0> 108 &bp +
+.%import_expr common_code 46 <43:43:15,41:40:13,34:22:0> 57 &bp +
+.%import_expr common_code 45 <27:20:8,17:10:0> 47 &bp +
+.%import_expr common_code 13 <43:43:15,41:40:13,34:22:0> 19 &bp +
+.%import_expr common_code 12 <43:43:15,41:40:13,34:22:0> 11 &bp +
+.%import_expr common_code 9 <43:43:15,41:40:13,34:22:0> 14 &bp +
+.0 00FC044C0300 common_code
+	.page
+	;-----------------------
+	; TEST_NAME: ring_journal.uc
+	;	Runs on any # of MEs.  
+	;	May need to check how much multiple MEs adds (if anything)
+	; Inteneded to test ring_journal command
+	;-----------------------
+	.sig  l0000!sig1 l0000!sig2 l0000!sig3 l0000!sig4 l0000!sig5 l0000!sig6 l0000!sig7 l0000!sig8 l0000!sig9 l0000!sig10 l0000!sig11 l0000!sig12 l0000!sig13 l0000!sig14 l0000!sig15
+	.xfer_order $xfer0 $xfer1 $xfer2 $xfer3 $xfer4 $xfer5 $xfer6 $xfer7 $xfer8 $xfer9 $xfer10 $xfer11 $xfer12 $xfer13 $xfer14 $xfer15
+	.addr l0000!sig1 1
+	.addr l0000!sig2 2
+	.addr l0000!sig3 3
+	.addr l0000!sig4 4
+	.addr l0000!sig5 5
+	.addr l0000!sig6 6
+	.addr l0000!sig7 7
+	.addr l0000!sig8 8
+	.addr l0000!sig9 9
+	.addr l0000!sig10 10
+	.addr l0000!sig11 11
+	.addr l0000!sig12 12
+	.addr l0000!sig13 13
+	.addr l0000!sig14 14
+	.addr l0000!sig15 15
+	;
+	.areg  me_num        0
+	.areg  ringbase_base 1
+	.areg  ringptr_base  2
+	.areg  data2         4
+	.areg  ret_address   5
+	.areg  full_empty_sts  6
+	.areg  base          7
+	.breg  data          1
+	.breg  size          2
+	.breg  offset1       3
+	.breg  offset2       4
+	.breg  ring1         5
+	.breg  ring2         6
+	.breg  cl_num        0
+	; The ME_NUM is in bits [7:3]
+	local_csr_rd[active_ctx_sts]
+.1 00F0000C0040 common_code
+	immed[me_num,0]
+.2 0095840B3D40 common_code
+	alu_shf[cl_num,0xf, and,me_num,>>24]
+.3 0084340B3D40 common_code
+	alu_shf[me_num,0xf, and,me_num,>>3]
+.4 00AA840C1040 common_code
+	; ME's are numbered 4 - 15
+	alu[me_num,me_num,-,4]
+.5 00F0000C0047 common_code
+	; Setup EVENT FILTER
+	immed[base,0]
+.6 00F4400C0847 common_code
+	immed_w1[base,0x2]
+.7 008A64710247 common_code
+	alu_shf[base,base,or,cl_num,<<26]
+.8 00AAB00C0040 common_code
+	alu[--,me_num,-,0]
+.9 00D803808120 common_code
+	beq[setup_event_filter#]
+.10 00F0000107FF common_code
+	; If not ME0 then setup a delay loop before continueing
+	immed[data,0xff]
+.11 00BAC4110701 common_code
+	delay_loop#:
+		alu[data,data,-,1]
+.12 00D802C08121 common_code
+		bne[delay_loop#]
+.13 00D804C08038 common_code
+	br[continue_test#]
+.14 00F00001070F common_code
+	; Only ME0 should write to event Filter
+	setup_event_filter#:
+		;-----------------------------------------------
+		;EventFilter0
+		;-----------------------------------------------
+		immed[data,0xf]
+.15 00A000010700 common_code
+		alu[$xfer0,--,b,data]
+.16 044F10034047 common_code
+		cls[write,$xfer0,base,0x10,1], ctx_swap[l0000!sig1]
+.17 00F0000C2400 common_code
+		; Filter on overflow
+		immed[$xfer0,0x9]
+.18 044F10036047 common_code
+		cls[write,$xfer0,base,0x18,1], ctx_swap[l0000!sig1]
+.19 00F0000C0041 common_code
+	continue_test#:
+	immed[ringbase_base,0]
+.20 00F4400C0441 common_code
+	immed_w1[ringbase_base,0x1]
+.21 008A64110241 common_code
+	alu_shf[ringbase_base,ringbase_base,or,cl_num,<<26]
+.22 00F0000E0042 common_code
+	immed[ringptr_base,0x80]
+.23 00F4400C0442 common_code
+	immed_w1[ringptr_base,0x1]
+.24 008A64210242 common_code
+	alu_shf[ringptr_base,ringptr_base,or,cl_num,<<26]
+.25 0091D43B0240 common_code
+	alu_shf[offset1,--,b,me_num,<<3]
+.26 009BA4490EC1 common_code
+	alu_shf[offset2,offset1,or,1,<<6]
+.27 0090645102C0 common_code
+	size32#:
+	; Use me_num as the BaseAddr of first ring
+		alu_shf[ring1,--,b,cl_num,<<26]
+.28 009BE4591640 common_code
+		alu_shf[ring1,ring1,or,me_num,<<2]
+.29 009BB46916C1 common_code
+		alu_shf[ring2,ring1,or,1,<<5]
+.30 00B0441C0040 common_code
+		alu[data,--,b,me_num]
+.31 009A841906CF common_code
+		; Report all events
+		alu_shf[data,data,or,0xf,<<24]
+.32 00A000010700 common_code
+		alu[$xfer0,--,b,data]
+.33 00F0000C0001 common_code
+		immed[$xfer1,0]
+.34 044F10010C41 common_code
+		; Set size field to 0 [18:16] : Ring size = 32
+		cls[write,$xfer0,ringbase_base,offset1,1], ctx_swap[l0000!sig1]
+.35 009BD41906C1 common_code
+		; OR a 1 into bit3 of BaseAddr for the 2nd ring
+		alu_shf[data,data,or,1,<<3]
+.36 00A000010700 common_code
+		alu[$xfer0,--,b,data]
+.37 044F10011041 common_code
+		cls[write,$xfer0,ringbase_base,offset2,1], ctx_swap[l0000!sig1]
+.38 00F0000C0000 common_code
+		; Initialize head and tail pointers to 0 for both rings
+		immed[$xfer0,0]
+.39 044F20010C42 common_code
+		cls[write,$xfer0,ringptr_base,offset1,1],ctx_swap[l0000!sig2]
+.40 044F20011042 common_code
+		cls[write,$xfer0,ringptr_base,offset2,1],ctx_swap[l0000!sig2]
+.41 00F000010700 common_code
+		immed[data,0]
+.42 009B04190640 common_code
+		alu_shf[data,data,or,me_num,<<16]
+.43 008AC44906C1 common_code
+		alu_shf[data2,data,or,1,<<20]
+.44 00F000010B24 common_code
+		immed[size,36]
+.45 00F0000CBC45 common_code
+		load_addr[ret_address,put_size32_ret#]
+.46 00D80E408038 common_code
+		br[put_loop#]
+.47 004F10070047 common_code
+	put_size32_ret#:
+	;-----------------------------------------------
+	; Reading EventFilter0 status
+	;   Verifying that no overflow events occurred
+	;-----------------------------------------------
+	;immed[base,0]
+	;immed_w1[base,0x2]
+	cls[read_le,$xfer0,base,0x0,1], ctx_swap[l0000!sig1]
+.48 00AAB00C0000 common_code
+	alu[--,$xfer0,-,0]
+.49 00D81B008121 common_code
+	bne[test_failed#]
+.50 00F000010723 common_code
+		immed[data,35]
+.51 009B04190640 common_code
+		alu_shf[data,data,or,me_num,<<16]
+.52 008AC44906C1 common_code
+		alu_shf[data2,data,or,1,<<20]
+.53 00F000010B20 common_code
+		immed[size,32]
+.54 00F0000CE045 common_code
+		load_addr[ret_address,pop_size32_ret#]
+.55 00D813808038 common_code
+		br[pop_loop#]
+.56 00D81AC08038 common_code
+	pop_size32_ret#:
+	br[test_passed#]
+.57 00A000010700 common_code
+	put_loop#:
+		alu[$xfer0,--,b,data]
+.58 00A0404C0044 common_code
+		alu[$xfer4,--,b,data2]
+.59 00B0C4110701 common_code
+		alu[data,data,+,1]
+.60 00A0844C0444 common_code
+		alu[data2,data2,+,1]
+.61 00A000110700 common_code
+		alu[$xfer1,--,b,data]
+.62 00A0405C0044 common_code
+		alu[$xfer5,--,b,data2]
+.63 00B0C4110701 common_code
+		alu[data,data,+,1]
+.64 00A0844C0444 common_code
+		alu[data2,data2,+,1]
+.65 00A000210700 common_code
+		alu[$xfer2,--,b,data]
+.66 00A0406C0044 common_code
+		alu[$xfer6,--,b,data2]
+.67 00B0C4110701 common_code
+		alu[data,data,+,1]
+.68 00A0844C0444 common_code
+		alu[data2,data2,+,1]
+.69 00A000310700 common_code
+		alu[$xfer3,--,b,data]
+.70 00A0407C0044 common_code
+		alu[$xfer7,--,b,data2]
+.71 284F260914C0 common_code
+	; JOURNAL
+		cls[journal,$xfer0,ring1,0,4],ctx_swap[l0000!sig2]
+.72 284F264918C0 common_code
+		cls[journal,$xfer4,ring2,0,4],ctx_swap[l0000!sig2]
+.73 00BAC4210B04 common_code
+		alu[size,size,-,4]
+.74 00D80E608121 common_code
+		bne[put_loop#], defer[2]
+.75 00B0C4110701 common_code
+		alu[data,data,+,1]
+.76 00A0844C0444 common_code
+		alu[data2,data2,+,1]
+.77 00E8000C0045 common_code
+		rtn[ret_address]
+.78 244F260514C0 common_code
+	pop_loop#:
+	; POP
+		cls[pop,$xfer0,ring1,0,4],ctx_swap[l0000!sig2]
+.79 244F264518C0 common_code
+		cls[pop,$xfer4,ring2,0,4],ctx_swap[l0000!sig2]
+.80 00AAF0010403 common_code
+		alu[--,data,-,$xfer3]
+.81 00D81B008121 common_code
+		bne[test_failed#]
+.82 00AAB0001C44 common_code
+		alu[--,data2,-,$xfer7]
+.83 00D81B208121 common_code
+		bne[test_failed#], defer[2]
+.84 00BAC4110701 common_code
+		alu[data,data,-,1]
+.85 00AA844C0444 common_code
+		alu[data2,data2,-,1]
+.86 00AAF0010402 common_code
+		alu[--,data,-,$xfer2]
+.87 00D81B008121 common_code
+		bne[test_failed#]
+.88 00AAB0001844 common_code
+		alu[--,data2,-,$xfer6]
+.89 00D81B208121 common_code
+		bne[test_failed#], defer[2]
+.90 00BAC4110701 common_code
+		alu[data,data,-,1]
+.91 00AA844C0444 common_code
+		alu[data2,data2,-,1]
+.92 00AAF0010401 common_code
+		alu[--,data,-,$xfer1]
+.93 00D81B008121 common_code
+		bne[test_failed#]
+.94 00AAB0001444 common_code
+		alu[--,data2,-,$xfer5]
+.95 00D81B208121 common_code
+		bne[test_failed#], defer[2]
+.96 00BAC4110701 common_code
+		alu[data,data,-,1]
+.97 00AA844C0444 common_code
+		alu[data2,data2,-,1]
+.98 00AAF0010400 common_code
+		alu[--,data,-,$xfer0]
+.99 00D81B008121 common_code
+		bne[test_failed#]
+.100 00AAB0001044 common_code
+		alu[--,data2,-,$xfer4]
+.101 00D81B208121 common_code
+		bne[test_failed#], defer[2]
+.102 00BAC4110701 common_code
+		alu[data,data,-,1]
+.103 00AA844C0444 common_code
+		alu[data2,data2,-,1]
+.104 00BAC4210B04 common_code
+		alu[size,size,-,4]
+.105 00D813808121 common_code
+		bne[pop_loop#]
+.106 00E8000C0045 common_code
+		rtn[ret_address]
+.107 00E000010000 common_code
+	test_passed#:
+		ctx_arb[kill], any
+.108 00F0000C0300 common_code
+	test_failed#:
+		nop
+.109 00F0000C0300 common_code
+		nop
+.110 00E000010000 common_code
+		ctx_arb[kill], any
+	.entrancel0000!sig1l0000!sig2l0000!sig3l0000!sig4l0000!sig5l0000!sig6l0000!sig7l0000!sig8l0000!sig9l0000!sig10l0000!sig11l0000!sig12l0000!sig13l0000!sig14l0000!sig15+ucode_end
+

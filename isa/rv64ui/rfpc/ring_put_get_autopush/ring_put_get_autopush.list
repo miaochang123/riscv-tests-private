@@ -1,0 +1,787 @@
++version:  10/31/2000
++switches:  
++nfas_version: 6.x-devel.Internal [nfas rev 35]
++nfas_date: Jan 10 2023 14:40:54
++current_date: Tue Jan 17 16:12:00 2023
+
+.chip_id nfp-7xxxc 0x00 0x10
+
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.LEGACY_INDIRECT_REF_MODE const 0
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.THIRD_PARTY_ADDRESS_MODE const 0
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+
+.%init_nn_mode --
+.%third_party_addressing 40bit
+.%indirect_ref_mode nfp6000
+.%neighbor_usage 0x00
+.%case_sensitivity 0
+
+.%resource CAM 0
+.%resource CRC 0
+.%resource T_INDEX 0
+.%resource BYTE_INDEX 0
+
+
+:event_loop# 40
+:event_loop_done# 48
+:event_monitor# 15
+:get_entries# 49
+:get_loop# 54
+:m002# 40
+:pass_check1# 61
+:pass_check2# 64
+:put_entries# 68
+:put_loop# 101
+:put_loop_done# 110
+:test_failed# 123
+:test_passed# 114
+:test_passed_all_contexts_finished# 114
+:work_complete# 114
+*-- no_destination 0
+;*me_ctxt!!2 gpr_b_rel 0D
+*me_ctxt gpr_b_rel 0D
+*__arithmetic_tmp__ gpr_b_rel 01
+;*l0000!me_num!!2 gpr_a_rel 00
+*l0000!me_num gpr_b_rel 0E
+;*l0000!ctxt_num!!2 gpr_b_rel 02
+*l0000!ctxt_num gpr_b_rel 02
+*l0000!island gpr_b_rel 0F
+;*l0000!address!!2 gpr_b_rel 03
+*l0000!address gpr_b_rel 03
+;*l0000!address1!!2 gpr_b_rel 04
+*l0000!address1 gpr_b_rel 04
+;*l0000!address2!!2 gpr_b_rel 05
+*l0000!address2 gpr_b_rel 05
+*@l0000!work_handled gpr_b_abs 00
+*$l0001!event_data xfer_rel 00 0 both 1 0x0
+*l0001!source gpr_b_rel 01
+*$l0002!xfer[0] xfer_rel 01 0 both 3 0x64
+*$l0002!xfer[1] xfer_rel 02 0 both 2 0x64
+*$l0002!xfer[2] xfer_rel 03 0 both 1 0x64
+;*l0002!addr!!2 gpr_b_rel 06
+*l0002!addr gpr_b_rel 06
+*$l0003!xfer xfer_rel 01 0 both 1 0x0
+;*l0003!addr!!2 gpr_a_rel 03
+*l0003!addr gpr_b_rel 07
+;*l0003!temp!!2 gpr_b_rel 08
+;*l0003!temp!!3 gpr_b_rel 08
+;*l0003!temp!!4 gpr_b_rel 08
+;*l0003!temp!!5 gpr_b_rel 08
+;*l0003!temp!!6 gpr_b_rel 08
+*l0003!temp gpr_b_rel 08
+*$l0004!xfer xfer_rel 01 0 both 1 0x0
+;*l0004!addr!!2 gpr_b_rel 09
+*l0004!addr gpr_b_rel 09
+*l0005!ring_address gpr_b_rel 07
+*l0005!len16 gpr_b_rel 08
+*$l0005!work[0] xfer_rel 00 0 both 16 0x32
+*$l0005!work[1] xfer_rel 01 0 both 15 0x32
+*$l0005!work[2] xfer_rel 02 0 both 14 0x32
+*$l0005!work[3] xfer_rel 03 0 both 13 0x32
+*$l0005!work[4] xfer_rel 04 0 both 12 0x32
+*$l0005!work[5] xfer_rel 05 0 both 11 0x32
+*$l0005!work[6] xfer_rel 06 0 both 10 0x32
+*$l0005!work[7] xfer_rel 07 0 both 9 0x32
+*$l0005!work[8] xfer_rel 08 0 both 8 0x32
+*$l0005!work[9] xfer_rel 09 0 both 7 0x32
+*$l0005!work[10] xfer_rel 0A 0 both 6 0x32
+*$l0005!work[11] xfer_rel 0B 0 both 5 0x32
+*$l0005!work[12] xfer_rel 0C 0 both 4 0x32
+*$l0005!work[13] xfer_rel 0D 0 both 3 0x32
+*$l0005!work[14] xfer_rel 0E 0 both 2 0x32
+*$l0005!work[15] xfer_rel 0F 0 both 1 0x32
+;*l0006!event!!2 gpr_b_rel 09
+*l0006!event gpr_a_rel 01
+*l0006!ring_address gpr_b_rel 0A
+*l0006!len16 gpr_a_rel 02
+*$l0006!work[0] xfer_rel 00 0 both 16 0xE
+*$l0006!work[1] xfer_rel 01 0 both 15 0xE
+*$l0006!work[2] xfer_rel 02 0 both 14 0xE
+*$l0006!work[3] xfer_rel 03 0 both 13 0xE
+*$l0006!work[4] xfer_rel 04 0 both 12 0xE
+*$l0006!work[5] xfer_rel 05 0 both 11 0xE
+*$l0006!work[6] xfer_rel 06 0 both 10 0xE
+*$l0006!work[7] xfer_rel 07 0 both 9 0xE
+*$l0006!work[8] xfer_rel 08 0 both 8 0xE
+*$l0006!work[9] xfer_rel 09 0 both 7 0xE
+*$l0006!work[10] xfer_rel 0A 0 both 6 0xE
+*$l0006!work[11] xfer_rel 0B 0 both 5 0xE
+*$l0006!work[12] xfer_rel 0C 0 both 4 0xE
+*$l0006!work[13] xfer_rel 0D 0 both 3 0xE
+*$l0006!work[14] xfer_rel 0E 0 both 2 0xE
+*$l0006!work[15] xfer_rel 0F 0 both 1 0xE
+*$l0007!cls_ring_base xfer_rel 00 0 both 1 0x0
+*$l0007!cls_ring_ptrs xfer_rel 01 0 both 1 0x0
+;*l0007!cls_ring_address!!2 gpr_b_rel 0A
+*l0007!cls_ring_address gpr_b_rel 0A
+*$l0008!xfer xfer_rel 08 0 both 1 0x0
+*l0008!addr gpr_b_rel 0B
+*$l0009!xfer xfer_rel 00 0 both 1 0x0
+*l0009!addr gpr_b_rel 0C
+*l0009!s1 signal 01 0
+*l0008!s1 signal 02 0
+*l0007!s1 signal 01 0
+*l0007!s0 signal 01 0
+*l0006!s1 signal 01 0
+*l0004!s1 signal 02 0
+*l0003!s1 signal 02 0
+*l0002!s1 signal 02 0
+*l0001!event_sig signal 01 0
+*l0000!s5 signal 05 0
+*l0000!s4 signal 04 0
+*l0000!s1 signal 01 0
+.%type R
+.%type SI
+.%scope global
+.%var l0009!addr 0 R
+.%liverange 0 B12 112:113
+.%liverange 0 ~B12 114:131
+.%var $l0009!xfer 0 R
+.%liverange 0 $W0 113:113
+.%liverange 0 ~$W0 114:131
+.%liverange 0 $R0 132:132
+.%var l0008!addr 0 R
+.%liverange 0 B11 104:113
+.%liverange 0 ~B11 101:103 114:131
+.%var $l0008!xfer 0 R
+.%liverange 0 $W8 105:113
+.%liverange 0 ~$W8 101:104 114:131
+.%liverange 0 $R8 132:132
+.%var l0007!cls_ring_address 0 R
+.%liverange 0 B10 71:83
+.%var $l0007!cls_ring_ptrs 0 R
+.%liverange 0 $W1 70:86
+.%liverange 0 $R1 132:132
+.%var $l0007!cls_ring_base 0 R
+.%liverange 0 $W0 69:85
+.%liverange 0 $R0 132:132
+.%var $l0006!work[15] 0 R
+.%liverange 0 $W15 101:113
+.%liverange 0 ~$W15 114:131
+.%liverange 0 $R15 132:132
+.%var $l0006!work[14] 0 R
+.%liverange 0 $W14 100:113
+.%liverange 0 ~$W14 114:131
+.%liverange 0 $R14 132:132
+.%var $l0006!work[13] 0 R
+.%liverange 0 $W13 99:113
+.%liverange 0 ~$W13 114:131
+.%liverange 0 $R13 132:132
+.%var $l0006!work[12] 0 R
+.%liverange 0 $W12 98:113
+.%liverange 0 ~$W12 114:131
+.%liverange 0 $R12 132:132
+.%var $l0006!work[11] 0 R
+.%liverange 0 $W11 97:113
+.%liverange 0 ~$W11 114:131
+.%liverange 0 $R11 132:132
+.%var $l0006!work[10] 0 R
+.%liverange 0 $W10 96:113
+.%liverange 0 ~$W10 114:131
+.%liverange 0 $R10 132:132
+.%var $l0006!work[9] 0 R
+.%liverange 0 $W9 95:113
+.%liverange 0 ~$W9 114:131
+.%liverange 0 $R9 132:132
+.%var $l0006!work[8] 0 R
+.%liverange 0 $W8 94:100
+.%liverange 0 ~$W8 101:104
+.%liverange 0 $R8 132:132
+.%var $l0006!work[7] 0 R
+.%liverange 0 $W7 93:113
+.%liverange 0 ~$W7 114:131
+.%liverange 0 $R7 132:132
+.%var $l0006!work[6] 0 R
+.%liverange 0 $W6 92:113
+.%liverange 0 ~$W6 114:131
+.%liverange 0 $R6 132:132
+.%var $l0006!work[5] 0 R
+.%liverange 0 $W5 91:113
+.%liverange 0 ~$W5 114:131
+.%liverange 0 $R5 132:132
+.%var $l0006!work[4] 0 R
+.%liverange 0 $W4 90:113
+.%liverange 0 ~$W4 114:131
+.%liverange 0 $R4 132:132
+.%var $l0006!work[3] 0 R
+.%liverange 0 $W3 89:113
+.%liverange 0 ~$W3 114:131
+.%liverange 0 $R3 132:132
+.%var $l0006!work[2] 0 R
+.%liverange 0 $W2 88:113
+.%liverange 0 ~$W2 114:131
+.%liverange 0 $R2 132:132
+.%var $l0006!work[1] 0 R
+.%liverange 0 $W1 87:113
+.%liverange 0 ~$W1 114:131
+.%liverange 0 $R1 132:132
+.%var $l0006!work[0] 0 R
+.%liverange 0 $W0 86:112
+.%liverange 0 $R0 132:132
+.%var l0006!len16 0 R
+.%liverange 0 A2 85:113
+.%liverange 0 ~A2 114:131
+.%var l0006!ring_address 0 R
+.%liverange 0 B10 84:113
+.%liverange 0 ~B10 114:131
+.%var l0006!event 0 R
+.%liverange 0 A1 83:110
+.%liverange 0 B9 111:113
+.%liverange 0 ~B9 114:131
+.%var $l0005!work[15] 0 R
+.%liverange 0 $W15 132:132
+.%liverange 0 $R15 132:132
+.%var $l0005!work[14] 0 R
+.%liverange 0 $W14 132:132
+.%liverange 0 $R14 132:132
+.%var $l0005!work[13] 0 R
+.%liverange 0 $W13 132:132
+.%liverange 0 $R13 132:132
+.%var $l0005!work[12] 0 R
+.%liverange 0 $W12 132:132
+.%liverange 0 $R12 132:132
+.%var $l0005!work[11] 0 R
+.%liverange 0 $W11 132:132
+.%liverange 0 $R11 132:132
+.%var $l0005!work[10] 0 R
+.%liverange 0 $W10 132:132
+.%liverange 0 $R10 132:132
+.%var $l0005!work[9] 0 R
+.%liverange 0 $W9 132:132
+.%liverange 0 $R9 132:132
+.%var $l0005!work[8] 0 R
+.%liverange 0 $W8 132:132
+.%liverange 0 $R8 132:132
+.%var $l0005!work[7] 0 R
+.%liverange 0 $W7 132:132
+.%liverange 0 $R7 56:67
+.%liverange 0 ~$R7 54:55 114:131
+.%var $l0005!work[6] 0 R
+.%liverange 0 $W6 132:132
+.%liverange 0 $R6 56:67
+.%liverange 0 ~$R6 54:55 114:131
+.%var $l0005!work[5] 0 R
+.%liverange 0 $W5 132:132
+.%liverange 0 $R5 56:67
+.%liverange 0 ~$R5 54:55 114:131
+.%var $l0005!work[4] 0 R
+.%liverange 0 $W4 132:132
+.%liverange 0 $R4 56:67
+.%liverange 0 ~$R4 54:55 114:131
+.%var $l0005!work[3] 0 R
+.%liverange 0 $W3 132:132
+.%liverange 0 $R3 56:67
+.%liverange 0 ~$R3 54:55 114:131
+.%var $l0005!work[2] 0 R
+.%liverange 0 $W2 132:132
+.%liverange 0 $R2 56:67
+.%liverange 0 ~$R2 54:55 114:131
+.%var $l0005!work[1] 0 R
+.%liverange 0 $W1 132:132
+.%liverange 0 $R1 56:67
+.%liverange 0 ~$R1 54:55 114:131
+.%var $l0005!work[0] 0 R
+.%liverange 0 $W0 132:132
+.%liverange 0 $R0 56:67
+.%liverange 0 ~$R0 54:55 114:131
+.%var l0005!len16 0 R
+.%liverange 0 B8 54:67
+.%liverange 0 ~B8 114:131
+.%var l0005!ring_address 0 R
+.%liverange 0 B7 53:67
+.%liverange 0 ~B7 114:131
+.%var l0004!addr 0 R
+.%liverange 0 B9 41:48
+.%liverange 0 ~B9 40:40 114:131
+.%var $l0004!xfer 0 R
+.%liverange 0 $W1 43:48
+.%liverange 0 ~$W1 40:42 114:131
+.%liverange 0 $R1 132:132
+.%var l0003!temp 0 R
+.%liverange 0 B8 25:48
+.%liverange 0 ~B8 114:131
+.%var l0003!addr 0 R
+.%liverange 0 B7 23:23
+.%liverange 0 A3 24:48
+.%liverange 0 ~A3 114:131
+.%var $l0003!xfer 0 R
+.%liverange 0 $W1 31:39
+.%liverange 0 ~$W1 40:42
+.%liverange 0 $R1 132:132
+.%var l0002!addr 0 R
+.%liverange 0 B6 16:48
+.%liverange 0 ~B6 114:131
+.%var $l0002!xfer[2] 0 R
+.%liverange 0 $W3 21:48
+.%liverange 0 ~$W3 114:131
+.%liverange 0 $R3 132:132
+.%var $l0002!xfer[1] 0 R
+.%liverange 0 $W2 132:132
+.%liverange 0 $R2 132:132
+.%var $l0002!xfer[0] 0 R
+.%liverange 0 $W1 20:30
+.%liverange 0 $R1 132:132
+.%var l0001!source 0 R
+.%liverange 0 B1 46:48
+.%liverange 0 ~B1 40:45 114:131
+.%var $l0001!event_data 0 R
+.%liverange 0 $W0 16:48
+.%liverange 0 ~$W0 114:131
+.%liverange 0 $R0 16:48
+.%liverange 0 ~$R0 114:131
+.%var @l0000!work_handled 0 R
+.%liverange 0 @B0 0:131
+.%var l0000!address2 0 R
+.%liverange 0 B5 35:48 77:113
+.%liverange 0 ~B5 114:131
+.%var l0000!address1 0 R
+.%liverange 0 B4 34:48 76:113
+.%liverange 0 ~B4 114:131
+.%var l0000!address 0 R
+.%liverange 0 B3 33:48 75:113
+.%liverange 0 ~B3 114:131
+.%var l0000!island 0 R
+.%liverange 0 B15 6:131
+.%var l0000!ctxt_num 0 R
+.%liverange 0 B2 3:131
+.%var l0000!me_num 0 R
+.%liverange 0 B14 4:4
+.%liverange 0 A0 5:131
+.%var __arithmetic_tmp__ 0 R
+.%liverange 0 B1 18:39
+.%liverange 0 ~B1 40:45
+.%var me_ctxt 0 R
+.%liverange 0 B13 124:131
+.%var l0009!s1 1 R
+.%liverange 0 G1 114:114
+.%var l0008!s1 1 R
+.%liverange 0 G2 106:106
+.%var l0007!s1 1 R
+.%liverange 0 G1 74:74
+.%var l0007!s0 1 R
+.%liverange 0 G1 72:73
+.%var l0006!s1 1 R
+.%liverange 0 G1 103:107
+.%var l0004!s1 1 R
+.%liverange 0 G2 44:44
+.%var l0003!s1 1 R
+.%liverange 0 G2 32:32
+.%var l0002!s1 1 R
+.%liverange 0 G2 22:22
+.%var l0001!event_sig 1 R
+.%liverange 0 G1 15:47
+.%var l0000!s5 1 R
+.%liverange 0 G5 50:50 81:81
+.%var l0000!s4 1 R
+.%liverange 0 G4 39:39 50:50
+.%var l0000!s1 1 R
+.%liverange 0 G1 56:56
+.%scope end
+.%import_expr common_code 109 <43:43:15,41:40:13,34:22:0> 101 &bp +
+.%import_expr common_code 67 <43:43:15,41:40:13,34:22:0> 114 &bp +
+.%import_expr common_code 66 <43:43:15,41:40:13,34:22:0> 54 &bp +
+.%import_expr common_code 63 <43:43:15,41:40:13,34:22:0> 123 &bp +
+.%import_expr common_code 62 <43:43:15,41:40:13,34:22:0> 64 &bp +
+.%import_expr common_code 60 <43:43:15,41:40:13,34:22:0> 123 &bp +
+.%import_expr common_code 59 <43:43:15,41:40:13,34:22:0> 61 &bp +
+.%import_expr common_code 57 <43:43:15,41:40:13,34:22:0> 54 &bp +
+.%import_expr common_code 48 <43:43:15,41:40:13,34:22:0> 114 &bp +
+.%import_expr common_code 47 <43:43:15,41:40:13,34:22:0> 40 &bp +
+.%import_expr common_code 14 <43:43:15,41:40:13,34:22:0> 114 &bp +
+.%import_expr common_code 13 <43:43:15,41:40:13,34:22:0> 15 &bp +
+.%import_expr common_code 11 <43:43:15,41:40:13,34:22:0> 49 &bp +
+.%import_expr common_code 9 <43:43:15,41:40:13,34:22:0> 68 &bp +
+.0 00F000020300 common_code
+	.page
+	;;; a Defines - WORK_LENGTH must be 6 for this test
+	;; i Local scratch
+	;;; a Copyright
+	;;; a Macros
+	    ;; m cls_init_ring( ring_number, base_address, log_size  )
+	;;; a Copyright
+	;;; a CLS Event manager configuring macros
+	;;  m cls_event_filter_config( filter, mask, match, filter_type )
+	; Configure an event filter to a provided mask/match and filter type
+	;;; a Autopush signal monitoring macros
+	;;  m cls_autopush_monitor_config( filter, me_num, xfer_reg, signal )
+	; Configure an autopush monitor for a filter with ME number, transfer register and signal
+	;;  m cls_autopush_monitor_engage( filter )
+	; This macro should be called to start monitoring an event filter, after autopush_monitor_config has been
+	;  called once.
+	; The macro uses 'one shot acknowledge'
+	;;  m cls_autopush_user_event( event )
+	; This macro pushes an event into UserEvent in the CLS event manager
+	;;; a Documentation
+	;;; a Globals
+	.reg l0000!me_num l0000!ctxt_num l0000!island l0000!address l0000!address1 l0000!address2
+	.reg @l0000!work_handled
+	    .sig l0000!s1 l0000!s2 l0000!s3 l0000!s4 l0000!s5
+	    .addr l0000!s1 1
+	    .addr l0000!s2 2
+	    .addr l0000!s3 3
+	    .addr l0000!s4 4
+	    .addr l0000!s5 5
+	;;; a The test code
+	    immed[@l0000!work_handled,0]
+.1 00FC044C0300 common_code
+	    local_csr_rd[ active_ctx_sts ]
+.2 00F000010B00 common_code
+	    immed[ l0000!ctxt_num, 0 ]
+.3 009434E109CF common_code
+	    l0000!me_num = 15 & (l0000!ctxt_num>>3)
+.4 00AAC4013B04 common_code
+	    l0000!me_num = l0000!me_num - 4
+.5 209584F109FF common_code
+	    l0000!island = 127 & (l0000!ctxt_num>>24)
+.6 00B444210B07 common_code
+	    l0000!ctxt_num = l0000!ctxt_num & 7
+.7 00FC172C0040 common_code
+	    local_csr_wr[ mailbox0, l0000!me_num ]
+.8 00AAB00C0040 common_code
+	    alu[--,l0000!me_num,-,0]
+.9 00D811008120 common_code
+	    beq[put_entries#]
+.10 00AAB00C1040 common_code
+	    alu[--,l0000!me_num,-,4]
+.11 00D80C408120 common_code
+	    beq[get_entries#]
+.12 00AAB00C0840 common_code
+	    alu[--,l0000!me_num,-,2]
+.13 00D803C08120 common_code
+	    beq[event_monitor#]
+.14 00D81C808038 common_code
+	    br[ test_passed#]
+.15 00F200211B00 common_code
+	    .begin
+	    .reg volatile $l0001!event_data
+	    .sig volatile l0001!event_sig
+	    .reg l0001!source
+	event_monitor#:
+	.macro_ref     cls_event_filter_config( 1, (0xf), (0x1), (5) )
+	    .begin
+	    .reg $l0002!xfer[3]
+	    .xfer_order $l0002!xfer[0]
+	    .reg l0002!addr
+	    .sig l0002!s1
+	    l0002!addr = 0x20000
+.16 00BA44611B40 common_code
+	    l0002!addr = l0002!addr | (1 << 6)
+.17 00F00001070F common_code
+	    $l0002!xfer[0] = (0xf) | ((5) << 24 )
+.18 00F440510700 common_code
+	    $l0002!xfer[0] = (0xf) | ((5) << 24 ) ; second part
+.19 00A000110700 common_code
+	    $l0002!xfer[0] = (0xf) | ((5) << 24 ) ; third part
+.20 00F0000C0403 common_code
+	    $l0002!xfer[2] = (0x1)
+.21 044F241118D0 common_code
+	    cls[write, $l0002!xfer[0], l0002!addr, 0x10, 3], ctx_swap[l0002!s1]
+.22 00F200311F02 common_code
+	    .end
+	.end_macro_ref     cls_event_filter_config
+	.macro_ref     cls_autopush_monitor_config( 1, l0000!me_num, 0, $event_data, event_sig )
+	    .begin
+	    .reg $l0003!xfer
+	    .reg l0003!addr
+	    .reg l0003!temp
+	    .sig l0003!s1
+	    l0003!addr = 0x30200
+.23 00AA44311F08 common_code
+	    l0003!addr = l0003!addr | (1 << 3)
+.24 00B0848C1040 common_code
+	          ;$xfer = ((me_num+4) << 24 ) | (signal<<16) | (xfer_reg<<2) | (ctxt_num<<7) | (ctxt_num<<19)
+	    l0003!temp = l0000!me_num + 4
+.25 0090848122C0 common_code
+	    l0003!temp = l0003!temp << 24
+.26 009B048922C1 common_code
+	    l0003!temp = l0003!temp | (&event_sig << 16 )
+.27 009BE48922C0 common_code
+	    l0003!temp = l0003!temp | (&$event_data << 2 )
+.28 00BA44812300 common_code
+	    l0003!temp = l0003!temp | (0 << 7 )
+.29 00BA44812300 common_code
+	    l0003!temp = l0003!temp | (0 << 19 )
+.30 00A000112300 common_code
+	    $l0003!xfer = l0003!temp
+.31 044F20130043 common_code
+	    cls[write, $l0003!xfer, l0003!addr, 0, 1], ctx_swap[l0003!s1]
+.32 0091E43316C0 common_code
+	    .end
+	.end_macro_ref     cls_autopush_monitor_config
+	    ; INTERTHREAD_SIG Csr	
+	  ; ME number = bits [13:9]
+	  ; Thread #  = bits [8:6]
+	  ; Signal #  = bits [5:2]
+	  alu_shf[l0000!address,--,b,5,<<2]              ; signal_number=5
+.33 009B74490EC8 common_code
+	  alu_shf[l0000!address1,l0000!address,or,8,<<9]       ; me_num
+.34 009B74590EC4 common_code
+	  alu_shf[l0000!address2,l0000!address,or,4,<<9]       ; me_num
+.35 004E000913C0 common_code
+	  ct[interthread_signal, -- ,l0000!address1,0,1]    ; Send interthread signal 
+.36 004E000917C0 common_code
+	  ct[interthread_signal, -- ,l0000!address2,0,1]    ; Send interthread signal 
+.37 00FC17AC2308 common_code
+	    local_csr_wr[mailbox2, 0x8]
+.38 00E000000010 common_code
+	    ctx_arb[l0000!s4]
+.39 00FC17EC2308 common_code
+	    local_csr_wr[mailbox3, 0x8]
+.40 00F200312700 common_code
+	event_loop#:
+	.macro_ref     cls_autopush_monitor_engage( 1 )
+	    .begin
+	    .reg $l0004!xfer
+	    .reg l0004!addr
+	    .sig l0004!s1
+	m002#:
+	    l0004!addr = 0x30000
+.41 00BA44912708 common_code
+	    l0004!addr = l0004!addr | (1 << 3)
+.42 00F0003C0401 common_code
+	    $l0004!xfer = 1 | (3<<8)
+.43 044F201124C0 common_code
+	    cls[write, $l0004!xfer, l0004!addr, 0, 1], ctx_swap[l0004!s1]
+.44 00E000000002 common_code
+	    .end
+	.end_macro_ref     cls_autopush_monitor_engage
+	    ctx_arb[l0001!event_sig]
+.45 0094441001CF common_code
+	    l0001!source = ($l0001!event_data>>4) & 0xf
+.46 00AAF0010702 common_code
+	    alu[--,l0001!source,-,2]
+.47 00D80A008121 common_code
+	    bne[event_loop#]
+.48 00D81C808038 common_code
+	    .end
+	event_loop_done#:
+	    br[test_passed#]
+.49 00E000000030 common_code
+	    .begin
+	    .reg l0005!event
+	    .reg l0005!ring_address
+	    .reg l0005!len16
+	    .reg $l0005!work[16]
+	    .xfer_order $l0005!work[0]
+	get_entries#:
+	    ctx_arb[l0000!s4,l0000!s5]
+.50 00FC17AC2308 common_code
+	    local_csr_wr[mailbox2, 0x8]
+.51 00FC17EC2308 common_code
+	    local_csr_wr[mailbox3, 0x8]
+.52 00F000011F00 common_code
+	    l0005!ring_address = 0
+.53 00F000F12380 common_code
+	    l0005!len16 = (1<<7)|((0xf)<<8)
+.54 00A030012300 common_code
+	get_loop#:
+	    alu[ --, --, b, l0005!len16 ]
+.55 264F1E011CC0 common_code
+	    cls[ring_get, $l0005!work[0], l0005!ring_address, 0, 8], indirect_ref, ctx_swap[l0000!s1]
+.56 00AAB00C0001 common_code
+	    alu[--,$l0005!work[1],-,0]
+.57 00D80D808120 common_code
+	    beq[get_loop#]
+.58 00AAB00C0401 common_code
+	    alu[--,$l0005!work[1],-,1]
+.59 00D80F408120 common_code
+	    beq[pass_check1#]
+.60 00D81EC08038 common_code
+	    br[test_failed#]
+.61 00AAB00C0802 common_code
+	pass_check1#:
+	    alu[--,$l0005!work[2],-,2]
+.62 00D810008120 common_code
+	    beq[pass_check2#]
+.63 00D81EC08038 common_code
+	    br[test_failed#]
+.64 00B0C8020301 common_code
+	pass_check2#:
+	    alu[@l0000!work_handled,@l0000!work_handled,+,1]
+.65 00AAF0020306 common_code
+	    alu[--,@l0000!work_handled,-,6]
+.66 00D80D808121 common_code
+	    bne[get_loop#]
+.67 00D81C808038 common_code
+	    br[work_complete#]
+.68 00F2004C0400 common_code
+	    .end
+	    .begin
+	    .reg l0006!event
+	    .reg l0006!ring_address
+	    .reg l0006!len16
+	    .sig l0006!s1
+	    .reg $l0006!work[16]
+	    .xfer_order $l0006!work[0]
+	put_entries#:
+	.macro_ref     cls_init_ring( 0, 0x8000, 4 )
+	        .begin
+	        .sig l0007!s0 l0007!s1
+	        .reg $l0007!cls_ring_base $l0007!cls_ring_ptrs l0007!cls_ring_address
+	        $l0007!cls_ring_base = ((4<<16) | ((0x8000>>7)<<0) )
+.69 00F0000C0001 common_code
+	        $l0007!cls_ring_ptrs = 0
+.70 00F200112B00 common_code
+	        l0007!cls_ring_address = (0x10000 + (0<<3))
+.71 044F10012BC0 common_code
+	        cls[ write, $l0007!cls_ring_base, l0007!cls_ring_address,   0, 1], sig_done[l0007!s0] ; s0 is not required here, but the assembler throws a dumb warning
+.72 00B0C4A12B80 common_code
+	        l0007!cls_ring_address = l0007!cls_ring_address + 128
+.73 044F101128C0 common_code
+	        cls[ write, $l0007!cls_ring_ptrs, l0007!cls_ring_address, 0, 1], ctx_swap[l0007!s1]
+.74 0091E43312C0 common_code
+	        .io_completed $l0007!cls_ring_base l0007!s0
+	        .end
+	.end_macro_ref     cls_init_ring
+	    ; INTERTHREAD_SIG Csr	
+	  ; ME number = bits [13:9]
+	  ; Thread #  = bits [8:6]
+	  ; Signal #  = bits [5:2]
+	  alu_shf[l0000!address,--,b,4,<<2]              ; signal_number=4
+.75 009B74490EC8 common_code
+	  alu_shf[l0000!address1,l0000!address,or,8,<<9]       ; me_num
+.76 009B74590EC6 common_code
+	  alu_shf[l0000!address2,l0000!address,or,6,<<9]     ; me_num
+.77 004E000913C0 common_code
+	  ct[interthread_signal, -- ,l0000!address1,0,1]    ; Send interthread signal 
+.78 004E000917C0 common_code
+	  ct[interthread_signal, -- ,l0000!address2,0,1]    ; Send interthread signal 
+.79 00FC17AC2308 common_code
+	    local_csr_wr[mailbox2, 0x8]
+.80 00E000000020 common_code
+	    ctx_arb[l0000!s5]
+.81 00FC17EC2308 common_code
+	    local_csr_wr[mailbox3, 0x8]
+.82 00F0000C4441 common_code
+	    l0006!event = (1<<4) | (1<<0)
+.83 00F000012B00 common_code
+	    l0006!ring_address = 0
+.84 00F000FE0042 common_code
+	    l0006!len16 = (1<<7)|((0xf)<<8)
+.85 00F0012CD000 common_code
+	    $l0006!work[0] = 0x1234
+.86 00F0000C0401 common_code
+	    $l0006!work[1] = 0x1
+.87 00F0000C0802 common_code
+	    $l0006!work[2] = 0x2
+.88 00F0000C0C03 common_code
+	    $l0006!work[3] = 0x3
+.89 00F0000C1004 common_code
+	    $l0006!work[4] = 0x4
+.90 00F0000C1405 common_code
+	    $l0006!work[5] = 0x5
+.91 00F0000C1806 common_code
+	    $l0006!work[6] = 0x6
+.92 00F0000C1C07 common_code
+	    $l0006!work[7] = 0x7
+.93 00F0000C2008 common_code
+	    $l0006!work[8] = 0x8
+.94 00F0000C2409 common_code
+	    $l0006!work[9] = 0x9
+.95 00F0000C280A common_code
+	    $l0006!work[10] = 0xa
+.96 00F0000C2C0B common_code
+	    $l0006!work[11] = 0xb
+.97 00F0000C300C common_code
+	    $l0006!work[12] = 0xc
+.98 00F0000C340D common_code
+	    $l0006!work[13] = 0xd
+.99 00F0000C380E common_code
+	    $l0006!work[14] = 0xe
+.100 00F0000C3C0F common_code
+	    $l0006!work[15] = 0xf
+.101 00A0700C0042 common_code
+	put_loop#:
+	    alu[ --, --, b, l0006!len16 ]
+.102 2A4F1E012BC0 common_code
+	    cls[ring_put, $l0006!work[0], l0006!ring_address, 0, 8], indirect_ref, sig_done[l0006!s1]
+.103 00F200312F04 common_code
+	.macro_ref     cls_autopush_user_event( l0006!event )
+	    .begin
+	    .reg $l0008!xfer
+	    .reg l0008!addr
+	    .sig l0008!s1
+	    l0008!addr = 0x30400
+.104 00A0408C0041 common_code
+	    $l0008!xfer = l0006!event
+.105 044F20812CC0 common_code
+	    cls[write, $l0008!xfer, l0008!addr, 0, 1], ctx_swap[l0008!s1]
+.106 00E000000002 common_code
+	    .end
+	.end_macro_ref     cls_autopush_user_event
+	    ctx_arb[l0006!s1]
+.107 00B0C8020301 common_code
+	    alu[@l0000!work_handled,@l0000!work_handled,+,1]
+.108 00AAF0020306 common_code
+	    alu[--,@l0000!work_handled,-,6]
+.109 00D819408121 common_code
+	    bne[put_loop#]
+.110 00F000012721 common_code
+	put_loop_done#:
+	    l0006!event = (2<<4) | (1<<0)
+.111 00F200313304 common_code
+	.macro_ref     cls_autopush_user_event( l0006!event )
+	    .begin
+	    .reg $l0009!xfer
+	    .reg l0009!addr
+	    .sig l0009!s1
+	    l0009!addr = 0x30400
+.112 00A000012700 common_code
+	    $l0009!xfer = l0006!event
+.113 044F100130C0 common_code
+	    cls[write, $l0009!xfer, l0009!addr, 0, 1], ctx_swap[l0009!s1]
+.114 00FC172C4711 common_code
+	    .end
+	.end_macro_ref     cls_autopush_user_event
+	    .end
+	;;; a The end
+	work_complete#:
+	test_passed#:
+	test_passed_all_contexts_finished#:
+	        local_csr_wr[mailbox0, 0x11]
+.115 00FC176C8B22 common_code
+		local_csr_wr[mailbox1, 0x22]
+.116 00FC17ACCF33 common_code
+		local_csr_wr[mailbox2, 0x33]
+.117 00FC17ED1344 common_code
+		local_csr_wr[mailbox3, 0x44]
+.118 00E000020000 common_code
+		ctx_arb[bpt]
+.119 00F0000C0300 common_code
+		nop
+.120 00F0000C0300 common_code
+		nop
+.121 00F0000C0300 common_code
+		nop
+.122 00F0000C0300 common_code
+		nop
+.123 00F00FA13717 common_code
+	    ;; b The end
+	test_failed#:
+	    me_ctxt = 0xfa17
+.124 00FC17213700 common_code
+	    local_csr_wr[mailbox0, me_ctxt]
+.125 009B04D90A40 common_code
+	    me_ctxt = (l0000!me_num<<16) | l0000!ctxt_num
+.126 00FC17613700 common_code
+	    local_csr_wr[mailbox1, me_ctxt]
+.127 00E000020000 common_code
+	    ctx_arb[bpt]
+.128 00F0000C0300 common_code
+	    nop
+.129 00F0000C0300 common_code
+	    nop
+.130 00F0000C0300 common_code
+	    nop
+.131 00F0000C0300 common_code
+	    nop
+	.exit$l0009!xferl0009!addrl0009!s1+ucode_end
+

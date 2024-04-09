@@ -1,0 +1,821 @@
++version:  10/31/2000
++switches:  
++nfas_version: 6.x-devel.Internal [nfas rev 35]
++nfas_date: Jan 10 2023 14:40:54
++current_date: Tue Jan 17 16:11:57 2023
+
+.chip_id nfp-7xxxc 0x00 0x10
+
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.LEGACY_INDIRECT_REF_MODE const 0
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.THIRD_PARTY_ADDRESS_MODE const 0
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+
+.%init_nn_mode --
+.%third_party_addressing 40bit
+.%indirect_ref_mode nfp6000
+.%neighbor_usage 0x00
+.%case_sensitivity 0
+
+.%resource CAM 0
+.%resource CRC 0
+.%resource T_INDEX 2
+.%resource BYTE_INDEX 0
+
+
+:check_read_data_32bit# 98
+:check_read_data_64bit# 1
+:local_scratch_done_read_checks# 222
+:local_scratch_len_loop# 162
+:local_scratch_outer_loop# 161
+:local_scratch_read_loop# 209
+:local_scratch_set_count# 178
+:local_scratch_set_len4_limit# 175
+:local_scratch_set_len8_limit# 177
+:local_scratch_test# 153
+:local_scratch_write_loop# 179
+:start_test# 233
+:test_failed# 150
+:test_passed# 147
+*-- no_destination 0
+*trans_count gpr_b_rel 06
+*data_ref gpr_b_rel 05
+*expect_data gpr_b_rel 04
+*offset gpr_b_rel 03
+*me_num gpr_b_rel 02
+*cluster gpr_b_rel 01
+*len gpr_b_rel 00
+*endlen gpr_a_rel 08
+*data2 gpr_a_rel 07
+*jump_offset gpr_a_rel 06
+*return_address gpr_a_rel 05
+*count gpr_a_rel 04
+*tmp gpr_a_rel 03
+*inc_amount gpr_a_rel 02
+*base gpr_a_rel 01
+*data gpr_a_rel 00
+*$xfer15 xfer_rel 0F 0 both 1 0x1F
+*$xfer14 xfer_rel 0E 0 both 2 0x1F
+*$xfer13 xfer_rel 0D 0 both 3 0x1F
+*$xfer12 xfer_rel 0C 0 both 4 0x1F
+*$xfer11 xfer_rel 0B 0 both 5 0x1F
+*$xfer10 xfer_rel 0A 0 both 6 0x1F
+*$xfer9 xfer_rel 09 0 both 7 0x1F
+*$xfer8 xfer_rel 08 0 both 8 0x1F
+*$xfer7 xfer_rel 07 0 both 9 0x1F
+*$xfer6 xfer_rel 06 0 both 10 0x1F
+*$xfer5 xfer_rel 05 0 both 11 0x1F
+*$xfer4 xfer_rel 04 0 both 12 0x1F
+*$xfer3 xfer_rel 03 0 both 13 0x1F
+*$xfer2 xfer_rel 02 0 both 14 0x1F
+*$xfer1 xfer_rel 01 0 both 15 0x1F
+*$xfer0 xfer_rel 00 0 both 16 0x1F
+*l0000!sig2 signal 02 0
+*l0000!sig1 signal 01 0
+.%type R
+.%type SI
+.%scope global
+.%var $xfer0 0 R
+.%liverange 0 $W0 241:241
+.%liverange 0 $R0 98:149 219:232
+.%liverange 0 ~$R0 150:152 161:218
+.%var $xfer1 0 R
+.%liverange 0 $W1 241:241
+.%liverange 0 $R1 98:149 219:232
+.%liverange 0 ~$R1 150:152 161:218
+.%var $xfer2 0 R
+.%liverange 0 $W2 241:241
+.%liverange 0 $R2 98:149 219:232
+.%liverange 0 ~$R2 150:152 161:218
+.%var $xfer3 0 R
+.%liverange 0 $W3 241:241
+.%liverange 0 $R3 98:149 219:232
+.%liverange 0 ~$R3 150:152 161:218
+.%var $xfer4 0 R
+.%liverange 0 $W4 241:241
+.%liverange 0 $R4 98:149 219:232
+.%liverange 0 ~$R4 150:152 161:218
+.%var $xfer5 0 R
+.%liverange 0 $W5 241:241
+.%liverange 0 $R5 98:149 219:232
+.%liverange 0 ~$R5 150:152 161:218
+.%var $xfer6 0 R
+.%liverange 0 $W6 241:241
+.%liverange 0 $R6 98:149 219:232
+.%liverange 0 ~$R6 150:152 161:218
+.%var $xfer7 0 R
+.%liverange 0 $W7 241:241
+.%liverange 0 $R7 98:149 219:232
+.%liverange 0 ~$R7 150:152 161:218
+.%var $xfer8 0 R
+.%liverange 0 $W8 241:241
+.%liverange 0 $R8 241:241
+.%var $xfer9 0 R
+.%liverange 0 $W9 241:241
+.%liverange 0 $R9 241:241
+.%var $xfer10 0 R
+.%liverange 0 $W10 241:241
+.%liverange 0 $R10 241:241
+.%var $xfer11 0 R
+.%liverange 0 $W11 241:241
+.%liverange 0 $R11 241:241
+.%var $xfer12 0 R
+.%liverange 0 $W12 241:241
+.%liverange 0 $R12 241:241
+.%var $xfer13 0 R
+.%liverange 0 $W13 241:241
+.%liverange 0 $R13 241:241
+.%var $xfer14 0 R
+.%liverange 0 $W14 241:241
+.%liverange 0 $R14 241:241
+.%var $xfer15 0 R
+.%liverange 0 $W15 241:241
+.%liverange 0 $R15 241:241
+.%var data 0 R
+.%liverange 0 A0 98:149 153:232 235:237
+.%liverange 0 ~A0 150:152
+.%var base 0 R
+.%liverange 0 A1 98:149 154:232
+.%liverange 0 ~A1 150:152
+.%var inc_amount 0 R
+.%liverange 0 A2 98:149 165:232
+.%liverange 0 ~A2 150:152 161:164
+.%var tmp 0 R
+.%liverange 0 A3 98:149 166:232
+.%liverange 0 ~A3 150:152 161:165
+.%var count 0 R
+.%liverange 0 A4 98:149 179:232
+.%liverange 0 ~A4 150:152 161:178
+.%var return_address 0 R
+.%liverange 0 A5 98:149 160:232
+.%liverange 0 ~A5 150:152
+.%var jump_offset 0 R
+.%liverange 0 A6 98:149 169:232
+.%liverange 0 ~A6 150:152 161:168
+.%var data2 0 R
+.%liverange 0 A7 98:149 158:232
+.%liverange 0 ~A7 150:152
+.%var endlen 0 R
+.%liverange 0 A8 98:149 159:232
+.%liverange 0 ~A8 150:152
+.%var len 0 R
+.%liverange 0 B0 98:149 162:232
+.%liverange 0 ~B0 150:152 161:161
+.%var cluster 0 R
+.%liverange 0 B1 98:149 153:232 236:237
+.%liverange 0 ~B1 150:152
+.%var me_num 0 R
+.%liverange 0 B2 98:149 153:232 237:237
+.%liverange 0 ~B2 150:152
+.%var offset 0 R
+.%liverange 0 B3 98:149 164:232
+.%liverange 0 ~B3 150:152 161:163
+.%var expect_data 0 R
+.%liverange 0 B4 4:152 220:232
+.%liverange 0 ~B4 161:219
+.%var data_ref 0 R
+.%liverange 0 B5 98:149 161:232
+.%liverange 0 ~B5 150:152
+.%var trans_count 0 R
+.%liverange 0 B6 98:149 174:174 176:176 178:232
+.%liverange 0 ~B6 150:152 161:173 175:175 177:177
+.%var l0000!sig2 1 R
+.%liverange 0 G2 219:219
+.%var l0000!sig1 1 R
+.%liverange 0 G1 202:202
+.%scope end
+.%import_expr common_code 237 <43:43:15,41:40:13,34:22:0> 153 &bp +
+.%import_expr common_code 232 <43:43:15,41:40:13,34:22:0> 147 &bp +
+.%import_expr common_code 231 <43:43:15,41:40:13,34:22:0> 161 &bp +
+.%import_expr common_code 228 <43:43:15,41:40:13,34:22:0> 162 &bp +
+.%import_expr common_code 225 <43:43:15,41:40:13,34:22:0> 209 &bp +
+.%import_expr common_code 221 <30:22:8,17:10:0> 98 &bp +
+.%import_expr common_code 206 <43:43:15,41:40:13,34:22:0> 179 &bp +
+.%import_expr common_code 176 <43:43:15,41:40:13,34:22:0> 178 &bp +
+.%import_expr common_code 174 <43:43:15,41:40:13,34:22:0> 178 &bp +
+.%import_expr common_code 172 <43:43:15,41:40:13,34:22:0> 175 &bp +
+.%import_expr common_code 170 <43:43:15,41:40:13,34:22:0> 177 &bp +
+.%import_expr common_code 159 <27:20:8,17:10:0> 222 &bp +
+.%import_expr common_code 144 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 141 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 138 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 135 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 132 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 129 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 126 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 123 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 120 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 117 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 114 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 111 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 108 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 105 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 102 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 99 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 95 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 92 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 89 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 86 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 83 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 80 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 77 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 74 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 71 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 68 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 65 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 62 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 59 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 56 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 53 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 50 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 47 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 44 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 41 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 38 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 35 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 32 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 29 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 26 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 23 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 20 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 17 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 14 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 11 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 8 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 5 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 2 <43:43:15,41:40:13,34:22:0> 150 &bp +
+.%import_expr common_code 0 <43:43:15,41:40:13,34:22:0> 233 &bp +
+.0 00D83A408038 common_code
+	.page
+	;-----------------------
+	; TEST_NAME: me_local_scratch_rw.uc
+	;-----------------------
+	br[start_test#]
+.1 00AAB0011172 common_code
+	.sig  l0000!sig1 l0000!sig2 l0000!sig3 l0000!sig4 l0000!sig5 l0000!sig6 l0000!sig7 l0000!sig8 l0000!sig9 l0000!sig10 l0000!sig11 l0000!sig12 l0000!sig13 l0000!sig14 l0000!sig15
+	.xfer_order $xfer0 $xfer1 $xfer2 $xfer3 $xfer4 $xfer5 $xfer6 $xfer7 $xfer8 $xfer9 $xfer10 $xfer11 $xfer12 $xfer13 $xfer14 $xfer15
+	.addr l0000!sig1 1
+	.addr l0000!sig2 2
+	.addr l0000!sig3 3
+	.addr l0000!sig4 4
+	.addr l0000!sig5 5
+	.addr l0000!sig6 6
+	.addr l0000!sig7 7
+	.addr l0000!sig8 8
+	.addr l0000!sig9 9
+	.addr l0000!sig10 10
+	.addr l0000!sig11 11
+	.addr l0000!sig12 12
+	.addr l0000!sig13 13
+	.addr l0000!sig14 14
+	.addr l0000!sig15 15
+	.areg  data          0
+	.areg  base          1
+	.areg inc_amount     2
+	.areg tmp            3
+	.areg count          4
+	.areg return_address 5
+	.areg jump_offset    6
+	.areg data2          7
+	.areg endlen         8
+	.areg me_and_cluster 9
+	.areg sig_gpr        10
+	.areg dma_data       11
+	.areg dma_address    12
+	.breg len         0
+	.breg cluster     1
+	.breg me_num      2
+	.breg offset      3
+	.breg expect_data 4
+	.breg data_ref    5
+	.breg trans_count 6
+	.breg ctr         7
+	.breg address     8
+	.breg tmp_b         9
+	.breg masked_data  10
+	#pragma addressing"32bit"
+	; This macro is used for CSR writes
+	; You must supply the CSP address and data
+	check_read_data_64bit#:
+	  	alu[--,*$index--, - , expect_data]
+.2 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.3 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.4 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.5 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.6 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.7 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.8 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.9 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.10 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.11 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.12 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.13 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.14 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.15 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.16 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.17 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.18 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.19 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.20 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.21 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.22 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.23 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.24 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.25 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.26 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.27 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.28 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.29 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.30 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.31 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.32 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.33 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.34 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.35 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.36 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.37 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.38 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.39 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.40 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.41 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.42 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.43 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.44 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.45 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.46 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.47 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.48 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.49 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.50 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.51 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.52 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.53 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.54 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.55 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.56 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.57 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.58 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.59 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.60 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.61 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.62 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.63 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.64 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.65 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.66 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.67 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.68 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.69 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.70 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.71 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.72 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.73 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.74 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.75 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.76 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.77 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.78 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.79 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.80 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.81 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.82 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.83 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.84 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.85 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.86 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.87 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.88 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.89 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.90 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.91 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.92 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.93 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.94 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.95 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.96 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.97 00E8000C0045 common_code
+		rtn[return_address]
+.98 00AAB0011172 common_code
+	check_read_data_32bit#:
+	  	alu[--,*$index--, - , expect_data]
+.99 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.100 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.101 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.102 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.103 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.104 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.105 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.106 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.107 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.108 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.109 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.110 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.111 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.112 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.113 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.114 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.115 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.116 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.117 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.118 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.119 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.120 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.121 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.122 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.123 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.124 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.125 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.126 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.127 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.128 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.129 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.130 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.131 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.132 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.133 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.134 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.135 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.136 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.137 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.138 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.139 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.140 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.141 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.142 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.143 00AAB0011172 common_code
+	  	alu[--,*$index--, - , expect_data]
+.144 00D825908121 common_code
+	  	bne[test_failed#], defer[1]
+.145 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.146 00E8000C0045 common_code
+		rtn[return_address]
+.147 00F0000C0300 common_code
+	test_passed#:
+		nop
+.148 00F0000C0300 common_code
+		nop
+.149 00E000010000 common_code
+		ctx_arb[kill], any
+.150 00F0000C0300 common_code
+	test_failed#:
+	        nop
+.151 00F0000C0300 common_code
+	        nop
+.152 00E000010000 common_code
+		ctx_arb[kill], any
+.153 008154110AC0 common_code
+	; Local Scratch = 8K x 64 bits = 16K x 32
+	;	Address = 16 bits
+	;		 [15:12] = ME num
+	;		 [11:3]  = Index to memory  (10 bits)  2**10 = 1K
+	local_scratch_test#:
+	;------------------------------------------
+	; BEGIN LOCAL_SCRATCH_RW test
+	;------------------------------------------
+	; ME num goes into bits [15:12]
+	alu_shf[base,--,b,me_num,<<11]
+.154 00F0000C0040 common_code
+	; MRT - Island ID = 1
+	;alu_shf[base,base,OR,1,<<26]
+	; Unique DATA for each ME
+	immed[data, 0]
+.155 008A44010640 common_code
+	alu_shf[data,data,or,cluster,<<28]
+.156 008A84010A40 common_code
+	alu_shf[data,data,or,me_num,<<24]
+.157 00A0447C0040 common_code
+	alu[data2,--,b,data]
+.158 00F0000C4448 common_code
+	immed[endlen,17]
+.159 00F0000F7845 common_code
+	load_addr[return_address,local_scratch_done_read_checks#]
+.160 00F000011700 common_code
+	immed[data_ref,0]
+.161 00F000010301 common_code
+	local_scratch_outer_loop#:
+	immed[len,1]
+.162 00FC07611700 common_code
+	local_scratch_len_loop#:
+	   local_csr_wr[t_index,data_ref]	; Write T_index with data_ref (Start at either $xfer0 or $xfer1)
+.163 00F000010F00 common_code
+	   immed[offset,0]
+.164 0081E42102C0 common_code
+	   alu_shf[inc_amount,--,b,len,<<2]
+.165 00AA84310310 common_code
+	   alu[tmp,16,-,len]
+.166 00F8000C0C43 common_code
+	   ; The jump_offset should be (16-length)*3    : There are 3 instructions per read data
+	   mul_step[tmp,3], 24x8_start
+.167 00F8800C0C43 common_code
+	   mul_step[tmp,3], 24x8_step1
+.168 00F8804C0046 common_code
+	   mul_step[jump_offset,--],    24x8_last
+.169 00AAF0010308 common_code
+	   ; Calculate the Maximum Transaction count we can do for this LENGTH, Limit trans_count to 16
+	   alu[--,len,-,8]
+.170 00D82C40812B common_code
+	   bgt[local_scratch_set_len8_limit#]
+.171 00AAF0010304 common_code
+	   alu[--,len,-,4]
+.172 00D82BC0812B common_code
+	   bgt[local_scratch_set_len4_limit#]
+.173 00F000011B10 common_code
+	   immed[trans_count,16]	; Count if LEN <= 4
+.174 00D82C808038 common_code
+	   br[local_scratch_set_count#]
+.175 00F000011B08 common_code
+	local_scratch_set_len4_limit#:
+	   immed[trans_count,8]	; Count if LEN > 4 
+.176 00D82C808038 common_code
+	   br[local_scratch_set_count#]
+.177 00F000011B08 common_code
+	local_scratch_set_len8_limit#:				; Count if LEN > 8
+	   immed[trans_count,8]
+.178 00A004411B00 common_code
+	local_scratch_set_count#:
+	  alu[count,--,b,trans_count]
+.179 00A0971C0040 common_code
+	  local_scratch_write_loop#:
+		alu[*$index++,data,+,0]
+.180 00A0971C0440 common_code
+		alu[*$index++,data,+,1]
+.181 00A0971C0840 common_code
+		alu[*$index++,data,+,2]
+.182 00A0971C0C40 common_code
+		alu[*$index++,data,+,3]
+.183 00A0971C1040 common_code
+		alu[*$index++,data,+,4]
+.184 00A0971C1440 common_code
+		alu[*$index++,data,+,5]
+.185 00A0971C1840 common_code
+		alu[*$index++,data,+,6]
+.186 00A0971C1C40 common_code
+		alu[*$index++,data,+,7]
+.187 00A0971C2040 common_code
+		alu[*$index++,data,+,8]
+.188 00A0971C2440 common_code
+		alu[*$index++,data,+,9]
+.189 00A0971C2840 common_code
+		alu[*$index++,data,+,10]
+.190 00A0971C2C40 common_code
+		alu[*$index++,data,+,11]
+.191 00A0971C3040 common_code
+		alu[*$index++,data,+,12]
+.192 00A0971C3440 common_code
+		alu[*$index++,data,+,13]
+.193 00A0971C3840 common_code
+		alu[*$index++,data,+,14]
+.194 00A0971C3C40 common_code
+		alu[*$index++,data,+,15]
+.195 00A0171C0300 common_code
+		alu[*$index++,--,b,0]
+.196 00AAC4310301 common_code
+		alu[tmp,len,-,1]
+.197 0081843B0243 common_code
+		alu_shf[tmp,--,b,tmp,<<8]           ; Length goes to bits [12:8]
+.198 008B94330643 common_code
+	  	alu_shf[tmp,tmp,or,1,<<7]		; 1 is for overriding Length 
+.199 008BD4330643 common_code
+	  	alu_shf[tmp,tmp,or,1,<<3]		; 1 is for overriding data_ref
+.200 008B04311643 common_code
+	  	alu_shf[tmp,tmp,or,data_ref,<<16]	; data_ref goes to bits [31:16]
+.201 064F1E010C41 common_code
+	  	cls[write,$xfer0,base,offset,8], ctx_swap[l0000!sig1], indirect_ref
+.202 00FC07611700 common_code
+		local_csr_wr[t_index,data_ref]	; Write T_index with data_ref (Start at either $xfer0 or $xfer1)
+.203 00B0C4310C42 common_code
+	  	alu[offset,offset,+,inc_amount]
+.204 00A084010040 common_code
+	  	alu[data,data,+,len]
+.205 00AA844C0444 common_code
+	  	alu[count,count,-,1]
+.206 00D82CC08121 common_code
+	  	bne[local_scratch_write_loop#]
+.207 00F000010F00 common_code
+	   immed[offset,0]
+.208 00A004411B00 common_code
+	   alu[count,--,b,trans_count]
+.209 00AAC4310301 common_code
+	   local_scratch_read_loop#:
+		alu[tmp,len,-,1]
+.210 0081E43B0243 common_code
+		alu_shf[tmp,--,b,tmp,<<2]
+.211 00A084311443 common_code
+		alu[tmp,tmp,+,data_ref]
+.212 00FC076C0043 common_code
+		local_csr_wr[t_index,tmp]	; Write T_index with ( (LEN-1) * 4) + data_ref
+.213 00AAC4310301 common_code
+		alu[tmp,len,-,1]
+.214 0081843B0243 common_code
+		alu_shf[tmp,--,b,tmp,<<8]           ; Length goes to bits [12:8]
+.215 008B94330643 common_code
+	  	alu_shf[tmp,tmp,or,1,<<7]		; 1 is for overriding Length 
+.216 008BD4330643 common_code
+	  	alu_shf[tmp,tmp,or,1,<<3]		; 1 is for overriding data_ref
+.217 008B04311643 common_code
+	  	alu_shf[tmp,tmp,or,data_ref,<<16]	; data_ref goes to bits [31:16]
+.218 024F2E010C41 common_code
+	 	cls[read,$xfer0,base,offset,8], ctx_swap[l0000!sig2], indirect_ref
+.219 00B084410047 common_code
+		alu[expect_data,data2,+,len]
+.220 00BAC4411301 common_code
+		alu[expect_data,expect_data,-,1]
+.221 00E8000D8846 common_code
+	        jump[jump_offset,check_read_data_32bit#], targets[check_read_data_32bit#]
+.222 00B0C4310C42 common_code
+	  local_scratch_done_read_checks#:
+	  	alu[offset,offset,+,inc_amount]
+.223 00A084710047 common_code
+	  	alu[data2,data2,+,len]
+.224 00AA844C0444 common_code
+	  	alu[count,count,-,1]
+.225 00D834408121 common_code
+	  	bne[local_scratch_read_loop#]
+.226 00B0C4010301 common_code
+	  alu[len,len,+,1]
+.227 00AAF0010048 common_code
+	  alu[--,len,-,endlen]
+.228 00D828808121 common_code
+	  bne[local_scratch_len_loop#]
+.229 00B0C4511704 common_code
+	alu[data_ref,data_ref,+,4]
+.230 00AAF0011708 common_code
+	alu[--,data_ref,-,8]
+.231 00D828408121 common_code
+	bne[local_scratch_outer_loop#]
+.232 00D824C08038 common_code
+	br[test_passed#]
+.233 00FC044C0300 common_code
+	;------------------------------------------
+	; END LOCAL_SCRATCH_RW test
+	;------------------------------------------
+	;--------------------------------------
+	; Set Up the BASE scratch address
+	; Each ME will use a different region
+	;--------------------------------------
+	start_test#:
+	; The ME_NUM is in bits [7:3]
+	local_csr_rd[active_ctx_sts]
+.234 00F0000C0040 common_code
+	immed[data,0]
+.235 0095841B1D40 common_code
+	alu_shf[cluster,0x7, and,data,>>24]
+.236 0094342B3D40 common_code
+	alu_shf[me_num,0xf, and,data,>>3]
+.237 00D826408038 common_code
+	br[local_scratch_test#]
+.238 00F0000C0300 common_code
+	nop
+.239 00F0000C0300 common_code
+	nop
+.240 00F0000C0300 common_code
+	nop
+	.entrancel0000!sig1l0000!sig2l0000!sig3l0000!sig4l0000!sig5l0000!sig6l0000!sig7l0000!sig8l0000!sig9l0000!sig10l0000!sig11l0000!sig12l0000!sig13l0000!sig14l0000!sig15+ucode_end
+

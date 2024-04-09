@@ -1,0 +1,349 @@
++version:  10/31/2000
++switches:  
++nfas_version: 6.x-devel.Internal [nfas rev 35]
++nfas_date: Jan 10 2023 14:40:54
++current_date: Tue Jan 17 16:11:48 2023
+
+.chip_id nfp-7xxxc 0x00 0x10
+
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.LEGACY_INDIRECT_REF_MODE const 0
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.THIRD_PARTY_ADDRESS_MODE const 0
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+
+.%init_nn_mode --
+.%third_party_addressing 40bit
+.%indirect_ref_mode nfp6000
+.%neighbor_usage 0x00
+.%case_sensitivity 0
+
+.%resource CAM 0
+.%resource CRC 0
+.%resource T_INDEX 0
+.%resource BYTE_INDEX 0
+
+
+:bad_dm_write_loop# 25
+:bad_read_loop# 35
+:m000_sleep_label# 31
+:read_loop# 41
+:test_failed# 60
+:test_passed# 57
+:write_loop# 12
+*-- no_destination 0
+*ctr gpr_b_rel 05
+*csr_data gpr_b_rel 04
+*len gpr_b_rel 03
+*me_num gpr_b_rel 02
+*island_num gpr_b_rel 01
+*address gpr_b_rel 00
+*end_count gpr_a_rel 08
+*expect3 gpr_a_rel 03
+*expect2 gpr_a_rel 02
+*expect1 gpr_a_rel 01
+*expect0 gpr_a_rel 00
+*$xfer15 xfer_rel 0F 0 both 1 0x1F
+*$xfer14 xfer_rel 0E 0 both 2 0x1F
+*$xfer13 xfer_rel 0D 0 both 3 0x1F
+*$xfer12 xfer_rel 0C 0 both 4 0x1F
+*$xfer11 xfer_rel 0B 0 both 5 0x1F
+*$xfer10 xfer_rel 0A 0 both 6 0x1F
+*$xfer9 xfer_rel 09 0 both 7 0x1F
+*$xfer8 xfer_rel 08 0 both 8 0x1F
+*$xfer7 xfer_rel 07 0 both 9 0x1F
+*$xfer6 xfer_rel 06 0 both 10 0x1F
+*$xfer5 xfer_rel 05 0 both 11 0x1F
+*$xfer4 xfer_rel 04 0 both 12 0x1F
+*$xfer3 xfer_rel 03 0 both 13 0x1F
+*$xfer2 xfer_rel 02 0 both 14 0x1F
+*$xfer1 xfer_rel 01 0 both 15 0x1F
+*$xfer0 xfer_rel 00 0 both 16 0x1F
+*l0000!sig12 signal 0C 0
+.%type R
+.%type SI
+.%scope global
+.%var $xfer0 0 R
+.%liverange 0 $W0 13:57
+.%liverange 0 ~$W0 12:12 60:62
+.%liverange 0 $R0 37:57
+.%liverange 0 ~$R0 35:36 60:62
+.%var $xfer1 0 R
+.%liverange 0 $W1 14:57
+.%liverange 0 ~$W1 12:13 60:62
+.%liverange 0 $R1 37:57
+.%liverange 0 ~$R1 35:36 60:62
+.%var $xfer2 0 R
+.%liverange 0 $W2 15:57
+.%liverange 0 ~$W2 12:14 60:62
+.%liverange 0 $R2 37:57
+.%liverange 0 ~$R2 35:36 60:62
+.%var $xfer3 0 R
+.%liverange 0 $W3 16:57
+.%liverange 0 ~$W3 12:15 60:62
+.%liverange 0 $R3 37:57
+.%liverange 0 ~$R3 35:36 60:62
+.%var $xfer4 0 R
+.%liverange 0 $W4 63:63
+.%liverange 0 $R4 63:63
+.%var $xfer5 0 R
+.%liverange 0 $W5 63:63
+.%liverange 0 $R5 63:63
+.%var $xfer6 0 R
+.%liverange 0 $W6 63:63
+.%liverange 0 $R6 63:63
+.%var $xfer7 0 R
+.%liverange 0 $W7 63:63
+.%liverange 0 $R7 63:63
+.%var $xfer8 0 R
+.%liverange 0 $W8 63:63
+.%liverange 0 $R8 63:63
+.%var $xfer9 0 R
+.%liverange 0 $W9 63:63
+.%liverange 0 $R9 63:63
+.%var $xfer10 0 R
+.%liverange 0 $W10 63:63
+.%liverange 0 $R10 63:63
+.%var $xfer11 0 R
+.%liverange 0 $W11 63:63
+.%liverange 0 $R11 63:63
+.%var $xfer12 0 R
+.%liverange 0 $W12 63:63
+.%liverange 0 $R12 63:63
+.%var $xfer13 0 R
+.%liverange 0 $W13 63:63
+.%liverange 0 $R13 63:63
+.%var $xfer14 0 R
+.%liverange 0 $W14 63:63
+.%liverange 0 $R14 63:63
+.%var $xfer15 0 R
+.%liverange 0 $W15 63:63
+.%liverange 0 $R15 63:63
+.%var expect0 0 R
+.%liverange 0 A0 42:57
+.%liverange 0 ~A0 41:41 60:62
+.%var expect1 0 R
+.%liverange 0 A1 43:57
+.%liverange 0 ~A1 41:42 60:62
+.%var expect2 0 R
+.%liverange 0 A2 44:57
+.%liverange 0 ~A2 41:43 60:62
+.%var expect3 0 R
+.%liverange 0 A3 45:57
+.%liverange 0 ~A3 41:44 60:62
+.%var end_count 0 R
+.%liverange 0 A8 11:57
+.%liverange 0 ~A8 60:62
+.%var address 0 R
+.%liverange 0 B0 10:57
+.%liverange 0 ~B0 60:62
+.%var island_num 0 R
+.%liverange 0 B1 3:57
+.%liverange 0 ~B1 60:62
+.%var me_num 0 R
+.%liverange 0 B2 4:57
+.%liverange 0 ~B2 60:62
+.%var len 0 R
+.%liverange 0 B3 1:57
+.%liverange 0 ~B3 60:62
+.%var csr_data 0 R
+.%liverange 0 B4 6:57
+.%liverange 0 ~B4 60:62
+.%var ctr 0 R
+.%liverange 0 B5 31:57
+.%liverange 0 ~B5 60:62
+.%var l0000!sig12 1 R
+.%liverange 0 G12 17:18 46:47
+.%scope end
+.%import_expr common_code 56 <43:43:15,41:40:13,34:22:0> 41 &bp +
+.%import_expr common_code 54 <43:43:15,41:40:13,34:22:0> 60 &bp +
+.%import_expr common_code 52 <43:43:15,41:40:13,34:22:0> 60 &bp +
+.%import_expr common_code 50 <43:43:15,41:40:13,34:22:0> 60 &bp +
+.%import_expr common_code 48 <43:43:15,41:40:13,34:22:0> 60 &bp +
+.%import_expr common_code 39 <43:43:15,41:40:13,34:22:0> 35 &bp +
+.%import_expr common_code 33 <43:43:15,41:40:13,34:22:0> 31 &bp +
+.%import_expr common_code 29 <43:43:15,41:40:13,34:22:0> 25 &bp +
+.%import_expr common_code 19 <43:43:15,41:40:13,34:22:0> 12 &bp +
+.0 00F000010F0F common_code
+	.page
+	;-----------------------
+	; TEST_NAME: ls_bad_data_master.uc
+	;     
+	;  Generates illegal data_master for pushes and pulls
+	;  Ensure that things do not stall	
+	;-----------------------
+	.sig  l0000!sig1 l0000!sig2 l0000!sig3 l0000!sig4 l0000!sig5 l0000!sig6 l0000!sig7 l0000!sig8 l0000!sig9 l0000!sig10 l0000!sig11 l0000!sig12 l0000!sig13 l0000!sig14 l0000!sig15
+	.xfer_order $xfer0 $xfer1 $xfer2 $xfer3 $xfer4 $xfer5 $xfer6 $xfer7 $xfer8 $xfer9 $xfer10 $xfer11 $xfer12 $xfer13 $xfer14 $xfer15
+	.addr l0000!sig1 1
+	.addr l0000!sig2 2
+	.addr l0000!sig3 3
+	.addr l0000!sig4 4
+	.addr l0000!sig5 5
+	.addr l0000!sig6 6
+	.addr l0000!sig7 7
+	.addr l0000!sig8 8
+	.addr l0000!sig9 9
+	.addr l0000!sig10 10
+	.addr l0000!sig11 11
+	.addr l0000!sig12 12
+	.addr l0000!sig13 13
+	.addr l0000!sig14 14
+	.addr l0000!sig15 15
+	.areg expect0   0
+	.areg expect1   1
+	.areg expect2   2
+	.areg expect3   3
+	.areg expect4   4
+	.areg expect5   5
+	.areg expect6   6
+	.areg expect7   7
+	.areg end_count 8
+	.breg address   0
+	.breg  island_num        1
+	.breg  me_num        2
+	.breg len   3
+	.breg csr_data   4
+	.breg ctr        5
+	immed[len,15]
+.1 00FC044C0300 common_code
+	; The ME_NUM is in bits [7:3]
+	local_csr_rd[active_ctx_sts]
+.2 00F000010700 common_code
+	immed[island_num,0]
+.3 0094342105CF common_code
+	alu_shf[me_num,0xf, and,island_num,>>3]
+.4 0095841105FF common_code
+	alu_shf[island_num,0x3f, and,island_num,>>24]
+.5 0090844106C0 common_code
+	alu_shf[csr_data,--,b,island_num,<<24]
+.6 009AC44912C1 common_code
+	alu_shf[csr_data,csr_data,or,1,<<20]
+.7 00FC19211300 common_code
+	local_csr_wr[cmd_indirect_ref_0, csr_data]
+.8 00BAC4210B04 common_code
+	alu[me_num,me_num,-,4]
+.9 009144010AC0 common_code
+	alu_shf[address,--,b,me_num,<<12]
+.10 00F0000D0048 common_code
+	immed[end_count, 0x40]
+.11 00A0C4810048 common_code
+	alu[end_count,address,+,end_count]
+.12 00A0C0010300 common_code
+	write_loop#:
+		alu[$xfer0,address,+,0]
+.13 00A0C0110301 common_code
+		alu[$xfer1,address,+,1]
+.14 00A0C0210302 common_code
+		alu[$xfer2,address,+,2]
+.15 00A0C0310303 common_code
+		alu[$xfer3,address,+,3]
+.16 044FC60101C0 common_code
+		cls[write,$xfer0,address,0,4],ctx_swap[l0000!sig12], defer[1]
+.17 00B0C4010310 common_code
+		alu[address,address,+,0x10]
+.18 00AAF0010048 common_code
+		alu[--,address,-,end_count]
+.19 00D803008121 common_code
+		bne[write_loop#]
+.20 00F000BEB400 common_code
+	immed[$xfer0,0xbad]
+.21 00F000BEB401 common_code
+	immed[$xfer1,0xbad]
+.22 00F000BEB402 common_code
+	immed[$xfer2,0xbad]
+.23 00F000BEB403 common_code
+	immed[$xfer3,0xbad]
+.24 009144010AC0 common_code
+	alu_shf[address,--,b,me_num,<<12]
+.25 0081FC0306C0 common_code
+	bad_dm_write_loop#:
+	        alu_shf[--,--,b,1,<<1]
+.26 064F060103C0 common_code
+		cls[write,$xfer0,address,0,4],indirect_ref   ; This does the WRITE with BAD data_master
+.27 00B0C4010310 common_code
+		alu[address,address,+,0x10]
+.28 00AAF0010048 common_code
+		alu[--,address,-,end_count]
+.29 00D806408121 common_code
+		bne[bad_dm_write_loop#]
+.30 00F000011732 common_code
+	.macro_ref add_delay[50]
+	immed[ctr,50]
+.31 00F0000C0300 common_code
+	m000_sleep_label#:
+	  nop
+.32 00BAC4511701 common_code
+	  alu[ctr,ctr,-,1]
+.33 00D807C08121 common_code
+	  bne[m000_sleep_label#]
+.34 009144010AC0 common_code
+	.end_macro_ref add_delay
+	alu_shf[address,--,b,me_num,<<12]
+.35 0081FC0306C0 common_code
+	bad_read_loop#:
+	        alu_shf[--,--,b,1,<<1]
+.36 024F060503C0 common_code
+		cls[read_le,$xfer0,address,0,4],indirect_ref  ; This does READ with BAD data_master
+.37 00B0C4010310 common_code
+		alu[address,address,+,0x10]
+.38 00AAF0010048 common_code
+		alu[--,address,-,end_count]
+.39 00D808C08121 common_code
+		bne[bad_read_loop#]
+.40 009144010AC0 common_code
+	alu_shf[address,--,b,me_num,<<12]
+.41 00A0C4010300 common_code
+	read_loop#:
+		alu[expect0,address,+,0]
+.42 00A0C4110301 common_code
+		alu[expect1,address,+,1]
+.43 00A0C4210302 common_code
+		alu[expect2,address,+,2]
+.44 00A0C4310303 common_code
+		alu[expect3,address,+,3]
+.45 004FC60501C0 common_code
+		cls[read_le,$xfer0,address,0,4],ctx_swap[l0000!sig12],defer[1]
+.46 00B0C4010310 common_code
+		alu[address,address,+,0x10]
+.47 00AAF0000040 common_code
+		alu[--,$xfer0,-,expect0]
+.48 00D80F008121 common_code
+		bne[test_failed#]
+.49 00AAF0000441 common_code
+		alu[--,$xfer1,-,expect1]
+.50 00D80F008121 common_code
+		bne[test_failed#]
+.51 00AAF0000842 common_code
+		alu[--,$xfer2,-,expect2]
+.52 00D80F008121 common_code
+		bne[test_failed#]
+.53 00AAF0000C43 common_code
+		alu[--,$xfer3,-,expect3]
+.54 00D80F008121 common_code
+		bne[test_failed#]
+.55 00AAF0010048 common_code
+		alu[--,address,-,end_count]
+.56 00D80A408121 common_code
+		bne[read_loop#]
+.57 00E000010000 common_code
+	test_passed#:
+	        ctx_arb[kill], any
+.58 00F0000C0300 common_code
+	        nop
+.59 00F0000C0300 common_code
+	        nop
+.60 00F0000C0300 common_code
+	test_failed#:
+	        nop
+.61 00F0000C0300 common_code
+	        nop
+.62 00E000010000 common_code
+	        ctx_arb[kill], any
+	.entrancel0000!sig1l0000!sig2l0000!sig3l0000!sig4l0000!sig5l0000!sig6l0000!sig7l0000!sig8l0000!sig9l0000!sig10l0000!sig11l0000!sig12l0000!sig13l0000!sig14l0000!sig15+ucode_end
+

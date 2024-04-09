@@ -1,0 +1,245 @@
++version:  10/31/2000
++switches:  
++nfas_version: 6.x-devel.Internal [nfas rev 35]
++nfas_date: Jan 10 2023 14:40:54
++current_date: Tue Jan 17 16:12:01 2023
+
+.chip_id nfp-7xxxc 0x00 0x10
+
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.LEGACY_INDIRECT_REF_MODE const 0
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.THIRD_PARTY_ADDRESS_MODE const 0
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+
+.%init_nn_mode --
+.%third_party_addressing 40bit
+.%indirect_ref_mode nfp6000
+.%neighbor_usage 0x00
+.%case_sensitivity 0
+
+.%resource CAM 0
+.%resource CRC 0
+.%resource T_INDEX 0
+.%resource BYTE_INDEX 0
+
+
+:cls_csrs# 21
+:cls_data# 7
+:read_csr_loop# 28
+:read_data_loop# 13
+:test_failed# 36
+:test_passed# 33
+*-- no_destination 0
+*csr_data gpr_b_rel 01
+*data1 gpr_a_rel 00
+*data0 gpr_b_rel 02
+;*base!!2 gpr_a_rel 01
+;*base!!3 gpr_a_rel 01
+*base gpr_a_rel 01
+*cl_num gpr_b_rel 03
+;*me_num!!2 gpr_a_rel 02
+*me_num gpr_a_rel 02
+*read_count gpr_b_rel 00
+*$xfer15 xfer_rel 0F 0 both 1 0x1F
+*$xfer14 xfer_rel 0E 0 both 2 0x1F
+*$xfer13 xfer_rel 0D 0 both 3 0x1F
+*$xfer12 xfer_rel 0C 0 both 4 0x1F
+*$xfer11 xfer_rel 0B 0 both 5 0x1F
+*$xfer10 xfer_rel 0A 0 both 6 0x1F
+*$xfer9 xfer_rel 09 0 both 7 0x1F
+*$xfer8 xfer_rel 08 0 both 8 0x1F
+*$xfer7 xfer_rel 07 0 both 9 0x1F
+*$xfer6 xfer_rel 06 0 both 10 0x1F
+*$xfer5 xfer_rel 05 0 both 11 0x1F
+*$xfer4 xfer_rel 04 0 both 12 0x1F
+*$xfer3 xfer_rel 03 0 both 13 0x1F
+*$xfer2 xfer_rel 02 0 both 14 0x1F
+*$xfer1 xfer_rel 01 0 both 15 0x1F
+*$xfer0 xfer_rel 00 0 both 16 0x1F
+*l0000!sig3 signal 01 0
+*l0000!sig3!!4 signal 01 0
+*l0000!sig3!!3 signal 01 0
+*l0000!sig3!!2 signal 01 0
+.%type R
+.%type SI
+.%scope global
+.%var $xfer0 0 R
+.%liverange 0 $W0 11:20 26:38
+.%liverange 0 $R0 14:20 29:38
+.%liverange 0 ~$R0 13:13 28:28
+.%var $xfer1 0 R
+.%liverange 0 $W1 12:20 27:38
+.%liverange 0 $R1 14:20
+.%liverange 0 ~$R1 13:13 33:38
+.%var $xfer2 0 R
+.%liverange 0 $W2 39:39
+.%liverange 0 $R2 39:39
+.%var $xfer3 0 R
+.%liverange 0 $W3 39:39
+.%liverange 0 $R3 39:39
+.%var $xfer4 0 R
+.%liverange 0 $W4 39:39
+.%liverange 0 $R4 39:39
+.%var $xfer5 0 R
+.%liverange 0 $W5 39:39
+.%liverange 0 $R5 39:39
+.%var $xfer6 0 R
+.%liverange 0 $W6 39:39
+.%liverange 0 $R6 39:39
+.%var $xfer7 0 R
+.%liverange 0 $W7 39:39
+.%liverange 0 $R7 39:39
+.%var $xfer8 0 R
+.%liverange 0 $W8 39:39
+.%liverange 0 $R8 39:39
+.%var $xfer9 0 R
+.%liverange 0 $W9 39:39
+.%liverange 0 $R9 39:39
+.%var $xfer10 0 R
+.%liverange 0 $W10 39:39
+.%liverange 0 $R10 39:39
+.%var $xfer11 0 R
+.%liverange 0 $W11 39:39
+.%liverange 0 $R11 39:39
+.%var $xfer12 0 R
+.%liverange 0 $W12 39:39
+.%liverange 0 $R12 39:39
+.%var $xfer13 0 R
+.%liverange 0 $W13 39:39
+.%liverange 0 $R13 39:39
+.%var $xfer14 0 R
+.%liverange 0 $W14 39:39
+.%liverange 0 $R14 39:39
+.%var $xfer15 0 R
+.%liverange 0 $W15 39:39
+.%liverange 0 $R15 39:39
+.%var read_count 0 R
+.%liverange 0 B0 1:38
+.%var me_num 0 R
+.%liverange 0 A2 3:38
+.%var cl_num 0 R
+.%liverange 0 B3 4:38
+.%var base 0 R
+.%liverange 0 A1 8:20 22:38
+.%var data0 0 R
+.%liverange 0 B2 9:20
+.%liverange 0 ~B2 33:38
+.%var data1 0 R
+.%liverange 0 A0 10:20
+.%liverange 0 ~A0 33:38
+.%var csr_data 0 R
+.%liverange 0 B1 25:32
+.%liverange 0 ~B1 33:38
+.%var l0000!sig3 1 R
+.%liverange 0 G1 13:13
+.%liverange 0 G1 14:14 28:29
+.%scope end
+.%import_expr common_code 32 <43:43:15,41:40:13,34:22:0> 28 &bp +
+.%import_expr common_code 30 <43:43:15,41:40:13,34:22:0> 36 &bp +
+.%import_expr common_code 20 <43:43:15,41:40:13,34:22:0> 33 &bp +
+.%import_expr common_code 19 <43:43:15,41:40:13,34:22:0> 13 &bp +
+.%import_expr common_code 17 <43:43:15,41:40:13,34:22:0> 36 &bp +
+.%import_expr common_code 15 <43:43:15,41:40:13,34:22:0> 36 &bp +
+.%import_expr common_code 6 <43:43:15,41:40:13,34:22:0> 21 &bp +
+.0 00F000010364 common_code
+	.page
+	.sig  l0000!sig1 l0000!sig2 l0000!sig3 l0000!sig4 l0000!sig5 l0000!sig6 l0000!sig7 l0000!sig8 l0000!sig9 l0000!sig10 l0000!sig11 l0000!sig12 l0000!sig13 l0000!sig14 l0000!sig15
+	.xfer_order $xfer0 $xfer1 $xfer2 $xfer3 $xfer4 $xfer5 $xfer6 $xfer7 $xfer8 $xfer9 $xfer10 $xfer11 $xfer12 $xfer13 $xfer14 $xfer15
+	immed[read_count,100]
+.1 00FC044C0300 common_code
+	; The ME_NUM is in bits [7:3]
+	local_csr_rd[active_ctx_sts]
+.2 00F0000C0042 common_code
+	immed[me_num,0]
+.3 0095843BFD42 common_code
+	alu_shf[cl_num,0x3f, and,me_num,>>24]
+.4 0084342B3D42 common_code
+	alu_shf[me_num,0xf, and,me_num,>>3]
+.5 00AAB00C1042 common_code
+	alu[--,me_num,-,4]
+.6 00D805408120 common_code
+	beq[cls_csrs#]
+.7 0081A41B0242 common_code
+	cls_data#:
+	alu_shf[base,--,b,me_num,<<6]
+.8 0091042B0242 common_code
+	alu_shf[data0,--,b,me_num,<<16]
+.9 0080840B0242 common_code
+	alu_shf[data1,--,b,me_num,<<24]
+.10 00A000010B00 common_code
+	alu[$xfer0,--,b,data0]
+.11 00A0401C0040 common_code
+	alu[$xfer1,--,b,data1]
+.12 044F12030041 common_code
+	cls[write,$xfer0,base,0,2], ctx_swap[l0000!sig3]
+.13 004F12030041 common_code
+	read_data_loop#:
+	  cls[read,$xfer0,base,0,2], ctx_swap[l0000!sig3]
+.14 00AAB0010800 common_code
+	  alu[--,$xfer0,-,data0]
+.15 00D809008121 common_code
+	  bne[test_failed#]
+.16 00AAF0000440 common_code
+	  alu[--,$xfer1,-,data1]
+.17 00D809008121 common_code
+	  bne[test_failed#]
+.18 00BAC4010301 common_code
+	  alu[read_count,read_count,-,1]
+.19 00D803408121 common_code
+	  bne[read_data_loop#]
+.20 00D808408038 common_code
+	br[test_passed#]
+.21 00F0000C0041 common_code
+	cls_csrs#:
+	;--------------------------------------
+	; Base for Event Manager = 0x00002_0000
+	;--------------------------------------
+	immed[base,0]
+.22 00F4400C0841 common_code
+	immed_w1[base,2]
+.23 008A64110E41 common_code
+	alu_shf[base,base,or,cl_num,<<26]
+.24 00F001210734 common_code
+	; YLD: Maskbits used are [19:0] and [26:24]
+	; TH:  Maskbits used are [23:0] and [26:24]
+	immed[csr_data,0x1234]
+.25 00A000010700 common_code
+	alu[$xfer0,--,b,csr_data]
+.26 00F0000C0001 common_code
+	immed[$xfer1,0]
+.27 044F10034041 common_code
+	cls[write,$xfer0,base,0x10,1], ctx_swap[l0000!sig3]
+.28 004F10074041 common_code
+	read_csr_loop#:
+	  cls[read_le,$xfer0,base,0x10,1], ctx_swap[l0000!sig3]
+.29 00AAB0010400 common_code
+	  alu[--,$xfer0,-,csr_data]
+.30 00D809008121 common_code
+	  bne[test_failed#]
+.31 00BAC4010301 common_code
+	  alu[read_count,read_count,-,1]
+.32 00D807008121 common_code
+	  bne[read_csr_loop#]
+.33 00F0000C0300 common_code
+	test_passed#:
+	nop
+.34 00F0000C0300 common_code
+	nop
+.35 00E000010000 common_code
+		ctx_arb[kill], any
+.36 00F0000C0300 common_code
+	test_failed#:
+	        nop
+.37 00F0000C0300 common_code
+	        nop
+.38 00E000010000 common_code
+		ctx_arb[kill], any
+	.entrancel0000!sig1l0000!sig2l0000!sig3l0000!sig4l0000!sig5l0000!sig6l0000!sig7l0000!sig8l0000!sig9l0000!sig10l0000!sig11l0000!sig12l0000!sig13l0000!sig14l0000!sig15+ucode_end
+

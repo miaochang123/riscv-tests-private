@@ -1,0 +1,456 @@
++version:  10/31/2000
++switches:  
++nfas_version: 6.x-devel.Internal [nfas rev 35]
++nfas_date: Jan 10 2023 14:40:54
++current_date: Tue Jan 17 16:11:55 2023
+
+.chip_id nfp-7xxxc 0x00 0x10
+
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.LEGACY_INDIRECT_REF_MODE const 0
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.THIRD_PARTY_ADDRESS_MODE const 0
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+
+.%init_nn_mode --
+.%third_party_addressing 40bit
+.%indirect_ref_mode nfp6000
+.%neighbor_usage 0x00
+.%case_sensitivity 0
+
+.%resource CAM 0
+.%resource CRC 0
+.%resource T_INDEX 0
+.%resource BYTE_INDEX 0
+
+
+:m001_sleep_label# 13
+:m002_sleep_label# 19
+:m004_sleep_label# 29
+:m006_sleep_label# 39
+:m008_sleep_label# 45
+:m010_sleep_label# 51
+:m011_sleep_label# 57
+:m013_sleep_label# 69
+:m015_sleep_label# 79
+:m017_sleep_label# 85
+:test_failed# 95
+:test_passed# 94
+*-- no_destination 0
+*expect gpr_b_rel 0A
+*cl_num gpr_b_rel 06
+*temp gpr_b_rel 04
+*xpb_address gpr_a_rel 0A
+*ctr gpr_a_rel 02
+*me_num gpr_a_rel 00
+*$xfer15 xfer_rel 0F 0 both 1 0x1F
+*$xfer14 xfer_rel 0E 0 both 2 0x1F
+*$xfer13 xfer_rel 0D 0 both 3 0x1F
+*$xfer12 xfer_rel 0C 0 both 4 0x1F
+*$xfer11 xfer_rel 0B 0 both 5 0x1F
+*$xfer10 xfer_rel 0A 0 both 6 0x1F
+*$xfer9 xfer_rel 09 0 both 7 0x1F
+*$xfer8 xfer_rel 08 0 both 8 0x1F
+*$xfer7 xfer_rel 07 0 both 9 0x1F
+*$xfer6 xfer_rel 06 0 both 10 0x1F
+*$xfer5 xfer_rel 05 0 both 11 0x1F
+*$xfer4 xfer_rel 04 0 both 12 0x1F
+*$xfer3 xfer_rel 03 0 both 13 0x1F
+*$xfer2 xfer_rel 02 0 both 14 0x1F
+*$xfer1 xfer_rel 01 0 both 15 0x1F
+*$xfer0 xfer_rel 00 0 both 16 0x1F
+*l0000!sig1 signal 01 0
+.%type R
+.%type SI
+.%scope global
+.%var $xfer0 0 R
+.%liverange 0 $W0 10:97
+.%liverange 0 $R0 91:97
+.%var $xfer1 0 R
+.%liverange 0 $W1 9:97
+.%liverange 0 $R1 98:98
+.%var $xfer2 0 R
+.%liverange 0 $W2 98:98
+.%liverange 0 $R2 98:98
+.%var $xfer3 0 R
+.%liverange 0 $W3 98:98
+.%liverange 0 $R3 98:98
+.%var $xfer4 0 R
+.%liverange 0 $W4 98:98
+.%liverange 0 $R4 98:98
+.%var $xfer5 0 R
+.%liverange 0 $W5 98:98
+.%liverange 0 $R5 98:98
+.%var $xfer6 0 R
+.%liverange 0 $W6 98:98
+.%liverange 0 $R6 98:98
+.%var $xfer7 0 R
+.%liverange 0 $W7 98:98
+.%liverange 0 $R7 98:98
+.%var $xfer8 0 R
+.%liverange 0 $W8 98:98
+.%liverange 0 $R8 98:98
+.%var $xfer9 0 R
+.%liverange 0 $W9 98:98
+.%liverange 0 $R9 98:98
+.%var $xfer10 0 R
+.%liverange 0 $W10 98:98
+.%liverange 0 $R10 98:98
+.%var $xfer11 0 R
+.%liverange 0 $W11 98:98
+.%liverange 0 $R11 98:98
+.%var $xfer12 0 R
+.%liverange 0 $W12 98:98
+.%liverange 0 $R12 98:98
+.%var $xfer13 0 R
+.%liverange 0 $W13 98:98
+.%liverange 0 $R13 98:98
+.%var $xfer14 0 R
+.%liverange 0 $W14 98:98
+.%liverange 0 $R14 98:98
+.%var $xfer15 0 R
+.%liverange 0 $W15 98:98
+.%liverange 0 $R15 98:98
+.%var me_num 0 R
+.%liverange 0 A0 2:97
+.%var ctr 0 R
+.%liverange 0 A2 13:97
+.%var xpb_address 0 R
+.%liverange 0 A10 5:97
+.%var temp 0 R
+.%liverange 0 B4 23:97
+.%var cl_num 0 R
+.%liverange 0 B6 3:97
+.%var expect 0 R
+.%liverange 0 B10 89:97
+.%var l0000!sig1 1 R
+.%liverange 0 G1 12:12 18:18 26:26 28:28 36:36 38:38 44:44 50:50 56:56 62:62 66:66 68:68 76:76 78:78 84:84 91:91
+.%scope end
+.%import_expr common_code 93 <43:43:15,41:40:13,34:22:0> 95 &bp +
+.%import_expr common_code 87 <43:43:15,41:40:13,34:22:0> 85 &bp +
+.%import_expr common_code 81 <43:43:15,41:40:13,34:22:0> 79 &bp +
+.%import_expr common_code 71 <43:43:15,41:40:13,34:22:0> 69 &bp +
+.%import_expr common_code 59 <43:43:15,41:40:13,34:22:0> 57 &bp +
+.%import_expr common_code 53 <43:43:15,41:40:13,34:22:0> 51 &bp +
+.%import_expr common_code 47 <43:43:15,41:40:13,34:22:0> 45 &bp +
+.%import_expr common_code 41 <43:43:15,41:40:13,34:22:0> 39 &bp +
+.%import_expr common_code 31 <43:43:15,41:40:13,34:22:0> 29 &bp +
+.%import_expr common_code 21 <43:43:15,41:40:13,34:22:0> 19 &bp +
+.%import_expr common_code 15 <43:43:15,41:40:13,34:22:0> 13 &bp +
+.0 00FC044C0300 common_code
+	.page
+	;-----------------------
+	; TEST_NAME: trng.uc
+	;-----------------------
+	.sig  l0000!sig1 l0000!sig2 l0000!sig3 l0000!sig4 l0000!sig5 l0000!sig6 l0000!sig7 l0000!sig8 l0000!sig9 l0000!sig10 l0000!sig11 l0000!sig12 l0000!sig13 l0000!sig14 l0000!sig15
+	.xfer_order $xfer0 $xfer1 $xfer2 $xfer3 $xfer4 $xfer5 $xfer6 $xfer7 $xfer8 $xfer9 $xfer10 $xfer11 $xfer12 $xfer13 $xfer14 $xfer15
+	.addr l0000!sig1 1
+	.addr l0000!sig2 2
+	.addr l0000!sig3 3
+	.addr l0000!sig4 4
+	.addr l0000!sig5 5
+	.addr l0000!sig6 6
+	.addr l0000!sig7 7
+	.addr l0000!sig8 8
+	.addr l0000!sig9 9
+	.addr l0000!sig10 10
+	.addr l0000!sig11 11
+	.addr l0000!sig12 12
+	.addr l0000!sig13 13
+	.addr l0000!sig14 14
+	.addr l0000!sig15 15
+	.addr $xfer0 0
+	.addr $xfer1 1
+	.addr $xfer2 2
+	.addr $xfer3 3
+	.addr $xfer4 4
+	.addr $xfer5 5
+	.addr $xfer6 6
+	.addr $xfer7 7
+	.addr $xfer8 8
+	.addr $xfer9 9
+	.addr $xfer10 10
+	.addr $xfer11 11
+	.addr $xfer12 12
+	.addr $xfer13 13
+	.addr $xfer14 14
+	.addr $xfer15 15
+	.areg  me_num        0
+	.areg  trng_base     1
+	.areg  ctr           2
+	.areg  read_loop     3
+	.areg xpb_address     10
+	.areg data          4
+	.breg count         0
+	.breg temp          4
+	.breg  cl_num       6
+	.breg  expect       10
+	; The ME_NUM is in bits [7:3]
+	; CL_NUM[3:0] is in bit [28:25]
+	local_csr_rd[active_ctx_sts]
+.1 00F0000C0040 common_code
+	immed[me_num,0]
+.2 0095846B3D40 common_code
+	alu_shf[cl_num,0xf, and,me_num,>>24]
+.3 0084340B3D40 common_code
+	alu_shf[me_num,0xf, and,me_num,>>3]
+.4 00F0000C004A common_code
+	immed[xpb_address,0]
+.5 00F4400C304A common_code
+	immed_w1[xpb_address,12]
+.6 008A14A3064A common_code
+	alu_shf[xpb_address,xpb_address,or,1,<<31]      ; Bit[31]=12 means do XPB access
+.7 008A84A11A4A common_code
+	alu_shf[xpb_address,xpb_address,or,cl_num,<<24] ; Bit[29:24]=Island number 
+.8 00F0000C0001 common_code
+	immed[$xfer1,0]
+.9 00F0000C0000 common_code
+	immed[$xfer0,0]
+.10 00F0000C0800 common_code
+	.macro_ref reset_entropy_generator()
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,2]
+.11 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.12 00F0000C1442 common_code
+	.macro_ref 	add_delay[5]
+		immed[ctr,5]
+.13 00F0000C0300 common_code
+		m001_sleep_label#:
+		  nop
+.14 00AA842C0442 common_code
+		  alu[ctr,ctr,-,1]
+.15 00D803408121 common_code
+		  bne[m001_sleep_label#]
+.16 00F0000C0400 common_code
+	.end_macro_ref 	add_delay
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,1]
+.17 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.18 00F0000C1442 common_code
+	.macro_ref 	add_delay[5]
+		immed[ctr,5]
+.19 00F0000C0300 common_code
+		m002_sleep_label#:
+		  nop
+.20 00AA842C0442 common_code
+		  alu[ctr,ctr,-,1]
+.21 00D804C08121 common_code
+		  bne[m002_sleep_label#]
+.22 00F000011300 common_code
+	.end_macro_ref 	add_delay
+	.end_macro_ref reset_entropy_generator
+	.macro_ref load_lfsr[0x123]
+	       ; XPB write: TRNG Async CFG
+	       immed[temp,0]
+.23 00F440111323 common_code
+	       immed_w1[temp,0x123]
+.24 00A000011300 common_code
+	       alu[$xfer0,--,b,temp]
+.25 044E1003404A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x10,1],ctx_swap[l0000!sig1]
+.26 00F0000C0C00 common_code
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,3]
+.27 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.28 00F0000C1442 common_code
+	.macro_ref        add_delay[5]
+	       immed[ctr,5]
+.29 00F0000C0300 common_code
+	       m004_sleep_label#:
+	         nop
+.30 00AA842C0442 common_code
+	         alu[ctr,ctr,-,1]
+.31 00D807408121 common_code
+	         bne[m004_sleep_label#]
+.32 00F000011300 common_code
+	.end_macro_ref        add_delay
+	.end_macro_ref load_lfsr
+	.macro_ref load_incr[0xfc00]
+	       ; XPB write: TRNG Async CFG
+	       immed[temp,0]
+.33 00F44FC11300 common_code
+	       immed_w1[temp,0xfc00]
+.34 00A000011300 common_code
+	       alu[$xfer0,--,b,temp]
+.35 044E1003404A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x10,1],ctx_swap[l0000!sig1]
+.36 00F0000C1000 common_code
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,4]
+.37 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.38 00F0000C1442 common_code
+	.macro_ref        add_delay[5]
+	       immed[ctr,5]
+.39 00F0000C0300 common_code
+	       m006_sleep_label#:
+	         nop
+.40 00AA842C0442 common_code
+	         alu[ctr,ctr,-,1]
+.41 00D809C08121 common_code
+	         bne[m006_sleep_label#]
+.42 00F0000C1400 common_code
+	.end_macro_ref        add_delay
+	.end_macro_ref load_incr
+	.macro_ref run_single()
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,5]
+.43 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.44 00F0001FD042 common_code
+	.macro_ref        add_delay[500]
+	       immed[ctr,500]
+.45 00F0000C0300 common_code
+	       m008_sleep_label#:
+	         nop
+.46 00AA842C0442 common_code
+	         alu[ctr,ctr,-,1]
+.47 00D80B408121 common_code
+	         bne[m008_sleep_label#]
+.48 00F0000C0800 common_code
+	.end_macro_ref        add_delay
+	.end_macro_ref run_single
+	.macro_ref reset_entropy_generator()
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,2]
+.49 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.50 00F0000C1442 common_code
+	.macro_ref 	add_delay[5]
+		immed[ctr,5]
+.51 00F0000C0300 common_code
+		m010_sleep_label#:
+		  nop
+.52 00AA842C0442 common_code
+		  alu[ctr,ctr,-,1]
+.53 00D80CC08121 common_code
+		  bne[m010_sleep_label#]
+.54 00F0000C0400 common_code
+	.end_macro_ref 	add_delay
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,1]
+.55 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.56 00F0000C1442 common_code
+	.macro_ref 	add_delay[5]
+		immed[ctr,5]
+.57 00F0000C0300 common_code
+		m011_sleep_label#:
+		  nop
+.58 00AA842C0442 common_code
+		  alu[ctr,ctr,-,1]
+.59 00D80E408121 common_code
+		  bne[m011_sleep_label#]
+.60 00F0000C0400 common_code
+	.end_macro_ref 	add_delay
+	.end_macro_ref reset_entropy_generator
+	; XPB write: TRNG Async Test
+	immed[$xfer0,0x1]
+.61 044E1003104A common_code
+	ct[xpb_write,$xfer0,xpb_address,0x04,1],ctx_swap[l0000!sig1]
+.62 00F000011300 common_code
+	.macro_ref load_lfsr[0x123]
+	       ; XPB write: TRNG Async CFG
+	       immed[temp,0]
+.63 00F440111323 common_code
+	       immed_w1[temp,0x123]
+.64 00A000011300 common_code
+	       alu[$xfer0,--,b,temp]
+.65 044E1003404A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x10,1],ctx_swap[l0000!sig1]
+.66 00F0000C0C00 common_code
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,3]
+.67 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.68 00F0000C1442 common_code
+	.macro_ref        add_delay[5]
+	       immed[ctr,5]
+.69 00F0000C0300 common_code
+	       m013_sleep_label#:
+	         nop
+.70 00AA842C0442 common_code
+	         alu[ctr,ctr,-,1]
+.71 00D811408121 common_code
+	         bne[m013_sleep_label#]
+.72 00F000011300 common_code
+	.end_macro_ref        add_delay
+	.end_macro_ref load_lfsr
+	.macro_ref load_incr[0xffc0]
+	       ; XPB write: TRNG Async CFG
+	       immed[temp,0]
+.73 00F44FF113C0 common_code
+	       immed_w1[temp,0xffc0]
+.74 00A000011300 common_code
+	       alu[$xfer0,--,b,temp]
+.75 044E1003404A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x10,1],ctx_swap[l0000!sig1]
+.76 00F0000C1000 common_code
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,4]
+.77 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.78 00F0000C1442 common_code
+	.macro_ref        add_delay[5]
+	       immed[ctr,5]
+.79 00F0000C0300 common_code
+	       m015_sleep_label#:
+	         nop
+.80 00AA842C0442 common_code
+	         alu[ctr,ctr,-,1]
+.81 00D813C08121 common_code
+	         bne[m015_sleep_label#]
+.82 00F0000C1400 common_code
+	.end_macro_ref        add_delay
+	.end_macro_ref load_incr
+	.macro_ref run_single()
+	       ; XPB write: TRNG Async Command
+	       immed[$xfer0,5]
+.83 044E1003204A common_code
+	       ct[xpb_write,$xfer0,xpb_address,0x08,1],ctx_swap[l0000!sig1]
+.84 00F0001FD042 common_code
+	.macro_ref        add_delay[500]
+	       immed[ctr,500]
+.85 00F0000C0300 common_code
+	       m017_sleep_label#:
+	         nop
+.86 00AA842C0442 common_code
+	         alu[ctr,ctr,-,1]
+.87 00D815408121 common_code
+	         bne[m017_sleep_label#]
+.88 00F000012B01 common_code
+	.end_macro_ref        add_delay
+	.end_macro_ref run_single
+	; XPB write: TRNG Async Test
+	immed[expect,0x1]
+.89 00F443112B36 common_code
+	immed_w1[expect,0x3136]
+.90 004E1003104A common_code
+	ct[xpb_read,$xfer0,xpb_address,0x04,1],ctx_swap[l0000!sig1]
+.91 00FC172C0000 common_code
+	local_csr_wr[mailbox0,$xfer0]
+.92 00AAB0012800 common_code
+	alu[--,$xfer0,-,expect]
+.93 00D817C08121 common_code
+	bne[test_failed#]
+.94 00E000010000 common_code
+	test_passed#:
+		ctx_arb[kill], any
+.95 00F0000C0300 common_code
+	test_failed#:
+		nop
+.96 00F0000C0300 common_code
+		nop
+.97 00E000010000 common_code
+		ctx_arb[kill], any
+	.entrancel0000!sig1l0000!sig2l0000!sig3l0000!sig4l0000!sig5l0000!sig6l0000!sig7l0000!sig8l0000!sig9l0000!sig10l0000!sig11l0000!sig12l0000!sig13l0000!sig14l0000!sig15+ucode_end
+

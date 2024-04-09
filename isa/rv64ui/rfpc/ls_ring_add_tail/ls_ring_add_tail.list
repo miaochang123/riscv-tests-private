@@ -1,0 +1,471 @@
++version:  10/31/2000
++switches:  
++nfas_version: 6.x-devel.Internal [nfas rev 35]
++nfas_date: Jan 10 2023 14:40:54
++current_date: Tue Jan 17 16:11:52 2023
+
+.chip_id nfp-7xxxc 0x00 0x10
+
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.LEGACY_INDIRECT_REF_MODE const 0
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.THIRD_PARTY_ADDRESS_MODE const 0
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+
+.%init_nn_mode --
+.%third_party_addressing 40bit
+.%indirect_ref_mode nfp6000
+.%neighbor_usage 0x00
+.%case_sensitivity 0
+
+.%resource CAM 0
+.%resource CRC 0
+.%resource T_INDEX 0
+.%resource BYTE_INDEX 0
+
+
+:assign_expect_data_loop# 41
+:assign_zero# 45
+:continue_test# 8
+:done_assign# 46
+:m000_sleep_label# 34
+:read_tail_ptrs# 49
+:test_failed# 96
+:test_passed# 93
+*-- no_destination 0
+*ctr gpr_b_rel 01
+*me_num gpr_b_rel 00
+*cl_num gpr_b_rel 0D
+*sig_gpr gpr_b_rel 0C
+*sig_num gpr_b_rel 0B
+*pass_fail_status gpr_b_rel 07
+*offset1 gpr_b_rel 03
+*loop_count gpr_a_rel 0F
+*expect_data gpr_a_rel 00
+*data gpr_a_rel 0D
+*ring1 gpr_a_rel 0A
+*tail_offset gpr_a_rel 09
+*full_empty_sts gpr_a_rel 06
+*len gpr_a_rel 03
+*ringptr_base gpr_a_rel 02
+*ringbase_base gpr_a_rel 01
+*$xfer15 xfer_rel 0F 0 both 1 0x1F
+*$xfer14 xfer_rel 0E 0 both 2 0x1F
+*$xfer13 xfer_rel 0D 0 both 3 0x1F
+*$xfer12 xfer_rel 0C 0 both 4 0x1F
+*$xfer11 xfer_rel 0B 0 both 5 0x1F
+*$xfer10 xfer_rel 0A 0 both 6 0x1F
+*$xfer9 xfer_rel 09 0 both 7 0x1F
+*$xfer8 xfer_rel 08 0 both 8 0x1F
+*$xfer7 xfer_rel 07 0 both 9 0x1F
+*$xfer6 xfer_rel 06 0 both 10 0x1F
+*$xfer5 xfer_rel 05 0 both 11 0x1F
+*$xfer4 xfer_rel 04 0 both 12 0x1F
+*$xfer3 xfer_rel 03 0 both 13 0x1F
+*$xfer2 xfer_rel 02 0 both 14 0x1F
+*$xfer1 xfer_rel 01 0 both 15 0x1F
+*$xfer0 xfer_rel 00 0 both 16 0x1F
+*l0000!sig7 signal 07 0
+*l0000!sig1 signal 01 0
+.%type R
+.%type SI
+.%scope global
+.%var $xfer0 0 R
+.%liverange 0 $W0 20:101
+.%liverange 0 $R0 26:101
+.%var $xfer1 0 R
+.%liverange 0 $W1 21:101
+.%liverange 0 $R1 102:102
+.%var $xfer2 0 R
+.%liverange 0 $W2 102:102
+.%liverange 0 $R2 102:102
+.%var $xfer3 0 R
+.%liverange 0 $W3 102:102
+.%liverange 0 $R3 102:102
+.%var $xfer4 0 R
+.%liverange 0 $W4 102:102
+.%liverange 0 $R4 102:102
+.%var $xfer5 0 R
+.%liverange 0 $W5 102:102
+.%liverange 0 $R5 102:102
+.%var $xfer6 0 R
+.%liverange 0 $W6 102:102
+.%liverange 0 $R6 102:102
+.%var $xfer7 0 R
+.%liverange 0 $W7 102:102
+.%liverange 0 $R7 102:102
+.%var $xfer8 0 R
+.%liverange 0 $W8 102:102
+.%liverange 0 $R8 102:102
+.%var $xfer9 0 R
+.%liverange 0 $W9 102:102
+.%liverange 0 $R9 102:102
+.%var $xfer10 0 R
+.%liverange 0 $W10 102:102
+.%liverange 0 $R10 102:102
+.%var $xfer11 0 R
+.%liverange 0 $W11 102:102
+.%liverange 0 $R11 102:102
+.%var $xfer12 0 R
+.%liverange 0 $W12 102:102
+.%liverange 0 $R12 102:102
+.%var $xfer13 0 R
+.%liverange 0 $W13 102:102
+.%liverange 0 $R13 102:102
+.%var $xfer14 0 R
+.%liverange 0 $W14 102:102
+.%liverange 0 $R14 102:102
+.%var $xfer15 0 R
+.%liverange 0 $W15 102:102
+.%liverange 0 $R15 102:102
+.%var ringbase_base 0 R
+.%liverange 0 A1 9:101
+.%var ringptr_base 0 R
+.%liverange 0 A2 12:101
+.%var len 0 R
+.%liverange 0 A3 50:95
+.%liverange 0 ~A3 96:101
+.%var full_empty_sts 0 R
+.%liverange 0 A6 27:101
+.%var tail_offset 0 R
+.%liverange 0 A9 30:95
+.%liverange 0 ~A9 96:101
+.%var ring1 0 R
+.%liverange 0 A10 16:101
+.%var data 0 R
+.%liverange 0 A13 18:101
+.%var expect_data 0 R
+.%liverange 0 A0 38:95
+.%liverange 0 ~A0 96:101
+.%var loop_count 0 R
+.%liverange 0 A15 41:95
+.%liverange 0 ~A15 96:101
+.%var offset1 0 R
+.%liverange 0 B3 15:101
+.%var pass_fail_status 0 R
+.%liverange 0 B7 1:101
+.%var sig_num 0 R
+.%liverange 0 B11 91:95 97:101
+.%var sig_gpr 0 R
+.%liverange 0 B12 92:95 98:101
+.%var cl_num 0 R
+.%liverange 0 B13 4:101
+.%var me_num 0 R
+.%liverange 0 B0 3:101
+.%var ctr 0 R
+.%liverange 0 B1 34:95
+.%liverange 0 ~B1 96:101
+.%var l0000!sig7 1 R
+.%liverange 0 G7 8:8
+.%var l0000!sig1 1 R
+.%liverange 0 G1 22:22 25:26 52:52 71:71 90:90
+.%scope end
+.%import_expr common_code 86 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 84 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 82 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 80 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 78 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 76 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 74 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 72 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 67 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 65 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 63 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 61 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 59 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 57 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 55 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 53 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 48 <43:43:15,41:40:13,34:22:0> 41 &bp +
+.%import_expr common_code 44 <43:43:15,41:40:13,34:22:0> 46 &bp +
+.%import_expr common_code 42 <43:43:15,41:40:13,34:22:0> 45 &bp +
+.%import_expr common_code 36 <43:43:15,41:40:13,34:22:0> 34 &bp +
+.%import_expr common_code 28 <43:43:15,41:40:13,34:22:0> 96 &bp +
+.%import_expr common_code 6 <43:43:15,41:40:13,34:22:0> 8 &bp +
+.0 00F000011F00 common_code
+	.page
+	;-----------------------
+	; TEST_NAME: ring_add_tail.uc
+	;	Runs on any # of MEs.  Run on ALL for fuller coverage
+	;-----------------------
+	.sig  l0000!sig1 l0000!sig2 l0000!sig3 l0000!sig4 l0000!sig5 l0000!sig6 l0000!sig7 l0000!sig8 l0000!sig9 l0000!sig10 l0000!sig11 l0000!sig12 l0000!sig13 l0000!sig14 l0000!sig15
+	.xfer_order $xfer0 $xfer1 $xfer2 $xfer3 $xfer4 $xfer5 $xfer6 $xfer7 $xfer8 $xfer9 $xfer10 $xfer11 $xfer12 $xfer13 $xfer14 $xfer15
+	.addr l0000!sig1 1
+	.addr l0000!sig2 2
+	.addr l0000!sig3 3
+	.addr l0000!sig4 4
+	.addr l0000!sig5 5
+	.addr l0000!sig6 6
+	.addr l0000!sig7 7
+	.addr l0000!sig8 8
+	.addr l0000!sig9 9
+	.addr l0000!sig10 10
+	.addr l0000!sig11 11
+	.addr l0000!sig12 12
+	.addr l0000!sig13 13
+	.addr l0000!sig14 14
+	.addr l0000!sig15 15
+	.areg  ringbase_base 1
+	.areg  ringptr_base  2
+	.areg  len           3
+	.areg  ret_address   5
+	.areg  full_empty_sts  6
+	.areg  put_offset_reg 8
+	.areg  tail_offset   9
+	.areg  ring1         10
+	.areg  ring2         11
+	.areg  event_base      12
+	.areg  data          13
+	.areg  expect_data   0
+	.areg  done_offset   14
+	.areg  loop_count    15
+	.breg  data2         2
+	.breg  offset1       3
+	.breg  offset2       4
+	.breg  pass_fail_status  7
+	.breg  head_tail_ptr1   8
+	.breg  head_tail_ptr2   9
+	.breg  sig_num         11
+	.breg  sig_gpr         12
+	.breg  cl_num        13
+	.breg  me_num        0
+	.breg ctr            1
+	immed[pass_fail_status, 0]
+.1 00FC044C0300 common_code
+	; The ME_NUM is in bits [7:3]
+	; CL_NUM[3:0] is in bit [28:25]
+	local_csr_rd[active_ctx_sts]
+.2 00F000010300 common_code
+	immed[me_num,0]
+.3 009584D101CF common_code
+	alu_shf[cl_num,0xf, and,me_num,>>24]
+.4 0094340101CF common_code
+	alu_shf[me_num,0xf, and,me_num,>>3]
+.5 00BAC4010304 common_code
+	alu[me_num,me_num,-,4]
+.6 00D802008120 common_code
+	beq[continue_test#]             ; Firse ME will be 0 after this
+.7 00E000000080 common_code
+	; When running with multiple ME's, we want each ME to wait until previous one is complete
+	ctx_arb[l0000!sig7]
+.8 00F0000C0041 common_code
+	continue_test#:
+	immed[ringbase_base,0]
+.9 00F4400C0441 common_code
+	immed_w1[ringbase_base,0x1]
+.10 008A64113641 common_code
+	alu_shf[ringbase_base,ringbase_base,or,cl_num,<<26]
+.11 00F0000E0042 common_code
+	immed[ringptr_base,0x80]
+.12 00F4400C0442 common_code
+	immed_w1[ringptr_base,0x1]
+.13 008A64213642 common_code
+	alu_shf[ringptr_base,ringptr_base,or,cl_num,<<26]
+.14 0091D43102C0 common_code
+	alu_shf[offset1,--,b,me_num,<<3]
+.15 0081E4A102C0 common_code
+	; Use me_num as the BaseAddr of first ring
+	alu_shf[ring1,--,b,me_num,<<2]
+.16 008A64A1364A common_code
+	alu_shf[ring1,ring1,or,cl_num,<<26]
+.17 00A004D10300 common_code
+	alu[data,--,b,me_num]
+.18 008A84D33E4D common_code
+	; Report all events
+	alu_shf[data,data,or,0xf,<<24]
+.19 00A0400C004D common_code
+	alu[$xfer0,--,b,data]
+.20 00F0000C0001 common_code
+	immed[$xfer1,0]
+.21 044F10010C41 common_code
+	; Set size field to 0 [18:16] : Ring size = 32
+	cls[write,$xfer0,ringbase_base,offset1,1], ctx_swap[l0000!sig1]
+.22 00F0000C0000 common_code
+	; Initialize head  pointers to 0
+	; Initialize tail pointers to the me_num
+	immed[$xfer0,0]
+.23 0081000102C0 common_code
+	alu_shf[$xfer0,--,b,me_num,<<16]
+.24 044F10010C42 common_code
+	cls[write,$xfer0,ringptr_base,offset1,1], ctx_swap[l0000!sig1]
+.25 004F10050C41 common_code
+	; Rings Should still BE empty
+	cls[read_le,$xfer0,ringbase_base,offset1,1], ctx_swap[l0000!sig1]
+.26 0081E46001C0 common_code
+	alu_shf[full_empty_sts,--,b,$xfer0,>>30]
+.27 00AAB00C0046 common_code
+	alu[--,full_empty_sts,-,0]
+.28 00D818008121 common_code
+	bne[test_failed#]
+.29 00F0000C2449 common_code
+	; Adjust the Tail PTR (The amount to add will be 9 + 1 = 10)
+	immed[tail_offset,9]
+.30 00FC192C0049 common_code
+	local_csr_wr[cmd_indirect_ref_0, tail_offset]
+.31 0081AC0306C0 common_code
+	alu_shf[--,--,b,1,<<6]   ; Bit 6 is Override ByteMask enable
+.32 2A4F000F034A common_code
+	cls[add_tail,--,ring1,0,1] ,indirect_ref
+.33 00F00001070A common_code
+	; Rings Should no longer be empty
+	;cls[read_le,$xfer0,ringbase_base,offset1,1], ctx_swap[sig1] 
+	;alu[full_empty_sts,--,B,$xfer0,>>30]
+	;alu[--,full_empty_sts,-,NOT_FULL_AND_NOT_EMPTY]
+	;BNE[test_failed#]
+	.macro_ref add_delay[10]
+	immed[ctr,10]
+.34 00F0000C0300 common_code
+	m000_sleep_label#:
+	  nop
+.35 00BAC4110701 common_code
+	  alu[ctr,ctr,-,1]
+.36 00D808808121 common_code
+	  bne[m000_sleep_label#]
+.37 00A0C4010049 common_code
+	.end_macro_ref add_delay
+	; Read Tail pointers - Check that tail pointer was updated correctly
+	alu[expect_data,me_num,+,tail_offset]
+.38 00A0840C0440 common_code
+	alu[expect_data,expect_data,+,1]
+.39 0081040B0240 common_code
+	alu_shf[expect_data,--,b,expect_data,<<16]
+.40 00F0000C004F common_code
+	immed[loop_count,0]
+.41 00AAF001004F common_code
+	assign_expect_data_loop#:
+	   alu[--,me_num,-,loop_count]
+.42 00D80B408121 common_code
+	   bne[assign_zero#]
+.43 00A0640C0040 common_code
+	   alu[*l$index0++,--,b,expect_data]
+.44 00D80B808038 common_code
+	   br[done_assign#]
+.45 00F0000C0240 common_code
+	assign_zero#:
+	   immed[*l$index0++,0]
+.46 00A084FC044F common_code
+	done_assign#:
+	   alu[loop_count,loop_count,+,1]
+.47 00AAB00C404F common_code
+	   alu[--,loop_count,-,16]
+.48 00D80A408121 common_code
+	   bne[assign_expect_data_loop#]
+.49 008184333EC0 common_code
+	; Check all 16 Tail pointers.
+	; The one just written should have been incremented by 9
+	; All the others should be "0"
+	read_tail_ptrs#:
+	alu_shf[len, --, b, 15,<<8]        ; We will override the length with "16"
+.50 008B94330643 common_code
+	alu_shf[len, len, or, 1,<<7]       ; Override length enable bit
+.51 024F10070042 common_code
+	cls[read_le,$xfer0,ringptr_base,0,1], ctx_swap[l0000!sig1], indirect_ref
+.52 00AAB00B0000 common_code
+	alu[--,$xfer0,-,*l$index1++]
+.53 00D818008121 common_code
+	bne[test_failed#]
+.54 00AAB00B0002 common_code
+	alu[--,$xfer2,-,*l$index1++]
+.55 00D818008121 common_code
+	bne[test_failed#]
+.56 00AAB00B0004 common_code
+	alu[--,$xfer4,-,*l$index1++]
+.57 00D818008121 common_code
+	bne[test_failed#]
+.58 00AAB00B0006 common_code
+	alu[--,$xfer6,-,*l$index1++]
+.59 00D818008121 common_code
+	bne[test_failed#]
+.60 00AAB00B0008 common_code
+	alu[--,$xfer8,-,*l$index1++]
+.61 00D818008121 common_code
+	bne[test_failed#]
+.62 00AAB00B000A common_code
+	alu[--,$xfer10,-,*l$index1++]
+.63 00D818008121 common_code
+	bne[test_failed#]
+.64 00AAB00B000C common_code
+	alu[--,$xfer12,-,*l$index1++]
+.65 00D818008121 common_code
+	bne[test_failed#]
+.66 00AAB00B000E common_code
+	alu[--,$xfer14,-,*l$index1++]
+.67 00D818008121 common_code
+	bne[test_failed#]
+.68 008184333EC0 common_code
+	alu_shf[len, --, b, 15,<<8]        ; We will override the length with "16"
+.69 008B94330643 common_code
+	alu_shf[len, len, or, 1,<<7]       ; Override length enable bit
+.70 024F10070042 common_code
+	cls[read_le,$xfer0,ringptr_base,0x40,1], ctx_swap[l0000!sig1], indirect_ref
+.71 00AAB00B0000 common_code
+	alu[--,$xfer0,-,*l$index1++]
+.72 00D818008121 common_code
+	bne[test_failed#]
+.73 00AAB00B0002 common_code
+	alu[--,$xfer2,-,*l$index1++]
+.74 00D818008121 common_code
+	bne[test_failed#]
+.75 00AAB00B0004 common_code
+	alu[--,$xfer4,-,*l$index1++]
+.76 00D818008121 common_code
+	bne[test_failed#]
+.77 00AAB00B0006 common_code
+	alu[--,$xfer6,-,*l$index1++]
+.78 00D818008121 common_code
+	bne[test_failed#]
+.79 00AAB00B0008 common_code
+	alu[--,$xfer8,-,*l$index1++]
+.80 00D818008121 common_code
+	bne[test_failed#]
+.81 00AAB00B000A common_code
+	alu[--,$xfer10,-,*l$index1++]
+.82 00D818008121 common_code
+	bne[test_failed#]
+.83 00AAB00B000C common_code
+	alu[--,$xfer12,-,*l$index1++]
+.84 00D818008121 common_code
+	bne[test_failed#]
+.85 00AAB00B000E common_code
+	alu[--,$xfer14,-,*l$index1++]
+.86 00D818008121 common_code
+	bne[test_failed#]
+.87 00FC172D1344 common_code
+	local_csr_wr[mailbox0,0x44]
+.88 00F0000C0000 common_code
+	immed[$xfer0,0]
+.89 044F10010C42 common_code
+	cls[write,$xfer0,ringptr_base,offset1,1], ctx_swap[l0000!sig1]
+.90 00F000012F07 common_code
+	immed[sig_num,7]
+.91 009BD4C52EC0 common_code
+	alu_shf[sig_gpr,0x80,or,sig_num,<<3]
+.92 00FC10213300 common_code
+	local_csr_wr[next_neighbor_signal,sig_gpr]
+.93 00F000A11FCE common_code
+	test_passed#: immed[pass_fail_status,0xace]
+.94 00FC17211F00 common_code
+		      local_csr_wr[mailbox0, pass_fail_status]
+.95 00E000010000 common_code
+		      ctx_arb[kill], any
+.96 00F000012F07 common_code
+	test_failed#:
+		      immed[sig_num,7]
+.97 009BD4C52EC0 common_code
+		      alu_shf[sig_gpr,0x80,or,sig_num,<<3]
+.98 00FC10213300 common_code
+		      local_csr_wr[next_neighbor_signal,sig_gpr]
+.99 00F000B11FAD common_code
+		      immed[pass_fail_status,0xbad]
+.100 00FC17211F00 common_code
+		      local_csr_wr[mailbox0, pass_fail_status]
+.101 00E000010000 common_code
+		      ctx_arb[kill], any
+	.entrancel0000!sig1l0000!sig2l0000!sig3l0000!sig4l0000!sig5l0000!sig6l0000!sig7l0000!sig8l0000!sig9l0000!sig10l0000!sig11l0000!sig12l0000!sig13l0000!sig14l0000!sig15+ucode_end
+

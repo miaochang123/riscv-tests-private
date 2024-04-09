@@ -1,0 +1,904 @@
++version:  10/31/2000
++switches:  
++nfas_version: 6.x-devel.Internal [nfas rev 35]
++nfas_date: Jan 10 2023 14:40:54
++current_date: Tue Jan 17 16:12:00 2023
+
+.chip_id nfp-7xxxc 0x00 0x10
+
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.LEGACY_INDIRECT_REF_MODE const 0
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.THIRD_PARTY_ADDRESS_MODE const 0
+
+.%num_contexts 4
+.%ctx_range 0 6
+
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+
+.%init_nn_mode --
+.%third_party_addressing 40bit
+.%indirect_ref_mode nfp6000
+.%neighbor_usage 0x00
+.%case_sensitivity 0
+
+.%resource CAM 0
+.%resource CRC 0
+.%resource T_INDEX 0
+.%resource BYTE_INDEX 0
+
+
+:check_data# 131
+:ctx0_reading_code# 114
+:ctx0_writing_code# 51
+:reading_me_code# 69
+:test_failed# 198
+:test_passed# 195
+:writing_me_code# 14
+*-- no_destination 0
+;*signal_address!!2 gpr_a_rel 11
+;*signal_address!!3 gpr_b_rel 12
+*signal_address gpr_a_rel 11
+*expect31 gpr_a_rel 00
+*expect30 gpr_b_rel 00
+*expect29 gpr_a_rel 01
+*expect28 gpr_b_rel 01
+*expect27 gpr_a_rel 02
+*expect26 gpr_b_rel 02
+*expect25 gpr_a_rel 03
+*expect24 gpr_b_rel 03
+*expect23 gpr_a_rel 04
+*expect22 gpr_b_rel 04
+*expect21 gpr_a_rel 05
+*expect20 gpr_b_rel 05
+*expect19 gpr_a_rel 06
+*expect18 gpr_b_rel 06
+*expect17 gpr_a_rel 07
+*expect16 gpr_b_rel 07
+*expect15 gpr_a_rel 08
+*expect14 gpr_b_rel 08
+*expect13 gpr_a_rel 09
+*expect12 gpr_b_rel 09
+*expect11 gpr_a_rel 0A
+*expect10 gpr_b_rel 0A
+*expect9 gpr_a_rel 0B
+*expect8 gpr_b_rel 0B
+*expect7 gpr_a_rel 0C
+*expect6 gpr_b_rel 0C
+*expect5 gpr_a_rel 0D
+*expect4 gpr_b_rel 0D
+*expect3 gpr_a_rel 0E
+*expect2 gpr_b_rel 0E
+*expect1 gpr_a_rel 0F
+*expect0 gpr_b_rel 0F
+*address gpr_a_rel 10
+*data gpr_a_rel 12
+*this_ctx gpr_b_rel 10
+*cl_num gpr_b_rel 11
+;*me_num!!2 gpr_b_rel 13
+*me_num gpr_b_rel 13
+*write_data gpr_b_rel 14
+*$xfer31 xfer_rel 1F 0 both 1 0x3F
+*$xfer30 xfer_rel 1E 0 both 2 0x3F
+*$xfer29 xfer_rel 1D 0 both 3 0x3F
+*$xfer28 xfer_rel 1C 0 both 4 0x3F
+*$xfer27 xfer_rel 1B 0 both 5 0x3F
+*$xfer26 xfer_rel 1A 0 both 6 0x3F
+*$xfer25 xfer_rel 19 0 both 7 0x3F
+*$xfer24 xfer_rel 18 0 both 8 0x3F
+*$xfer23 xfer_rel 17 0 both 9 0x3F
+*$xfer22 xfer_rel 16 0 both 10 0x3F
+*$xfer21 xfer_rel 15 0 both 11 0x3F
+*$xfer20 xfer_rel 14 0 both 12 0x3F
+*$xfer19 xfer_rel 13 0 both 13 0x3F
+*$xfer18 xfer_rel 12 0 both 14 0x3F
+*$xfer17 xfer_rel 11 0 both 15 0x3F
+*$xfer16 xfer_rel 10 0 both 16 0x3F
+*$xfer15 xfer_rel 0F 0 both 17 0x3F
+*$xfer14 xfer_rel 0E 0 both 18 0x3F
+*$xfer13 xfer_rel 0D 0 both 19 0x3F
+*$xfer12 xfer_rel 0C 0 both 20 0x3F
+*$xfer11 xfer_rel 0B 0 both 21 0x3F
+*$xfer10 xfer_rel 0A 0 both 22 0x3F
+*$xfer9 xfer_rel 09 0 both 23 0x3F
+*$xfer8 xfer_rel 08 0 both 24 0x3F
+*$xfer7 xfer_rel 07 0 both 25 0x3F
+*$xfer6 xfer_rel 06 0 both 26 0x3F
+*$xfer5 xfer_rel 05 0 both 27 0x3F
+*$xfer4 xfer_rel 04 0 both 28 0x3F
+*$xfer3 xfer_rel 03 0 both 29 0x3F
+*$xfer2 xfer_rel 02 0 both 30 0x3F
+*$xfer1 xfer_rel 01 0 both 31 0x3F
+*$xfer0 xfer_rel 00 0 both 32 0x3F
+*l0000!sig15 signal 0F 0
+*l0000!sig14 signal 0E 0
+*l0000!sig13 signal 0D 0
+*l0000!sig12 signal 0C 0
+*l0000!sig10 signal 0A 0
+*l0000!sig8 signal 08 0
+*l0000!sig7 signal 07 0
+*l0000!sig6 signal 06 0
+*l0000!sig5 signal 05 0
+*l0000!sig4 signal 04 0
+*l0000!sig3 signal 03 0
+*l0000!sig2 signal 02 0
+*l0000!sig1 signal 01 0
+.%type R
+.%type SI
+.%scope global
+.%var $xfer0 0 R
+.%liverange 0 $W0 15:68 104:113
+.%liverange 0 ~$W0 131:200
+.%liverange 0 $R0 109:113 116:194 198:200
+.%liverange 0 ~$R0 195:197
+.%var $xfer1 0 R
+.%liverange 0 $W1 16:68
+.%liverange 0 ~$W1 195:197
+.%liverange 0 $R1 109:113 116:194 198:200
+.%liverange 0 ~$R1 195:197
+.%var $xfer2 0 R
+.%liverange 0 $W2 17:68
+.%liverange 0 ~$W2 195:197
+.%liverange 0 $R2 109:113 116:194 198:200
+.%liverange 0 ~$R2 195:197
+.%var $xfer3 0 R
+.%liverange 0 $W3 18:68
+.%liverange 0 ~$W3 195:197
+.%liverange 0 $R3 109:113 116:194 198:200
+.%liverange 0 ~$R3 195:197
+.%var $xfer4 0 R
+.%liverange 0 $W4 19:68
+.%liverange 0 ~$W4 195:197
+.%liverange 0 $R4 109:113 118:194 198:200
+.%liverange 0 ~$R4 195:197
+.%var $xfer5 0 R
+.%liverange 0 $W5 20:68
+.%liverange 0 ~$W5 195:197
+.%liverange 0 $R5 109:113 118:194 198:200
+.%liverange 0 ~$R5 195:197
+.%var $xfer6 0 R
+.%liverange 0 $W6 21:68
+.%liverange 0 ~$W6 195:197
+.%liverange 0 $R6 109:113 118:194 198:200
+.%liverange 0 ~$R6 195:197
+.%var $xfer7 0 R
+.%liverange 0 $W7 22:68
+.%liverange 0 ~$W7 195:197
+.%liverange 0 $R7 109:113 118:194 198:200
+.%liverange 0 ~$R7 195:197
+.%var $xfer8 0 R
+.%liverange 0 $W8 23:68
+.%liverange 0 ~$W8 195:197
+.%liverange 0 $R8 110:113 120:194 198:200
+.%liverange 0 ~$R8 195:197
+.%var $xfer9 0 R
+.%liverange 0 $W9 24:68
+.%liverange 0 ~$W9 195:197
+.%liverange 0 $R9 110:113 120:194 198:200
+.%liverange 0 ~$R9 195:197
+.%var $xfer10 0 R
+.%liverange 0 $W10 25:68
+.%liverange 0 ~$W10 195:197
+.%liverange 0 $R10 110:113 120:194 198:200
+.%liverange 0 ~$R10 195:197
+.%var $xfer11 0 R
+.%liverange 0 $W11 26:68
+.%liverange 0 ~$W11 195:197
+.%liverange 0 $R11 110:113 120:194 198:200
+.%liverange 0 ~$R11 195:197
+.%var $xfer12 0 R
+.%liverange 0 $W12 27:68
+.%liverange 0 ~$W12 195:197
+.%liverange 0 $R12 110:113 122:194 198:200
+.%liverange 0 ~$R12 195:197
+.%var $xfer13 0 R
+.%liverange 0 $W13 28:68
+.%liverange 0 ~$W13 195:197
+.%liverange 0 $R13 110:113 122:194 198:200
+.%liverange 0 ~$R13 195:197
+.%var $xfer14 0 R
+.%liverange 0 $W14 29:68
+.%liverange 0 ~$W14 195:197
+.%liverange 0 $R14 110:113 122:194 198:200
+.%liverange 0 ~$R14 195:197
+.%var $xfer15 0 R
+.%liverange 0 $W15 30:68
+.%liverange 0 ~$W15 195:197
+.%liverange 0 $R15 110:113 122:194 198:200
+.%liverange 0 ~$R15 195:197
+.%var $xfer16 0 R
+.%liverange 0 $W16 31:68
+.%liverange 0 ~$W16 195:197
+.%liverange 0 $R16 111:113 124:194 198:200
+.%liverange 0 ~$R16 195:197
+.%var $xfer17 0 R
+.%liverange 0 $W17 32:68
+.%liverange 0 ~$W17 195:197
+.%liverange 0 $R17 111:113 124:194 198:200
+.%liverange 0 ~$R17 195:197
+.%var $xfer18 0 R
+.%liverange 0 $W18 33:68
+.%liverange 0 ~$W18 195:197
+.%liverange 0 $R18 111:113 124:194 198:200
+.%liverange 0 ~$R18 195:197
+.%var $xfer19 0 R
+.%liverange 0 $W19 34:68
+.%liverange 0 ~$W19 195:197
+.%liverange 0 $R19 111:113 124:194 198:200
+.%liverange 0 ~$R19 195:197
+.%var $xfer20 0 R
+.%liverange 0 $W20 35:68
+.%liverange 0 ~$W20 195:197
+.%liverange 0 $R20 111:113 126:194 198:200
+.%liverange 0 ~$R20 195:197
+.%var $xfer21 0 R
+.%liverange 0 $W21 36:68
+.%liverange 0 ~$W21 195:197
+.%liverange 0 $R21 111:113 126:194 198:200
+.%liverange 0 ~$R21 195:197
+.%var $xfer22 0 R
+.%liverange 0 $W22 37:68
+.%liverange 0 ~$W22 195:197
+.%liverange 0 $R22 111:113 126:194 198:200
+.%liverange 0 ~$R22 195:197
+.%var $xfer23 0 R
+.%liverange 0 $W23 38:68
+.%liverange 0 ~$W23 195:197
+.%liverange 0 $R23 111:113 126:194 198:200
+.%liverange 0 ~$R23 195:197
+.%var $xfer24 0 R
+.%liverange 0 $W24 39:68
+.%liverange 0 ~$W24 195:197
+.%liverange 0 $R24 112:113 128:194 198:200
+.%liverange 0 ~$R24 195:197
+.%var $xfer25 0 R
+.%liverange 0 $W25 40:68
+.%liverange 0 ~$W25 195:197
+.%liverange 0 $R25 112:113 128:194 198:200
+.%liverange 0 ~$R25 195:197
+.%var $xfer26 0 R
+.%liverange 0 $W26 41:68
+.%liverange 0 ~$W26 195:197
+.%liverange 0 $R26 112:113 128:194 198:200
+.%liverange 0 ~$R26 195:197
+.%var $xfer27 0 R
+.%liverange 0 $W27 42:68
+.%liverange 0 ~$W27 195:197
+.%liverange 0 $R27 112:113 128:194 198:200
+.%liverange 0 ~$R27 195:197
+.%var $xfer28 0 R
+.%liverange 0 $W28 43:68
+.%liverange 0 ~$W28 195:197
+.%liverange 0 $R28 112:113 130:194 198:200
+.%liverange 0 ~$R28 195:197
+.%var $xfer29 0 R
+.%liverange 0 $W29 44:68
+.%liverange 0 ~$W29 195:197
+.%liverange 0 $R29 112:113 130:194 198:200
+.%liverange 0 ~$R29 195:197
+.%var $xfer30 0 R
+.%liverange 0 $W30 45:68
+.%liverange 0 ~$W30 195:197
+.%liverange 0 $R30 112:113 130:194 198:200
+.%liverange 0 ~$R30 195:197
+.%var $xfer31 0 R
+.%liverange 0 $W31 46:68
+.%liverange 0 ~$W31 195:197
+.%liverange 0 $R31 112:113 130:194 198:200
+.%liverange 0 ~$R31 195:197
+.%var write_data 0 R
+.%liverange 0 B20 1:200
+.%var me_num 0 R
+.%liverange 0 B19 4:200
+.%var cl_num 0 R
+.%liverange 0 B17 5:200
+.%var this_ctx 0 R
+.%liverange 0 B16 6:200
+.%var data 0 R
+.%liverange 0 A18 8:200
+.%var address 0 R
+.%liverange 0 A16 9:200
+.%var expect0 0 R
+.%liverange 0 B15 70:194 198:200
+.%liverange 0 ~B15 195:197
+.%var expect1 0 R
+.%liverange 0 A15 71:194 198:200
+.%liverange 0 ~A15 195:197
+.%var expect2 0 R
+.%liverange 0 B14 72:194 198:200
+.%liverange 0 ~B14 195:197
+.%var expect3 0 R
+.%liverange 0 A14 73:194 198:200
+.%liverange 0 ~A14 195:197
+.%var expect4 0 R
+.%liverange 0 B13 74:194 198:200
+.%liverange 0 ~B13 195:197
+.%var expect5 0 R
+.%liverange 0 A13 75:194 198:200
+.%liverange 0 ~A13 195:197
+.%var expect6 0 R
+.%liverange 0 B12 76:194 198:200
+.%liverange 0 ~B12 195:197
+.%var expect7 0 R
+.%liverange 0 A12 77:194 198:200
+.%liverange 0 ~A12 195:197
+.%var expect8 0 R
+.%liverange 0 B11 78:194 198:200
+.%liverange 0 ~B11 195:197
+.%var expect9 0 R
+.%liverange 0 A11 79:194 198:200
+.%liverange 0 ~A11 195:197
+.%var expect10 0 R
+.%liverange 0 B10 80:194 198:200
+.%liverange 0 ~B10 195:197
+.%var expect11 0 R
+.%liverange 0 A10 81:194 198:200
+.%liverange 0 ~A10 195:197
+.%var expect12 0 R
+.%liverange 0 B9 82:194 198:200
+.%liverange 0 ~B9 195:197
+.%var expect13 0 R
+.%liverange 0 A9 83:194 198:200
+.%liverange 0 ~A9 195:197
+.%var expect14 0 R
+.%liverange 0 B8 84:194 198:200
+.%liverange 0 ~B8 195:197
+.%var expect15 0 R
+.%liverange 0 A8 85:194 198:200
+.%liverange 0 ~A8 195:197
+.%var expect16 0 R
+.%liverange 0 B7 86:194 198:200
+.%liverange 0 ~B7 195:197
+.%var expect17 0 R
+.%liverange 0 A7 87:194 198:200
+.%liverange 0 ~A7 195:197
+.%var expect18 0 R
+.%liverange 0 B6 88:194 198:200
+.%liverange 0 ~B6 195:197
+.%var expect19 0 R
+.%liverange 0 A6 89:194 198:200
+.%liverange 0 ~A6 195:197
+.%var expect20 0 R
+.%liverange 0 B5 90:194 198:200
+.%liverange 0 ~B5 195:197
+.%var expect21 0 R
+.%liverange 0 A5 91:194 198:200
+.%liverange 0 ~A5 195:197
+.%var expect22 0 R
+.%liverange 0 B4 92:194 198:200
+.%liverange 0 ~B4 195:197
+.%var expect23 0 R
+.%liverange 0 A4 93:194 198:200
+.%liverange 0 ~A4 195:197
+.%var expect24 0 R
+.%liverange 0 B3 94:194 198:200
+.%liverange 0 ~B3 195:197
+.%var expect25 0 R
+.%liverange 0 A3 95:194 198:200
+.%liverange 0 ~A3 195:197
+.%var expect26 0 R
+.%liverange 0 B2 96:194 198:200
+.%liverange 0 ~B2 195:197
+.%var expect27 0 R
+.%liverange 0 A2 97:194 198:200
+.%liverange 0 ~A2 195:197
+.%var expect28 0 R
+.%liverange 0 B1 98:194 198:200
+.%liverange 0 ~B1 195:197
+.%var expect29 0 R
+.%liverange 0 A1 99:194 198:200
+.%liverange 0 ~A1 195:197
+.%var expect30 0 R
+.%liverange 0 B0 100:194 198:200
+.%liverange 0 ~B0 195:197
+.%var expect31 0 R
+.%liverange 0 A0 101:194 198:200
+.%liverange 0 ~A0 195:197
+.%var signal_address 0 R
+.%liverange 0 A17 105:106
+.%liverange 0 B18 107:113
+.%liverange 0 ~B18 131:200
+.%var l0000!sig15 1 R
+.%liverange 0 G15 112:113
+.%var l0000!sig14 1 R
+.%liverange 0 G14 111:113
+.%var l0000!sig13 1 R
+.%liverange 0 G13 110:113
+.%var l0000!sig12 1 R
+.%liverange 0 G12 109:113
+.%var l0000!sig10 1 R
+.%liverange 0 G10 50:50 103:103 195:197
+.%var l0000!sig8 1 R
+.%liverange 0 G8 68:68 129:131 195:197
+.%var l0000!sig7 1 R
+.%liverange 0 G7 66:68 127:131 195:197
+.%var l0000!sig6 1 R
+.%liverange 0 G6 52:52 64:68 125:131 195:197
+.%var l0000!sig5 1 R
+.%liverange 0 G5 62:68 123:131 195:197
+.%var l0000!sig4 1 R
+.%liverange 0 G4 52:52 60:68 121:131 195:197
+.%var l0000!sig3 1 R
+.%liverange 0 G3 58:68 119:131 195:197
+.%var l0000!sig2 1 R
+.%liverange 0 G2 52:52 56:68 117:131 195:197
+.%var l0000!sig1 1 R
+.%liverange 0 G1 48:48 54:68 115:131 195:197
+.%scope end
+.%import_expr common_code 194 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 192 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 190 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 188 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 186 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 184 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 182 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 180 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 178 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 176 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 174 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 172 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 170 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 168 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 166 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 164 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 162 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 160 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 158 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 156 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 154 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 152 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 150 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 148 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 146 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 144 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 142 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 140 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 138 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 136 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 134 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 132 <43:43:15,41:40:13,34:22:0> 198 &bp +
+.%import_expr common_code 113 <43:43:15,41:40:13,34:22:0> 131 &bp +
+.%import_expr common_code 101 <43:43:15,41:40:13,34:22:0> 114 &bp +
+.%import_expr common_code 68 <43:43:15,41:40:13,34:22:0> 195 &bp +
+.%import_expr common_code 50 <43:43:15,41:40:13,34:22:0> 195 &bp +
+.%import_expr common_code 46 <43:43:15,41:40:13,34:22:0> 51 &bp +
+.%import_expr common_code 13 <43:43:15,41:40:13,34:22:0> 195 &bp +
+.%import_expr common_code 12 <43:43:15,41:40:13,34:22:0> 69 &bp +
+.%import_expr common_code 10 <43:43:15,41:40:13,34:22:0> 14 &bp +
+.0 009105431EC0 common_code
+	.page
+	.num_contexts 4
+	.sig  l0000!sig1 l0000!sig2 l0000!sig3 l0000!sig4 l0000!sig5 l0000!sig6 l0000!sig7 l0000!sig8 l0000!sig9 l0000!sig10 l0000!sig11 l0000!sig12 l0000!sig13 l0000!sig14 l0000!sig15
+	.xfer_order $xfer0 $xfer1 $xfer2 $xfer3 $xfer4 $xfer5 $xfer6 $xfer7 $xfer8 $xfer9 $xfer10 $xfer11 $xfer12 $xfer13 $xfer14 $xfer15 $xfer16 $xfer17 $xfer18 $xfer19 $xfer20 $xfer21 $xfer22 $xfer23 $xfer24 $xfer25 $xfer26 $xfer27 $xfer28 $xfer29 $xfer30 $xfer31
+	.addr l0000!sig1 1
+	.addr l0000!sig2 2
+	.addr l0000!sig3 3
+	.addr l0000!sig4 4
+	.addr l0000!sig5 5
+	.addr l0000!sig6 6
+	.addr l0000!sig7 7
+	.addr l0000!sig8 8
+	.addr l0000!sig9 9
+	.addr l0000!sig10 10
+	.addr l0000!sig11 11
+	.addr l0000!sig12 12
+	.addr l0000!sig13 13
+	.addr l0000!sig14 14
+	.addr l0000!sig15 15
+	alu_shf[write_data,--,b,7,<<16]
+.1 00FC19215300 common_code
+	local_csr_wr[cmd_indirect_ref_0,write_data]  ; Set up the override SIGNAL_MASTER ID
+.2 00FC044C0300 common_code
+	; The ME_NUM is in bits [7:3]
+	local_csr_rd[active_ctx_sts]
+.3 00F000014F00 common_code
+	immed[me_num,0]
+.4 009585114DFF common_code
+	alu_shf[cl_num,0x3f, and,me_num,>>24]
+.5 00B405014F07 common_code
+	alu[this_ctx,0x7, and,me_num]
+.6 009435314DCF common_code
+	alu_shf[me_num,0xf, and,me_num,>>3]
+.7 0081052142C0 common_code
+	alu_shf[data,--,b,this_ctx,<<16]  ; Put context # into [19:16] of data
+.8 0081850142C0 common_code
+	alu_shf[address,--,b,this_ctx,<<8]  ; Put context # into [11:8] of data
+.9 00AAF0014F04 common_code
+	alu[--,me_num,-,4]
+.10 00D803808120 common_code
+	beq[writing_me_code#]
+.11 00AAF0014F07 common_code
+	alu[--,me_num,-,7]
+.12 00D811408120 common_code
+	beq[reading_me_code#]
+.13 00D830C08038 common_code
+	br[test_passed#]      ; any other active MEs do nothing
+.14 00A0800C0052 common_code
+	writing_me_code#:
+	alu[$xfer0,data,+,0]
+.15 00A0801C0452 common_code
+	alu[$xfer1,data,+,1]
+.16 00A0802C0852 common_code
+	alu[$xfer2,data,+,2]
+.17 00A0803C0C52 common_code
+	alu[$xfer3,data,+,3]
+.18 00A0804C1052 common_code
+	alu[$xfer4,data,+,4]
+.19 00A0805C1452 common_code
+	alu[$xfer5,data,+,5]
+.20 00A0806C1852 common_code
+	alu[$xfer6,data,+,6]
+.21 00A0807C1C52 common_code
+	alu[$xfer7,data,+,7]
+.22 00A0808C2052 common_code
+	alu[$xfer8,data,+,8]
+.23 00A0809C2452 common_code
+	alu[$xfer9,data,+,9]
+.24 00A080AC2852 common_code
+	alu[$xfer10,data,+,10]
+.25 00A080BC2C52 common_code
+	alu[$xfer11,data,+,11]
+.26 00A080CC3052 common_code
+	alu[$xfer12,data,+,12]
+.27 00A080DC3452 common_code
+	alu[$xfer13,data,+,13]
+.28 00A080EC3852 common_code
+	alu[$xfer14,data,+,14]
+.29 00A080FC3C52 common_code
+	alu[$xfer15,data,+,15]
+.30 00A0810C4052 common_code
+	alu[$xfer16,data,+,16]
+.31 00A0811C4452 common_code
+	alu[$xfer17,data,+,17]
+.32 00A0812C4852 common_code
+	alu[$xfer18,data,+,18]
+.33 00A0813C4C52 common_code
+	alu[$xfer19,data,+,19]
+.34 00A0814C5052 common_code
+	alu[$xfer20,data,+,20]
+.35 00A0815C5452 common_code
+	alu[$xfer21,data,+,21]
+.36 00A0816C5852 common_code
+	alu[$xfer22,data,+,22]
+.37 00A0817C5C52 common_code
+	alu[$xfer23,data,+,23]
+.38 00A0818C6052 common_code
+	alu[$xfer24,data,+,24]
+.39 00A0819C6452 common_code
+	alu[$xfer25,data,+,25]
+.40 00A081AC6852 common_code
+	alu[$xfer26,data,+,26]
+.41 00A081BC6C52 common_code
+	alu[$xfer27,data,+,27]
+.42 00A081CC7052 common_code
+	alu[$xfer28,data,+,28]
+.43 00A081DC7452 common_code
+	alu[$xfer29,data,+,29]
+.44 00A081EC7852 common_code
+	alu[$xfer30,data,+,30]
+.45 00A081FC7C52 common_code
+	alu[$xfer31,data,+,31]
+.46 00D80CC00030 common_code
+	br=ctx[0,ctx0_writing_code#]
+.47 04471E030050 common_code
+	mem[write,$xfer0,address,0,8], ctx_swap[l0000!sig1]
+.48 00A0300C0700 common_code
+	alu[--,--,b,1]   ; Override the signal_master
+.49 0647AF030350 common_code
+	mem[write,$xfer16,address,0x40,8], sig_done[l0000!sig10], indirect_ref
+.50 00D830C08038 common_code
+	br[test_passed#]
+.51 00E000000054 common_code
+	ctx0_writing_code#:
+	ctx_arb[l0000!sig2,l0000!sig4,l0000!sig6]
+.52 00A0300C0700 common_code
+	alu[--,--,b,1]   ; Override the signal_master
+.53 064F16030350 common_code
+	cls[write,$xfer0,address,0,4], sig_done[l0000!sig1], indirect_ref
+.54 00A0300C0700 common_code
+	alu[--,--,b,1]   ; Override the signal_master
+.55 064F26434350 common_code
+	cls[write,$xfer4,address,0x10,4], sig_done[l0000!sig2], indirect_ref
+.56 00A0300C0700 common_code
+	alu[--,--,b,1]   ; Override the signal_master
+.57 064F36838350 common_code
+	cls[write,$xfer8,address,0x20,4], sig_done[l0000!sig3], indirect_ref
+.58 00A0300C0700 common_code
+	alu[--,--,b,1]   ; Override the signal_master
+.59 064F46C3C350 common_code
+	cls[write,$xfer12,address,0x30,4], sig_done[l0000!sig4], indirect_ref
+.60 00A0300C0700 common_code
+	alu[--,--,b,1]   ; Override the signal_master
+.61 064F57030350 common_code
+	cls[write,$xfer16,address,0x40,4], sig_done[l0000!sig5], indirect_ref
+.62 00A0300C0700 common_code
+	alu[--,--,b,1]   ; Override the signal_master
+.63 064F67434350 common_code
+	cls[write,$xfer20,address,0x50,4], sig_done[l0000!sig6], indirect_ref
+.64 00A0300C0700 common_code
+	alu[--,--,b,1]   ; Override the signal_master
+.65 064F77838350 common_code
+	cls[write,$xfer24,address,0x60,4], sig_done[l0000!sig7], indirect_ref
+.66 00A0300C0700 common_code
+	alu[--,--,b,1]   ; Override the signal_master
+.67 064F87C3C350 common_code
+	cls[write,$xfer28,address,0x70,4], sig_done[l0000!sig8], indirect_ref
+.68 00D830C08038 common_code
+	br[test_passed#]
+.69 00B084FC0052 common_code
+	reading_me_code#:
+	alu[expect0,data,+,0]
+.70 00A084FC0452 common_code
+	alu[expect1,data,+,1]
+.71 00B084EC0852 common_code
+	alu[expect2,data,+,2]
+.72 00A084EC0C52 common_code
+	alu[expect3,data,+,3]
+.73 00B084DC1052 common_code
+	alu[expect4,data,+,4]
+.74 00A084DC1452 common_code
+	alu[expect5,data,+,5]
+.75 00B084CC1852 common_code
+	alu[expect6,data,+,6]
+.76 00A084CC1C52 common_code
+	alu[expect7,data,+,7]
+.77 00B084BC2052 common_code
+	alu[expect8,data,+,8]
+.78 00A084BC2452 common_code
+	alu[expect9,data,+,9]
+.79 00B084AC2852 common_code
+	alu[expect10,data,+,10]
+.80 00A084AC2C52 common_code
+	alu[expect11,data,+,11]
+.81 00B0849C3052 common_code
+	alu[expect12,data,+,12]
+.82 00A0849C3452 common_code
+	alu[expect13,data,+,13]
+.83 00B0848C3852 common_code
+	alu[expect14,data,+,14]
+.84 00A0848C3C52 common_code
+	alu[expect15,data,+,15]
+.85 00B0847C4052 common_code
+	alu[expect16,data,+,16]
+.86 00A0847C4452 common_code
+	alu[expect17,data,+,17]
+.87 00B0846C4852 common_code
+	alu[expect18,data,+,18]
+.88 00A0846C4C52 common_code
+	alu[expect19,data,+,19]
+.89 00B0845C5052 common_code
+	alu[expect20,data,+,20]
+.90 00A0845C5452 common_code
+	alu[expect21,data,+,21]
+.91 00B0844C5852 common_code
+	alu[expect22,data,+,22]
+.92 00A0844C5C52 common_code
+	alu[expect23,data,+,23]
+.93 00B0843C6052 common_code
+	alu[expect24,data,+,24]
+.94 00A0843C6452 common_code
+	alu[expect25,data,+,25]
+.95 00B0842C6852 common_code
+	alu[expect26,data,+,26]
+.96 00A0842C6C52 common_code
+	alu[expect27,data,+,27]
+.97 00B0841C7052 common_code
+	alu[expect28,data,+,28]
+.98 00A0841C7452 common_code
+	alu[expect29,data,+,29]
+.99 00B0840C7852 common_code
+	alu[expect30,data,+,30]
+.100 00A0840C7C52 common_code
+	alu[expect31,data,+,31]
+.101 00D81C800030 common_code
+	br=ctx[0,ctx0_reading_code#]
+.102 00E000000400 common_code
+	ctx_arb[l0000!sig10]
+.103 00F0000C0000 common_code
+	immed[$xfer0,0]
+.104 0081751312C0 common_code
+	; INTERTHREAD_SIG Csr	
+	; ME number = bits [13:9]
+	; Thread #  = bits [8:6] 
+	; Signal #  = bits [5:2]
+	alu_shf[signal_address,--,b,4,<<9]                        ; me_num
+.105 008BE5114251 common_code
+	alu_shf[signal_address,signal_address,or,this_ctx,<<2]    ; Use this_ctx as the signal number
+.106 009A85214651 common_code
+	alu_shf[signal_address,signal_address,or,cl_num,<<24] ; Ths ME_island
+.107 004E00094BC0 common_code
+	ct[interthread_signal,--, signal_address,0, 1]
+.108 0047C6030350 common_code
+	mem[read,$xfer0,address,0,4], sig_done[l0000!sig12]
+.109 0047D6838350 common_code
+	mem[read,$xfer8,address,0x20,4], sig_done[l0000!sig13]
+.110 0047E7030350 common_code
+	mem[read,$xfer16,address,0x40,4], sig_done[l0000!sig14]
+.111 0047F7838350 common_code
+	mem[read,$xfer24,address,0x60,4], sig_done[l0000!sig15]
+.112 00E00000F000 common_code
+	ctx_arb[l0000!sig12,l0000!sig13,l0000!sig14,l0000!sig15]
+.113 00D820C08038 common_code
+	br[check_data#]
+.114 00E000000002 common_code
+	ctx0_reading_code#:
+	ctx_arb[l0000!sig1]
+.115 004F16030350 common_code
+	cls[read,$xfer0,address,0,4], sig_done[l0000!sig1]
+.116 00E000000004 common_code
+	ctx_arb[l0000!sig2]
+.117 004F26434350 common_code
+	cls[read,$xfer4,address,0x10,4], sig_done[l0000!sig2]
+.118 00E000000008 common_code
+	ctx_arb[l0000!sig3]
+.119 004F36838350 common_code
+	cls[read,$xfer8,address,0x20,4], sig_done[l0000!sig3]
+.120 00E000000010 common_code
+	ctx_arb[l0000!sig4]
+.121 004F46C3C350 common_code
+	cls[read,$xfer12,address,0x30,4], sig_done[l0000!sig4]
+.122 00E000000020 common_code
+	ctx_arb[l0000!sig5]
+.123 004F57030350 common_code
+	cls[read,$xfer16,address,0x40,4], sig_done[l0000!sig5]
+.124 00E000000040 common_code
+	ctx_arb[l0000!sig6]
+.125 004F67434350 common_code
+	cls[read,$xfer20,address,0x50,4], sig_done[l0000!sig6]
+.126 00E000000080 common_code
+	ctx_arb[l0000!sig7]
+.127 004F77838350 common_code
+	cls[read,$xfer24,address,0x60,4], sig_done[l0000!sig7]
+.128 00E000000100 common_code
+	ctx_arb[l0000!sig8]
+.129 004F87C3C350 common_code
+	cls[read,$xfer28,address,0x70,4], sig_done[l0000!sig8]
+.130 00E0000001FE common_code
+	ctx_arb[l0000!sig1,l0000!sig2,l0000!sig3,l0000!sig4,l0000!sig5,l0000!sig6,l0000!sig7,l0000!sig8]
+.131 00AAB0013C00 common_code
+	check_data#:
+	alu[--,$xfer0,-,expect0]
+.132 00D831808121 common_code
+	bne[test_failed#]
+.133 00AAF000044F common_code
+	alu[--,$xfer1,-,expect1]
+.134 00D831808121 common_code
+	bne[test_failed#]
+.135 00AAB0013802 common_code
+	alu[--,$xfer2,-,expect2]
+.136 00D831808121 common_code
+	bne[test_failed#]
+.137 00AAF0000C4E common_code
+	alu[--,$xfer3,-,expect3]
+.138 00D831808121 common_code
+	bne[test_failed#]
+.139 00AAB0013404 common_code
+	alu[--,$xfer4,-,expect4]
+.140 00D831808121 common_code
+	bne[test_failed#]
+.141 00AAF000144D common_code
+	alu[--,$xfer5,-,expect5]
+.142 00D831808121 common_code
+	bne[test_failed#]
+.143 00AAB0013006 common_code
+	alu[--,$xfer6,-,expect6]
+.144 00D831808121 common_code
+	bne[test_failed#]
+.145 00AAF0001C4C common_code
+	alu[--,$xfer7,-,expect7]
+.146 00D831808121 common_code
+	bne[test_failed#]
+.147 00AAB0012C08 common_code
+	alu[--,$xfer8,-,expect8]
+.148 00D831808121 common_code
+	bne[test_failed#]
+.149 00AAF000244B common_code
+	alu[--,$xfer9,-,expect9]
+.150 00D831808121 common_code
+	bne[test_failed#]
+.151 00AAB001280A common_code
+	alu[--,$xfer10,-,expect10]
+.152 00D831808121 common_code
+	bne[test_failed#]
+.153 00AAF0002C4A common_code
+	alu[--,$xfer11,-,expect11]
+.154 00D831808121 common_code
+	bne[test_failed#]
+.155 00AAB001240C common_code
+	alu[--,$xfer12,-,expect12]
+.156 00D831808121 common_code
+	bne[test_failed#]
+.157 00AAF0003449 common_code
+	alu[--,$xfer13,-,expect13]
+.158 00D831808121 common_code
+	bne[test_failed#]
+.159 00AAB001200E common_code
+	alu[--,$xfer14,-,expect14]
+.160 00D831808121 common_code
+	bne[test_failed#]
+.161 00AAF0003C48 common_code
+	alu[--,$xfer15,-,expect15]
+.162 00D831808121 common_code
+	bne[test_failed#]
+.163 00AAB0011C10 common_code
+	alu[--,$xfer16,-,expect16]
+.164 00D831808121 common_code
+	bne[test_failed#]
+.165 00AAF0004447 common_code
+	alu[--,$xfer17,-,expect17]
+.166 00D831808121 common_code
+	bne[test_failed#]
+.167 00AAB0011812 common_code
+	alu[--,$xfer18,-,expect18]
+.168 00D831808121 common_code
+	bne[test_failed#]
+.169 00AAF0004C46 common_code
+	alu[--,$xfer19,-,expect19]
+.170 00D831808121 common_code
+	bne[test_failed#]
+.171 00AAB0011414 common_code
+	alu[--,$xfer20,-,expect20]
+.172 00D831808121 common_code
+	bne[test_failed#]
+.173 00AAF0005445 common_code
+	alu[--,$xfer21,-,expect21]
+.174 00D831808121 common_code
+	bne[test_failed#]
+.175 00AAB0011016 common_code
+	alu[--,$xfer22,-,expect22]
+.176 00D831808121 common_code
+	bne[test_failed#]
+.177 00AAF0005C44 common_code
+	alu[--,$xfer23,-,expect23]
+.178 00D831808121 common_code
+	bne[test_failed#]
+.179 00AAB0010C18 common_code
+	alu[--,$xfer24,-,expect24]
+.180 00D831808121 common_code
+	bne[test_failed#]
+.181 00AAF0006443 common_code
+	alu[--,$xfer25,-,expect25]
+.182 00D831808121 common_code
+	bne[test_failed#]
+.183 00AAB001081A common_code
+	alu[--,$xfer26,-,expect26]
+.184 00D831808121 common_code
+	bne[test_failed#]
+.185 00AAF0006C42 common_code
+	alu[--,$xfer27,-,expect27]
+.186 00D831808121 common_code
+	bne[test_failed#]
+.187 00AAB001041C common_code
+	alu[--,$xfer28,-,expect28]
+.188 00D831808121 common_code
+	bne[test_failed#]
+.189 00AAF0007441 common_code
+	alu[--,$xfer29,-,expect29]
+.190 00D831808121 common_code
+	bne[test_failed#]
+.191 00AAB001001E common_code
+	alu[--,$xfer30,-,expect30]
+.192 00D831808121 common_code
+	bne[test_failed#]
+.193 00AAF0007C40 common_code
+	alu[--,$xfer31,-,expect31]
+.194 00D831808121 common_code
+	bne[test_failed#]
+.195 00F0000C0300 common_code
+	test_passed#:
+	nop
+.196 00F0000C0300 common_code
+	nop
+.197 00E000010000 common_code
+		ctx_arb[kill], any
+.198 00F0000C0300 common_code
+	test_failed#:
+	        nop
+.199 00F0000C0300 common_code
+	        nop
+.200 00E000010000 common_code
+		ctx_arb[kill], any
+	.entrancel0000!sig1l0000!sig2l0000!sig3l0000!sig4l0000!sig5l0000!sig6l0000!sig7l0000!sig8l0000!sig9l0000!sig10l0000!sig11l0000!sig12l0000!sig13l0000!sig14l0000!sig15+ucode_end
+

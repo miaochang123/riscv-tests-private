@@ -22,5 +22,7 @@ rv64ui_sc_tests = \
 	sub subw \
 	xor xori \
 
+rv64ui_rfpc_tests += $(shell find . -mindepth 3 -type f -name '*.S' -exec basename {} .S \;)
+rv64ui_p_rfpc_tests = $(addprefix rv64ui-p-rfpc-, $(rv64ui_rfpc_tests))
 rv64ui_p_tests = $(addprefix rv64ui-p-, $(rv64ui_sc_tests))
 rv64ui_v_tests = $(addprefix rv64ui-v-, $(rv64ui_sc_tests))

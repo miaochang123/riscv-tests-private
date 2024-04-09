@@ -1,0 +1,701 @@
++version:  10/31/2000
++switches:  
++nfas_version: 6.x-devel.Internal [nfas rev 35]
++nfas_date: Jan 10 2023 14:40:54
++current_date: Tue Jan 17 16:11:55 2023
+
+.chip_id nfp-7xxxc 0x00 0x10
+
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.LEGACY_INDIRECT_REF_MODE const 0
+.%init_csr "default assembler setting" -1 mecsr:MISC_CONTROL.THIRD_PARTY_ADDRESS_MODE const 0
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+
+.%init_nn_mode --
+.%third_party_addressing 40bit
+.%indirect_ref_mode nfp6000
+.%neighbor_usage 0x00
+.%case_sensitivity 0
+
+.%resource CAM 0
+.%resource CRC 0
+.%resource T_INDEX 0
+.%resource BYTE_INDEX 0
+
+
+:me0_code# 186
+:me1_code# 14
+:read_loop# 19
+:test_failed# 205
+:test_passed# 204
+*-- no_destination 0
+*expect7 gpr_b_rel 07
+*expect6 gpr_b_rel 06
+*expect5 gpr_b_rel 05
+*expect4 gpr_b_rel 04
+*expect3 gpr_b_rel 03
+*expect2 gpr_b_rel 02
+*expect1 gpr_b_rel 01
+*expect0 gpr_b_rel 00
+*sig_gpr gpr_b_rel 0C
+*sig_num gpr_b_rel 0B
+*cl_num gpr_b_rel 0A
+*temp gpr_b_rel 09
+*xpb_address gpr_a_rel 0A
+*read_loop gpr_a_rel 03
+*trng_base gpr_a_rel 01
+*me_num gpr_a_rel 00
+*$xfer15 xfer_rel 0F 0 both 1 0x1F
+*$xfer14 xfer_rel 0E 0 both 2 0x1F
+*$xfer13 xfer_rel 0D 0 both 3 0x1F
+*$xfer12 xfer_rel 0C 0 both 4 0x1F
+*$xfer11 xfer_rel 0B 0 both 5 0x1F
+*$xfer10 xfer_rel 0A 0 both 6 0x1F
+*$xfer9 xfer_rel 09 0 both 7 0x1F
+*$xfer8 xfer_rel 08 0 both 8 0x1F
+*$xfer7 xfer_rel 07 0 both 9 0x1F
+*$xfer6 xfer_rel 06 0 both 10 0x1F
+*$xfer5 xfer_rel 05 0 both 11 0x1F
+*$xfer4 xfer_rel 04 0 both 12 0x1F
+*$xfer3 xfer_rel 03 0 both 13 0x1F
+*$xfer2 xfer_rel 02 0 both 14 0x1F
+*$xfer1 xfer_rel 01 0 both 15 0x1F
+*$xfer0 xfer_rel 00 0 both 16 0x1F
+*l0000!sig1 signal 01 0
+.%type R
+.%type SI
+.%scope global
+.%var $xfer0 0 R
+.%liverange 0 $W0 12:207
+.%liverange 0 $R0 20:185 205:207
+.%liverange 0 ~$R0 19:19 204:204
+.%var $xfer1 0 R
+.%liverange 0 $W1 11:207
+.%liverange 0 $R1 208:208
+.%var $xfer2 0 R
+.%liverange 0 $W2 208:208
+.%liverange 0 $R2 208:208
+.%var $xfer3 0 R
+.%liverange 0 $W3 208:208
+.%liverange 0 $R3 208:208
+.%var $xfer4 0 R
+.%liverange 0 $W4 208:208
+.%liverange 0 $R4 208:208
+.%var $xfer5 0 R
+.%liverange 0 $W5 208:208
+.%liverange 0 $R5 208:208
+.%var $xfer6 0 R
+.%liverange 0 $W6 208:208
+.%liverange 0 $R6 208:208
+.%var $xfer7 0 R
+.%liverange 0 $W7 208:208
+.%liverange 0 $R7 208:208
+.%var $xfer8 0 R
+.%liverange 0 $W8 208:208
+.%liverange 0 $R8 208:208
+.%var $xfer9 0 R
+.%liverange 0 $W9 208:208
+.%liverange 0 $R9 208:208
+.%var $xfer10 0 R
+.%liverange 0 $W10 208:208
+.%liverange 0 $R10 208:208
+.%var $xfer11 0 R
+.%liverange 0 $W11 208:208
+.%liverange 0 $R11 208:208
+.%var $xfer12 0 R
+.%liverange 0 $W12 208:208
+.%liverange 0 $R12 208:208
+.%var $xfer13 0 R
+.%liverange 0 $W13 208:208
+.%liverange 0 $R13 208:208
+.%var $xfer14 0 R
+.%liverange 0 $W14 208:208
+.%liverange 0 $R14 208:208
+.%var $xfer15 0 R
+.%liverange 0 $W15 208:208
+.%liverange 0 $R15 208:208
+.%var me_num 0 R
+.%liverange 0 A0 2:207
+.%var trng_base 0 R
+.%liverange 0 A1 16:185 205:207
+.%liverange 0 ~A1 204:204
+.%var read_loop 0 R
+.%liverange 0 A3 19:185 205:207
+.%liverange 0 ~A3 204:204
+.%var xpb_address 0 R
+.%liverange 0 A10 7:207
+.%var temp 0 R
+.%liverange 0 B9 198:203
+.%liverange 0 ~B9 204:204
+.%var cl_num 0 R
+.%liverange 0 B10 5:207
+.%var sig_num 0 R
+.%liverange 0 B11 3:207
+.%var sig_gpr 0 R
+.%liverange 0 B12 4:207
+.%var expect0 0 R
+.%liverange 0 B0 26:185 205:207
+.%liverange 0 ~B0 204:204
+.%var expect1 0 R
+.%liverange 0 B1 28:185 205:207
+.%liverange 0 ~B1 204:204
+.%var expect2 0 R
+.%liverange 0 B2 30:185 205:207
+.%liverange 0 ~B2 204:204
+.%var expect3 0 R
+.%liverange 0 B3 32:185 205:207
+.%liverange 0 ~B3 204:204
+.%var expect4 0 R
+.%liverange 0 B4 34:185 205:207
+.%liverange 0 ~B4 204:204
+.%var expect5 0 R
+.%liverange 0 B5 36:185 205:207
+.%liverange 0 ~B5 204:204
+.%var expect6 0 R
+.%liverange 0 B6 38:185 205:207
+.%liverange 0 ~B6 204:204
+.%var expect7 0 R
+.%liverange 0 B7 40:185 205:207
+.%liverange 0 ~B7 204:204
+.%var l0000!sig1 1 R
+.%liverange 0 G1 15:15 20:20 188:188 190:190 192:192 194:194 201:201 203:203
+.%scope end
+.%import_expr common_code 185 <43:43:15,41:40:13,34:22:0> 204 &bp +
+.%import_expr common_code 184 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 182 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 180 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 178 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 176 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 174 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 172 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 170 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 152 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 150 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 148 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 146 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 144 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 142 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 140 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 138 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 120 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 118 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 116 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 114 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 112 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 110 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 108 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 106 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 88 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 86 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 84 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 82 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 80 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 78 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 76 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 74 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 56 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 54 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 52 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 50 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 48 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 46 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 44 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 42 <43:43:15,41:40:13,34:22:0> 205 &bp +
+.%import_expr common_code 24 <43:43:15,41:40:13,34:22:0> 19 &bp +
+.%import_expr common_code 21 <43:43:15,41:40:13,34:22:0> 19 &bp +
+.%import_expr common_code 13 <43:43:15,41:40:13,34:22:0> 186 &bp +
+.0 00FC044C0300 common_code
+	.page
+	;-----------------------
+	; TEST_NAME: ls_trng_gavin3.uc
+	;-----------------------
+	.sig  l0000!sig1 l0000!sig2 l0000!sig3 l0000!sig4 l0000!sig5 l0000!sig6 l0000!sig7 l0000!sig8 l0000!sig9 l0000!sig10 l0000!sig11 l0000!sig12 l0000!sig13 l0000!sig14 l0000!sig15
+	.xfer_order $xfer0 $xfer1 $xfer2 $xfer3 $xfer4 $xfer5 $xfer6 $xfer7 $xfer8 $xfer9 $xfer10 $xfer11 $xfer12 $xfer13 $xfer14 $xfer15
+	.addr l0000!sig1 1
+	.addr l0000!sig2 2
+	.addr l0000!sig3 3
+	.addr l0000!sig4 4
+	.addr l0000!sig5 5
+	.addr l0000!sig6 6
+	.addr l0000!sig7 7
+	.addr l0000!sig8 8
+	.addr l0000!sig9 9
+	.addr l0000!sig10 10
+	.addr l0000!sig11 11
+	.addr l0000!sig12 12
+	.addr l0000!sig13 13
+	.addr l0000!sig14 14
+	.addr l0000!sig15 15
+	.addr $xfer0 0
+	.addr $xfer1 1
+	.addr $xfer2 2
+	.addr $xfer3 3
+	.addr $xfer4 4
+	.addr $xfer5 5
+	.addr $xfer6 6
+	.addr $xfer7 7
+	.addr $xfer8 8
+	.addr $xfer9 9
+	.addr $xfer10 10
+	.addr $xfer11 11
+	.addr $xfer12 12
+	.addr $xfer13 13
+	.addr $xfer14 14
+	.addr $xfer15 15
+	.areg  me_num        0
+	.areg  trng_base     1
+	.areg  ctr           2
+	.areg  read_loop     3
+	.areg xpb_address     10
+	.areg data          4
+	.breg count         8
+	.breg   temp        9
+	.breg  cl_num       10
+	.breg  sig_num      11
+	.breg  sig_gpr      12
+	.breg  expect0       0
+	.breg  expect1       1
+	.breg  expect2       2
+	.breg  expect3       3
+	.breg  expect4       4
+	.breg  expect5       5
+	.breg  expect6       6
+	.breg  expect7       7
+	; The ME_NUM is in bits [7:3]
+	; CL_NUM[3:0] is in bit [28:25]
+	local_csr_rd[active_ctx_sts]
+.1 00F0000C0040 common_code
+	immed[me_num,0]
+.2 00F000012F01 common_code
+	immed[sig_num,1]
+.3 009BD4C52EC0 common_code
+	alu_shf[sig_gpr,0x80,or,sig_num,<<3]
+.4 009584AB3D40 common_code
+	alu_shf[cl_num,0xf, and,me_num,>>24]
+.5 0084340B3D40 common_code
+	alu_shf[me_num,0xf, and,me_num,>>3]
+.6 00F0000C004A common_code
+	immed[xpb_address,0]
+.7 00F4400C304A common_code
+	immed_w1[xpb_address,12]
+.8 008A14A3064A common_code
+	alu_shf[xpb_address,xpb_address,or,1,<<31]      ; Bit[31]=12 means do XPB access
+.9 008A84A12A4A common_code
+	alu_shf[xpb_address,xpb_address,or,cl_num,<<24] ; Bit[29:24]=Island number 
+.10 00F0000C0001 common_code
+	immed[$xfer1,0]
+.11 00F0000C0000 common_code
+	immed[$xfer0,0]
+.12 00AAB00C1040 common_code
+	alu[--,me_num,-,4]
+.13 00D82E808120 common_code
+	beq[me0_code#]
+.14 00E000000002 common_code
+	me1_code#:
+	ctx_arb[l0000!sig1]
+.15 00F0000C0041 common_code
+	; READ DATA
+	immed[trng_base,0]
+.16 00F4400C1841 common_code
+	immed_w1[trng_base,0x6]
+.17 008A64112A41 common_code
+	alu_shf[trng_base,trng_base,or,cl_num,<<26]
+.18 00F0000CA043 common_code
+	immed[read_loop,40]
+.19 004F10030041 common_code
+	read_loop#:
+	  cls[read,$xfer0,trng_base,0,1], ctx_swap[l0000!sig1]
+.20 00AAB00C0000 common_code
+	  alu[--,$xfer0,-,0]
+.21 00D804C08120 common_code
+	  beq[read_loop#]
+.22 00A024000300 common_code
+	  alu[*l$index0++,--,b,$xfer0]
+.23 00AA843C0443 common_code
+	  alu[read_loop,read_loop,-,1]
+.24 00D804C08121 common_code
+	bne[read_loop#]
+.25 00F00FF103FF common_code
+	immed[expect0,    0xffff]
+.26 00F44FF103FF common_code
+	immed_w1[expect0, 0xffff]
+.27 00F003F107FF common_code
+	immed[expect1,    0x3fff]
+.28 00F44FF107F0 common_code
+	immed_w1[expect1, 0xfff0]
+.29 00F00FE10B00 common_code
+	immed[expect2,    0xfe00]
+.30 00F44FF10BFF common_code
+	immed_w1[expect2, 0xffff]
+.31 00F00FF10FFF common_code
+	immed[expect3,    0xffff]
+.32 00F44FF10F1F common_code
+	immed_w1[expect3, 0xff1f]
+.33 00F00E31138F common_code
+	immed[expect4,    0xe38f]
+.34 00F44FE11338 common_code
+	immed_w1[expect4, 0xfe38]
+.35 00F00C7117FF common_code
+	immed[expect5,    0xc7ff]
+.36 00F440F117FF common_code
+	immed_w1[expect5, 0x0fff]
+.37 00F000711BF8 common_code
+	immed[expect6,    0x07f8]
+.38 00F44FF11BFE common_code
+	immed_w1[expect6, 0xfffe]
+.39 00F00FF11FC0 common_code
+	immed[expect7,    0xffc0]
+.40 00F44C011F03 common_code
+	immed_w1[expect7, 0xc003]
+.41 00AAB00102C0 common_code
+	alu[--,*l$index1++,-,expect0]
+.42 00D833408121 common_code
+	bne[test_failed#]
+.43 00AAB00106C0 common_code
+	alu[--,*l$index1++,-,expect1]
+.44 00D833408121 common_code
+	bne[test_failed#]
+.45 00AAB0010AC0 common_code
+	alu[--,*l$index1++,-,expect2]
+.46 00D833408121 common_code
+	bne[test_failed#]
+.47 00AAB0010EC0 common_code
+	alu[--,*l$index1++,-,expect3]
+.48 00D833408121 common_code
+	bne[test_failed#]
+.49 00AAB00112C0 common_code
+	alu[--,*l$index1++,-,expect4]
+.50 00D833408121 common_code
+	bne[test_failed#]
+.51 00AAB00116C0 common_code
+	alu[--,*l$index1++,-,expect5]
+.52 00D833408121 common_code
+	bne[test_failed#]
+.53 00AAB0011AC0 common_code
+	alu[--,*l$index1++,-,expect6]
+.54 00D833408121 common_code
+	bne[test_failed#]
+.55 00AAB0011EC0 common_code
+	alu[--,*l$index1++,-,expect7]
+.56 00D833408121 common_code
+	bne[test_failed#]
+.57 00F001F10381 common_code
+	immed[expect0,    0x1f81]
+.58 00F443F103E4 common_code
+	immed_w1[expect0, 0x3fe4]
+.59 00F001C1078E common_code
+	immed[expect1,    0x1c8e]
+.60 00F4471107C7 common_code
+	immed_w1[expect1, 0x71c7]
+.61 00F00FF10BFF common_code
+	immed[expect2,    0xffff]
+.62 00F440110BFF common_code
+	immed_w1[expect2, 0x01ff]
+.63 00F004010FFF common_code
+	immed[expect3,    0x40ff]
+.64 00F44FF10F1C common_code
+	immed_w1[expect3, 0xff1c]
+.65 00F00E3113F9 common_code
+	immed[expect4,    0xe3f9]
+.66 00F44FF113FF common_code
+	immed_w1[expect4, 0xffff]
+.67 00F007F117FC common_code
+	immed[expect5,    0x7ffc]
+.68 00F44C81173C common_code
+	immed_w1[expect5, 0xc83c]
+.69 00F001C11B6E common_code
+	immed[expect6,    0x1c6e]
+.70 00F44E011B07 common_code
+	immed_w1[expect6, 0xe007]
+.71 00F000F11F1F common_code
+	immed[expect7,    0x0f1f]
+.72 00F44E011F3C common_code
+	immed_w1[expect7, 0xe03c]
+.73 00AAB00102C0 common_code
+	alu[--,*l$index1++,-,expect0]
+.74 00D833408121 common_code
+	bne[test_failed#]
+.75 00AAB00106C0 common_code
+	alu[--,*l$index1++,-,expect1]
+.76 00D833408121 common_code
+	bne[test_failed#]
+.77 00AAB0010AC0 common_code
+	alu[--,*l$index1++,-,expect2]
+.78 00D833408121 common_code
+	bne[test_failed#]
+.79 00AAB0010EC0 common_code
+	alu[--,*l$index1++,-,expect3]
+.80 00D833408121 common_code
+	bne[test_failed#]
+.81 00AAB00112C0 common_code
+	alu[--,*l$index1++,-,expect4]
+.82 00D833408121 common_code
+	bne[test_failed#]
+.83 00AAB00116C0 common_code
+	alu[--,*l$index1++,-,expect5]
+.84 00D833408121 common_code
+	bne[test_failed#]
+.85 00AAB0011AC0 common_code
+	alu[--,*l$index1++,-,expect6]
+.86 00D833408121 common_code
+	bne[test_failed#]
+.87 00AAB0011EC0 common_code
+	alu[--,*l$index1++,-,expect7]
+.88 00D833408121 common_code
+	bne[test_failed#]
+.89 00F008810360 common_code
+	immed[expect0,    0x8860]
+.90 00F441F103E3 common_code
+	immed_w1[expect0, 0x1fe3]
+.91 00F000C1077F common_code
+	immed[expect1,    0x0c7f]
+.92 00F449F10738 common_code
+	immed_w1[expect1, 0x9f38]
+.93 00F005710B62 common_code
+	immed[expect2,    0x5762]
+.94 00F447910B76 common_code
+	immed_w1[expect2, 0x7976]
+.95 00F00ED10F8E common_code
+	immed[expect3,    0xed8e]
+.96 00F448E10F38 common_code
+	immed_w1[expect3, 0x8e38]
+.97 00F00FF113FE common_code
+	immed[expect4,    0xfffe]
+.98 00F440011307 common_code
+	immed_w1[expect4, 0x0007]
+.99 00F00FF11703 common_code
+	immed[expect5,    0xff03]
+.100 00F44F011700 common_code
+	immed_w1[expect5, 0xf000]
+.101 00F000711BE0 common_code
+	immed[expect6,    0x07e0]
+.102 00F44E311BFE common_code
+	immed_w1[expect6, 0xe3fe]
+.103 00F00F111FC0 common_code
+	immed[expect7,    0xf1c0]
+.104 00F441C11F9F common_code
+	immed_w1[expect7, 0x1c9f]
+.105 00AAB00102C0 common_code
+	alu[--,*l$index1++,-,expect0]
+.106 00D833408121 common_code
+	bne[test_failed#]
+.107 00AAB00106C0 common_code
+	alu[--,*l$index1++,-,expect1]
+.108 00D833408121 common_code
+	bne[test_failed#]
+.109 00AAB0010AC0 common_code
+	alu[--,*l$index1++,-,expect2]
+.110 00D833408121 common_code
+	bne[test_failed#]
+.111 00AAB0010EC0 common_code
+	alu[--,*l$index1++,-,expect3]
+.112 00D833408121 common_code
+	bne[test_failed#]
+.113 00AAB00112C0 common_code
+	alu[--,*l$index1++,-,expect4]
+.114 00D833408121 common_code
+	bne[test_failed#]
+.115 00AAB00116C0 common_code
+	alu[--,*l$index1++,-,expect5]
+.116 00D833408121 common_code
+	bne[test_failed#]
+.117 00AAB0011AC0 common_code
+	alu[--,*l$index1++,-,expect6]
+.118 00D833408121 common_code
+	bne[test_failed#]
+.119 00AAB0011EC0 common_code
+	alu[--,*l$index1++,-,expect7]
+.120 00D833408121 common_code
+	bne[test_failed#]
+.121 00F00E21034E common_code
+	immed[expect0,    0xe24e]
+.122 00F443F103FF common_code
+	immed_w1[expect0, 0x3fff]
+.123 00F001F107FC common_code
+	immed[expect1,    0x1ffc]
+.124 00F44C010738 common_code
+	immed_w1[expect1, 0xc038]
+.125 00F001810BE0 common_code
+	immed[expect2,    0x18e0]
+.126 00F44E110B80 common_code
+	immed_w1[expect2, 0xe180]
+.127 00F003F10F3C common_code
+	immed[expect3,    0x3f3c]
+.128 00F441F10F8C common_code
+	immed_w1[expect3, 0x1f8c]
+.129 00F0001113BE common_code
+	immed[expect4,    0x01be]
+.130 00F44241136C common_code
+	immed_w1[expect4, 0x246c]
+.131 00F00E011749 common_code
+	immed[expect5,    0xe049]
+.132 00F44B1117C7 common_code
+	immed_w1[expect5, 0xb1c7]
+.133 00F001F11BE0 common_code
+	immed[expect6,    0x1fe0]
+.134 00F44F811B70 common_code
+	immed_w1[expect6, 0xf870]
+.135 00F000D11FC4 common_code
+	immed[expect7,    0x0dc4]
+.136 00F441F11FCE common_code
+	immed_w1[expect7, 0x1fce]
+.137 00AAB00102C0 common_code
+	alu[--,*l$index1++,-,expect0]
+.138 00D833408121 common_code
+	bne[test_failed#]
+.139 00AAB00106C0 common_code
+	alu[--,*l$index1++,-,expect1]
+.140 00D833408121 common_code
+	bne[test_failed#]
+.141 00AAB0010AC0 common_code
+	alu[--,*l$index1++,-,expect2]
+.142 00D833408121 common_code
+	bne[test_failed#]
+.143 00AAB0010EC0 common_code
+	alu[--,*l$index1++,-,expect3]
+.144 00D833408121 common_code
+	bne[test_failed#]
+.145 00AAB00112C0 common_code
+	alu[--,*l$index1++,-,expect4]
+.146 00D833408121 common_code
+	bne[test_failed#]
+.147 00AAB00116C0 common_code
+	alu[--,*l$index1++,-,expect5]
+.148 00D833408121 common_code
+	bne[test_failed#]
+.149 00AAB0011AC0 common_code
+	alu[--,*l$index1++,-,expect6]
+.150 00D833408121 common_code
+	bne[test_failed#]
+.151 00AAB0011EC0 common_code
+	alu[--,*l$index1++,-,expect7]
+.152 00D833408121 common_code
+	bne[test_failed#]
+.153 00F0089103D9 common_code
+	immed[expect0,    0x89d9]
+.154 00F441B10393 common_code
+	immed_w1[expect0, 0x1b93]
+.155 00F008010747 common_code
+	immed[expect1,    0x8047]
+.156 00F44EC107B2 common_code
+	immed_w1[expect1, 0xecb2]
+.157 00F001F10BF6 common_code
+	immed[expect2,    0x1ff6]
+.158 00F448010BFE common_code
+	immed_w1[expect2, 0x80fe]
+.159 00F002010F43 common_code
+	immed[expect3,    0x2043]
+.160 00F44BC10FF1 common_code
+	immed_w1[expect3, 0xbcf1]
+.161 00F00BF113A3 common_code
+	immed[expect4,    0xbfa3]
+.162 00F44A411387 common_code
+	immed_w1[expect4, 0xa487]
+.163 00F00BD1174B common_code
+	immed[expect5,    0xbd4b]
+.164 00F4447117A5 common_code
+	immed_w1[expect5, 0x47a5]
+.165 00F00A811B9A common_code
+	immed[expect6,    0xa89a]
+.166 00F44EA11B89 common_code
+	immed_w1[expect6, 0xea89]
+.167 00F00DB11F8E common_code
+	immed[expect7,    0xdb8e]
+.168 00F44B111F36 common_code
+	immed_w1[expect7, 0xb136]
+.169 00AAB00102C0 common_code
+	alu[--,*l$index1++,-,expect0]
+.170 00D833408121 common_code
+	bne[test_failed#]
+.171 00AAB00106C0 common_code
+	alu[--,*l$index1++,-,expect1]
+.172 00D833408121 common_code
+	bne[test_failed#]
+.173 00AAB0010AC0 common_code
+	alu[--,*l$index1++,-,expect2]
+.174 00D833408121 common_code
+	bne[test_failed#]
+.175 00AAB0010EC0 common_code
+	alu[--,*l$index1++,-,expect3]
+.176 00D833408121 common_code
+	bne[test_failed#]
+.177 00AAB00112C0 common_code
+	alu[--,*l$index1++,-,expect4]
+.178 00D833408121 common_code
+	bne[test_failed#]
+.179 00AAB00116C0 common_code
+	alu[--,*l$index1++,-,expect5]
+.180 00D833408121 common_code
+	bne[test_failed#]
+.181 00AAB0011AC0 common_code
+	alu[--,*l$index1++,-,expect6]
+.182 00D833408121 common_code
+	bne[test_failed#]
+.183 00AAB0011EC0 common_code
+	alu[--,*l$index1++,-,expect7]
+.184 00D833408121 common_code
+	bne[test_failed#]
+.185 00D833008038 common_code
+	br[test_passed#]
+.186 00F0000C0000 common_code
+	me0_code#:
+	; XPB write: TRNG Async Ring
+	immed[$xfer0,0x0]
+.187 044E1003004A common_code
+	ct[xpb_write,$xfer0,xpb_address,0x00,1],ctx_swap[l0000!sig1]
+.188 00F0000C0000 common_code
+	; XPB write: TRNG Whiten Config
+	immed[$xfer0,0x0]
+.189 044E1003A04A common_code
+	ct[xpb_write,$xfer0,xpb_address,0x28,1],ctx_swap[l0000!sig1]
+.190 00F0005D7C00 common_code
+	; XPB write: TRNG LFSR Config
+	immed[$xfer0,0x55f]
+.191 044E1003804A common_code
+	ct[xpb_write,$xfer0,xpb_address,0x20,1],ctx_swap[l0000!sig1]
+.192 00F00F5D7C00 common_code
+	; XPB write: TRNG LFSR Config
+	immed[$xfer0,0xf55f]
+.193 044E1003804A common_code
+	ct[xpb_write,$xfer0,xpb_address,0x20,1],ctx_swap[l0000!sig1]
+.194 00F000012F01 common_code
+	   immed[sig_num,1]
+.195 009BD4C52EC0 common_code
+	   alu_shf[sig_gpr,0x80,or,sig_num,<<3]
+.196 00FC10213300 common_code
+	   local_csr_wr[next_neighbor_signal,sig_gpr]
+.197 00F000012703 common_code
+	; XPB write: TRNG Whitener control
+	immed[temp,0x0003]
+.198 00F440412700 common_code
+	immed_w1[temp,0x0400]
+.199 00A000012700 common_code
+	alu[$xfer0,--,b,temp]
+.200 044E1003904A common_code
+	ct[xpb_write,$xfer0,xpb_address,0x24,1],ctx_swap[l0000!sig1]
+.201 00F000FFC400 common_code
+	; XPB write: TRNG LFSR Config
+	immed[$xfer0,0xff1]
+.202 044E1003804A common_code
+	ct[xpb_write,$xfer0,xpb_address,0x20,1],ctx_swap[l0000!sig1]
+.203 00FC10213300 common_code
+	local_csr_wr[next_neighbor_signal,sig_gpr]
+.204 00E000010000 common_code
+	test_passed#:
+		ctx_arb[kill], any
+.205 00F0000C0300 common_code
+	test_failed#:
+		nop
+.206 00F0000C0300 common_code
+		nop
+.207 00E000010000 common_code
+		ctx_arb[kill], any
+	.entrancel0000!sig1l0000!sig2l0000!sig3l0000!sig4l0000!sig5l0000!sig6l0000!sig7l0000!sig8l0000!sig9l0000!sig10l0000!sig11l0000!sig12l0000!sig13l0000!sig14l0000!sig15+ucode_end
+
