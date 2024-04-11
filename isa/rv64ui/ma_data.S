@@ -23,7 +23,9 @@ RVTEST_CODE_BEGIN
   li TESTNUM, testnum; \
   li t1, res; \
   insn t2, offset(base); \
-  bne t1, t2, fail; \
+  la t0, fail; \
+  beq t1, t2, 1f; \
+  jr t0; \
 1:
 
 # within quadword
@@ -96,7 +98,9 @@ RVTEST_CODE_BEGIN
   li t1, st_data; \
   st_insn t1, offset(base); \
   ld_insn t2, offset(base); \
-  bne t1, t2, fail; \
+  la t0, fail; \
+  beq t1, t2, 1f; \
+  jr t0; \
 1:
 
 # within quadword
@@ -170,7 +174,9 @@ RVTEST_CODE_BEGIN
   li t2, ld_data; \
   st_insn t1, st_offset(base); \
   ld_insn t3, ld_offset(base); \
-  bne t2, t3, fail; \
+  la t0, fail; \
+  beq t2, t3, 1f; \
+  jr t0; \
 1:
 
 # within quadword
@@ -330,7 +336,6 @@ RVTEST_CODE_BEGIN
   MISMATCHED_STORE_TEST(179, sw, ld, s0, 62, 62, 0xf9f8f7f6, 0x9695f1f5f9f8f7f6)
   MISMATCHED_STORE_TEST(180, sw, ld, s0, 61, 63, 0xfdfcfbfa, 0x979695f1f5f9fdfc)
 #endif
-
   TEST_PASSFAIL
 
 RVTEST_CODE_END
